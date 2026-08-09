@@ -1,0 +1,716 @@
+<style>
+  :root{
+    --bg:#F5F7FA; --surface:#FFFFFF; --surface-2:#EEF1F6;
+    --ink:#131C2B; --muted:#5C6675; --hair:#E1E6EE;
+    --accent:#3A5BDB; --accent-soft:#E4E9FF;
+    --good:#0CA678; --good-soft:#D9F4EC;
+    --warn:#E8590C; --streak:#F08C00; --streak-soft:#FFF0D6;
+    --bad:#E03131;
+    --shadow:0 1px 2px rgba(19,28,43,.06),0 8px 24px rgba(19,28,43,.06);
+    --r:16px; --r-sm:11px;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#0D1420; --surface:#151F2E; --surface-2:#1D2A3C;
+      --ink:#E7ECF3; --muted:#93A0B4; --hair:#26344A;
+      --accent:#748FFC; --accent-soft:#22315A;
+      --good:#38D9A9; --good-soft:#123A31;
+      --warn:#FF922B; --streak:#FFB454; --streak-soft:#3A2A10;
+      --bad:#FF6B6B;
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="light"]{
+    --bg:#F5F7FA; --surface:#FFFFFF; --surface-2:#EEF1F6;
+    --ink:#131C2B; --muted:#5C6675; --hair:#E1E6EE;
+    --accent:#3A5BDB; --accent-soft:#E4E9FF;
+    --good:#0CA678; --good-soft:#D9F4EC;
+    --warn:#E8590C; --streak:#F08C00; --streak-soft:#FFF0D6; --bad:#E03131;
+    --shadow:0 1px 2px rgba(19,28,43,.06),0 8px 24px rgba(19,28,43,.06);
+  }
+  :root[data-theme="dark"]{
+    --bg:#0D1420; --surface:#151F2E; --surface-2:#1D2A3C;
+    --ink:#E7ECF3; --muted:#93A0B4; --hair:#26344A;
+    --accent:#748FFC; --accent-soft:#22315A;
+    --good:#38D9A9; --good-soft:#123A31;
+    --warn:#FF922B; --streak:#FFB454; --streak-soft:#3A2A10; --bad:#FF6B6B;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+  }
+
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:var(--bg); color:var(--ink); font-family:var(--sans);
+    -webkit-font-smoothing:antialiased; line-height:1.5;
+    padding-bottom:calc(72px + env(safe-area-inset-bottom));
+  }
+  .wrap{max-width:640px; margin:0 auto; padding:18px 16px 8px;}
+  h1,h2,h3{margin:0; text-wrap:balance; line-height:1.2}
+  button{font-family:inherit; cursor:pointer; border:none; background:none; color:inherit}
+  .muted{color:var(--muted)}
+  .tnum{font-variant-numeric:tabular-nums}
+
+  /* Header */
+  .top{display:flex; align-items:center; justify-content:space-between; margin-bottom:16px}
+  .brand{display:flex; align-items:center; gap:10px}
+  .logo{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#9775FA);
+    display:grid;place-items:center;color:#fff;font-weight:800;font-size:16px;box-shadow:var(--shadow)}
+  .brand b{font-size:16px;letter-spacing:-.2px}
+  .brand small{display:block;color:var(--muted);font-size:11px;font-weight:500;letter-spacing:.3px}
+  .icon-btn{width:38px;height:38px;border-radius:11px;background:var(--surface);display:grid;place-items:center;
+    box-shadow:var(--shadow);color:var(--muted)}
+
+  /* Cards */
+  .card{background:var(--surface);border-radius:var(--r);box-shadow:var(--shadow);padding:18px}
+  .card + .card{margin-top:14px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+  .stat{display:flex;flex-direction:column;gap:2px}
+  .stat .n{font-size:30px;font-weight:800;letter-spacing:-1px;line-height:1}
+  .stat .l{font-size:12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+  .stat .sub{font-size:12px;color:var(--muted)}
+  .chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;padding:5px 10px;border-radius:999px}
+  .chip.streak{background:var(--streak-soft);color:var(--streak)}
+  .chip.good{background:var(--good-soft);color:var(--good)}
+  .chip.acc{background:var(--accent-soft);color:var(--accent)}
+
+  .bar{height:9px;border-radius:999px;background:var(--surface-2);overflow:hidden}
+  .bar > i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--accent),#9775FA);transition:width .5s ease}
+  .bar.g > i{background:linear-gradient(90deg,var(--good),#63E6BE)}
+
+  .section-title{font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin:22px 4px 10px}
+
+  .row{display:flex;align-items:center;gap:12px}
+  .spread{justify-content:space-between}
+
+  /* Module launcher tiles */
+  .tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .tile{background:var(--surface);border-radius:var(--r);box-shadow:var(--shadow);padding:16px;text-align:left;
+    display:flex;flex-direction:column;gap:10px;min-height:118px;position:relative;transition:transform .12s ease}
+  .tile:active{transform:scale(.97)}
+  .tile .ti{width:40px;height:40px;border-radius:12px;display:grid;place-items:center}
+  .tile b{font-size:15px}
+  .tile span{font-size:12px;color:var(--muted);line-height:1.35}
+  .tint-blue{background:var(--accent-soft);color:var(--accent)}
+  .tint-green{background:var(--good-soft);color:var(--good)}
+  .tint-amber{background:var(--streak-soft);color:var(--streak)}
+  .tint-purple{background:rgba(151,117,250,.16);color:#9775FA}
+
+  /* Buttons */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700;font-size:15px;
+    padding:13px 18px;border-radius:13px;background:var(--accent);color:#fff;width:100%;box-shadow:var(--shadow)}
+  .btn.sec{background:var(--surface);color:var(--ink)}
+  .btn:active{transform:scale(.98)}
+  .btn:disabled{opacity:.5}
+
+  /* Flashcard */
+  .fc{perspective:1400px;margin-top:6px}
+  .fc-inner{min-height:280px;border-radius:20px;background:var(--surface);box-shadow:var(--shadow);
+    padding:26px;display:flex;flex-direction:column;justify-content:center;text-align:center;position:relative}
+  .fc .en{font-size:34px;font-weight:800;letter-spacing:-.5px}
+  .fc .ph{color:var(--muted);font-size:14px;margin-top:6px}
+  .fc .fr{font-size:24px;font-weight:700;color:var(--accent);margin-top:4px}
+  .fc .ex{margin-top:16px;font-size:15px;color:var(--muted);font-style:italic;line-height:1.5}
+  .fc .tag{position:absolute;top:16px;left:16px}
+  .speak{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:12px;background:var(--surface-2);
+    display:grid;place-items:center;color:var(--accent)}
+  .reveal-hint{color:var(--muted);font-size:13px;margin-top:18px}
+  .rate{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}
+  .rate button{padding:12px 4px;border-radius:12px;font-weight:700;font-size:13px;background:var(--surface);
+    box-shadow:var(--shadow);display:flex;flex-direction:column;gap:2px;align-items:center}
+  .rate button small{font-weight:600;font-size:10px;color:var(--muted)}
+  .rate .again{color:var(--bad)} .rate .hard{color:var(--warn)}
+  .rate .good{color:var(--accent)} .rate .easy{color:var(--good)}
+
+  /* Quiz */
+  .q{font-size:19px;font-weight:700;margin:4px 0 16px;line-height:1.35}
+  .opt{display:block;width:100%;text-align:left;padding:15px 16px;border-radius:13px;background:var(--surface);
+    box-shadow:var(--shadow);font-size:15px;font-weight:600;margin-bottom:10px;border:2px solid transparent;transition:.15s}
+  .opt:active{transform:scale(.99)}
+  .opt.correct{border-color:var(--good);background:var(--good-soft);color:var(--good)}
+  .opt.wrong{border-color:var(--bad);background:rgba(224,49,49,.08);color:var(--bad)}
+  .opt.dim{opacity:.55}
+  .explain{background:var(--accent-soft);color:var(--ink);border-radius:13px;padding:14px 16px;font-size:14px;
+    margin-top:4px;line-height:1.5}
+  .explain b{color:var(--accent)}
+
+  /* Reading */
+  .read-body{font-size:16px;line-height:1.7}
+  .read-body p{margin:0 0 14px}
+  .gloss{border-top:1px solid var(--hair);margin-top:8px;padding-top:12px}
+  .gloss h4{margin:0 0 8px;font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted)}
+  .gword{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid var(--hair);font-size:14px}
+  .gword:last-child{border:none}
+  .gword b{font-weight:700}
+  .gword span{color:var(--muted);text-align:right}
+
+  /* progress dots */
+  .prog{display:flex;gap:5px;align-items:center;margin-bottom:14px}
+  .prog i{height:5px;flex:1;border-radius:999px;background:var(--surface-2)}
+  .prog i.on{background:var(--accent)}
+
+  /* Bottom nav */
+  .nav{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--surface);
+    border-top:1px solid var(--hair);display:flex;justify-content:space-around;
+    padding:8px 6px calc(8px + env(safe-area-inset-bottom));box-shadow:0 -4px 20px rgba(0,0,0,.05)}
+  .nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--muted);
+    font-size:10.5px;font-weight:700;padding:4px 2px;border-radius:12px}
+  .nav button.active{color:var(--accent)}
+  .nav svg{width:23px;height:23px}
+
+  .center-msg{text-align:center;padding:36px 16px;color:var(--muted)}
+  .center-msg .big{font-size:44px;margin-bottom:8px}
+  .hidden{display:none!important}
+  .fade{animation:fade .28s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  .pill-tabs{display:flex;gap:8px;margin-bottom:14px;overflow-x:auto;padding-bottom:2px}
+  .pill-tabs button{white-space:nowrap;padding:8px 14px;border-radius:999px;font-weight:700;font-size:13px;
+    background:var(--surface);box-shadow:var(--shadow);color:var(--muted)}
+  .pill-tabs button.on{background:var(--accent);color:#fff}
+  a.link{color:var(--accent);font-weight:700;text-decoration:none}
+</style>
+
+<div class="wrap">
+  <div class="top">
+    <div class="brand">
+      <div class="logo">EB</div>
+      <div><b>English Boost</b><small id="tagline">Business English · niveau B1 → B2</small></div>
+    </div>
+    <button class="icon-btn" id="themeBtn" aria-label="Changer le thème" title="Thème clair/sombre">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v1M12 20v1M4.2 4.2l.7.7M19.1 19.1l.7.7M3 12h1M20 12h1M4.2 19.8l.7-.7M19.1 4.9l.7-.7"/><circle cx="12" cy="12" r="4"/></svg>
+    </button>
+  </div>
+
+  <!-- ===== HOME ===== -->
+  <section id="view-home"></section>
+
+  <!-- ===== VOCAB ===== -->
+  <section id="view-vocab" class="hidden"></section>
+
+  <!-- ===== GRAMMAR ===== -->
+  <section id="view-grammar" class="hidden"></section>
+
+  <!-- ===== READING ===== -->
+  <section id="view-reading" class="hidden"></section>
+
+  <!-- ===== COACH ===== -->
+  <section id="view-coach" class="hidden"></section>
+</div>
+
+<nav class="nav">
+  <button data-go="home" class="active">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>
+    Accueil</button>
+  <button data-go="vocab">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M8 9h8M8 13h5"/></svg>
+    Vocab</button>
+  <button data-go="grammar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V6a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/><path d="M9 8h6"/></svg>
+    Grammaire</button>
+  <button data-go="reading">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-2-1.5-5-1.5-7-1v13c2-.5 5-.5 7 1 2-1.5 5-1.5 7-1V5c-2-.5-5-.5-7 1z"/><path d="M12 6v13"/></svg>
+    Lecture</button>
+  <button data-go="coach">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H8l-4 4V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2z"/></svg>
+    Coach</button>
+</nav>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------------- Persistence ---------------- */
+  const KEY = "englishboost.v1";
+  const todayStr = () => new Date().toISOString().slice(0,10);
+  function load(){ try{ return JSON.parse(localStorage.getItem(KEY)) || {}; }catch(e){ return {}; } }
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+
+  const defaults = {
+    streak:0, lastDay:null, days:[],
+    xp:0, goal:20, todayXp:0, todayDay:null,
+    cards:{},            // id -> {ease, interval, due, reps}
+    grammarBest:0, grammarDone:0,
+    readDone:[],
+    theme:null
+  };
+  let state = Object.assign({}, defaults, load());
+
+  // reset today's XP if a new day
+  if(state.todayDay !== todayStr()){ state.todayDay = todayStr(); state.todayXp = 0; }
+
+  function addXp(n){
+    state.xp += n; state.todayXp += n;
+    markActiveToday();
+    save();
+  }
+  function markActiveToday(){
+    const t = todayStr();
+    if(state.lastDay === t) return;
+    const yest = new Date(Date.now()-864e5).toISOString().slice(0,10);
+    state.streak = (state.lastDay === yest) ? state.streak+1 : 1;
+    state.lastDay = t;
+    if(!state.days.includes(t)) state.days.push(t);
+    save();
+  }
+
+  /* ---------------- Theme ---------------- */
+  const root = document.documentElement;
+  function applyTheme(){ if(state.theme) root.setAttribute("data-theme", state.theme); else root.removeAttribute("data-theme"); }
+  applyTheme();
+  document.getElementById("themeBtn").addEventListener("click", ()=>{
+    const dark = state.theme ? state.theme==="dark"
+      : matchMedia("(prefers-color-scheme:dark)").matches;
+    state.theme = dark ? "light" : "dark"; save(); applyTheme();
+  });
+
+  /* ---------------- Speech ---------------- */
+  function speak(text){
+    if(!("speechSynthesis" in window)) return;
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = "en-GB"; u.rate = .92;
+    const v = speechSynthesis.getVoices().find(v=>/en-GB/i.test(v.lang)) ||
+              speechSynthesis.getVoices().find(v=>/en/i.test(v.lang));
+    if(v) u.voice = v;
+    speechSynthesis.speak(u);
+  }
+  if("speechSynthesis" in window){ speechSynthesis.onvoiceschanged = ()=>{}; }
+  window.__speak = speak;
+
+  /* ---------------- Content ---------------- */
+  const VOCAB = [
+    {id:"deadline", en:"deadline", ph:"/ˈdedlaɪn/", fr:"date limite / échéance", ex:"We can't miss the deadline for this report."},
+    {id:"stakeholder", en:"stakeholder", ph:"/ˈsteɪkhoʊldər/", fr:"partie prenante", ex:"We need to keep all stakeholders informed."},
+    {id:"revenue", en:"revenue", ph:"/ˈrevənuː/", fr:"chiffre d'affaires / recettes", ex:"Annual revenue grew by 12% last year."},
+    {id:"forecast", en:"forecast", ph:"/ˈfɔːrkæst/", fr:"prévision", ex:"The sales forecast looks promising."},
+    {id:"leverage", en:"to leverage", ph:"/ˈlevərɪdʒ/", fr:"tirer parti de / exploiter", ex:"We can leverage our brand to enter new markets."},
+    {id:"outcome", en:"outcome", ph:"/ˈaʊtkʌm/", fr:"résultat / issue", ex:"The outcome of the meeting was positive."},
+    {id:"leadtime", en:"lead time", ph:"/ˈliːd taɪm/", fr:"délai de livraison", ex:"The lead time for this supplier is two weeks."},
+    {id:"invoice", en:"invoice", ph:"/ˈɪnvɔɪs/", fr:"facture", ex:"Please send the invoice by the end of the month."},
+    {id:"turnover", en:"turnover", ph:"/ˈtɜːrnoʊvər/", fr:"chiffre d'affaires / rotation", ex:"Staff turnover has been high this quarter."},
+    {id:"benchmark", en:"benchmark", ph:"/ˈbentʃmɑːrk/", fr:"référence / point de repère", ex:"Let's benchmark our prices against competitors."},
+    {id:"streamline", en:"to streamline", ph:"/ˈstriːmlaɪn/", fr:"rationaliser / simplifier", ex:"We streamlined the approval process."},
+    {id:"asset", en:"asset", ph:"/ˈæset/", fr:"actif / atout", ex:"Her experience is a real asset to the team."},
+    {id:"liability", en:"liability", ph:"/ˌlaɪəˈbɪləti/", fr:"passif / responsabilité", ex:"The old equipment became a liability."},
+    {id:"procurement", en:"procurement", ph:"/prəˈkjʊrmənt/", fr:"approvisionnement / achats", ex:"The procurement team handles supplier contracts."},
+    {id:"onboard", en:"to onboard", ph:"/ɒnˈbɔːrd/", fr:"intégrer (un employé/client)", ex:"It takes a week to onboard a new hire."},
+    {id:"scope", en:"scope", ph:"/skoʊp/", fr:"périmètre / portée", ex:"That request is out of scope for this project."},
+    {id:"milestone", en:"milestone", ph:"/ˈmaɪlstoʊn/", fr:"jalon / étape clé", ex:"We hit an important milestone today."},
+    {id:"pitch", en:"to pitch", ph:"/pɪtʃ/", fr:"présenter (une idée) / argumenter", ex:"She pitched the idea to investors."},
+    {id:"rollout", en:"rollout", ph:"/ˈroʊlaʊt/", fr:"déploiement / lancement", ex:"The product rollout starts next Monday."},
+    {id:"bottleneck", en:"bottleneck", ph:"/ˈbɒtlnek/", fr:"goulot d'étranglement", ex:"Approval is the main bottleneck in our workflow."},
+    {id:"stakeout", en:"to follow up", ph:"/ˈfɒloʊ ʌp/", fr:"faire un suivi / relancer", ex:"I'll follow up with the client tomorrow."},
+    {id:"quote", en:"quote", ph:"/kwoʊt/", fr:"devis", ex:"Can you send me a quote for the service?"},
+    {id:"margin", en:"profit margin", ph:"/ˈprɒfɪt ˈmɑːrdʒɪn/", fr:"marge bénéficiaire", ex:"Our profit margin is too thin on this product."},
+    {id:"outsource", en:"to outsource", ph:"/ˈaʊtsɔːrs/", fr:"externaliser / sous-traiter", ex:"They outsource their customer support."},
+    {id:"kpi", en:"KPI", ph:"/ˌkeɪ piː ˈaɪ/", fr:"indicateur de performance", ex:"Customer retention is a key KPI for us."},
+    {id:"draft", en:"draft", ph:"/drɑːft/", fr:"brouillon / version préliminaire", ex:"I've sent you a first draft of the contract."},
+    {id:"agenda", en:"agenda", ph:"/əˈdʒendə/", fr:"ordre du jour", ex:"What's on the agenda for today's meeting?"},
+    {id:"leverage2", en:"shortfall", ph:"/ˈʃɔːrtfɔːl/", fr:"déficit / manque", ex:"There's a shortfall in this quarter's budget."},
+    {id:"comply", en:"to comply with", ph:"/kəmˈplaɪ/", fr:"se conformer à / respecter", ex:"All suppliers must comply with our standards."},
+    {id:"leadgen", en:"lead", ph:"/liːd/", fr:"prospect / piste commerciale", ex:"The campaign generated 200 new leads."}
+  ];
+
+  const GRAMMAR = [
+    {q:"I ___ working here since 2020.", opts:["am","have been","was","be"], a:1, e:"On utilise le <b>present perfect continu</b> (have been + -ing) avec « since » pour une action commencée dans le passé et toujours en cours."},
+    {q:"If we ___ the deadline, the client will be upset.", opts:["miss","will miss","missed","would miss"], a:0, e:"Dans une conditionnelle de type 1 (probable), la structure est : <b>if + présent, ... will + base verbale</b>."},
+    {q:"This report is ___ than the last one.", opts:["more detailed","detaileder","most detailed","more detail"], a:0, e:"Pour un adjectif long (detailed), le comparatif se forme avec <b>more + adjectif + than</b>."},
+    {q:"She suggested ___ the meeting to Friday.", opts:["to move","moving","move","moved"], a:1, e:"Le verbe « suggest » est suivi de la forme en <b>-ing</b> (gérondif), pas de l'infinitif."},
+    {q:"We need this done ___ Friday at the latest.", opts:["until","by","since","for"], a:1, e:"<b>By</b> = « d'ici / au plus tard à » (une échéance). « Until » = « jusqu'à » (durée continue)."},
+    {q:"There isn't ___ time to finish today.", opts:["many","much","a lot","few"], a:1, e:"« Time » est indénombrable → on utilise <b>much</b>. « Many » s'emploie avec les dénombrables."},
+    {q:"The email ___ by our assistant yesterday.", opts:["sent","was sent","has sent","is sent"], a:1, e:"Voix passive au passé : <b>was/were + participe passé</b>. C'est l'email qui subit l'action."},
+    {q:"I look forward ___ from you soon.", opts:["to hear","to hearing","hearing","hear"], a:1, e:"L'expression figée « look forward <b>to</b> » est suivie du gérondif : <b>to hearing</b>. Formule classique en fin d'email."},
+    {q:"He's the colleague ___ helped me on the project.", opts:["which","who","whom","what"], a:1, e:"Pour une personne sujet du verbe, on emploie le pronom relatif <b>who</b>."},
+    {q:"We've ___ finished the quarterly review.", opts:["yet","already","still","ever"], a:1, e:"<b>Already</b> (déjà) s'emploie dans les phrases affirmatives au present perfect. « Yet » va avec les négatives/questions."},
+    {q:"If I ___ you, I would accept the offer.", opts:["am","was","were","be"], a:2, e:"Conditionnel de type 2 (hypothétique) : « If I <b>were</b> you » est la forme correcte, même à la 1re personne."},
+    {q:"Our sales are ___ increasing month after month.", opts:["steady","steadily","steadier","steadiest"], a:1, e:"On modifie le verbe « increasing » → il faut un <b>adverbe</b> : steadily (régulièrement)."},
+    {q:"Could you ___ me know when it's ready?", opts:["let","letting","to let","lets"], a:0, e:"Après « could you », on emploie la <b>base verbale</b>. « let someone know » = tenir au courant."},
+    {q:"The project will be completed ___ two weeks.", opts:["since","for","in","during"], a:2, e:"<b>In + durée</b> = « dans / d'ici » un laps de temps futur. « The report will be ready in two weeks. »"},
+    {q:"Neither the manager ___ the team was aware of it.", opts:["or","nor","and","not"], a:1, e:"La structure corrélative est <b>neither ... nor ...</b> (ni ... ni ...)."}
+  ];
+
+  const READINGS = [
+    {
+      id:"email1", title:"A follow-up email", level:"B1",
+      text:[
+        "Dear Ms. Carter,",
+        "Thank you for taking the time to meet with us last Thursday. Following our conversation, I am pleased to attach a revised quote for the marketing campaign.",
+        "As discussed, we have reduced the scope slightly to fit within your budget, while keeping the two priorities you mentioned: social media and email outreach. The lead time for the first deliverables would be three weeks from approval.",
+        "Please let me know if you have any questions. I look forward to hearing from you.",
+        "Best regards,\nDaniel Okoro"
+      ],
+      gloss:[
+        ["revised","révisé, corrigé"],["quote","devis"],["scope","périmètre, portée"],
+        ["outreach","démarchage, prise de contact"],["lead time","délai"],["deliverables","livrables"]
+      ],
+      questions:[
+        {q:"Why is Daniel writing this email?", opts:["To cancel the project","To send an updated quote","To ask for a meeting","To complain about the budget"], a:1},
+        {q:"What did they change after the meeting?", opts:["The team","The scope of the campaign","The company name","The deadline of the email"], a:1},
+        {q:"How long until the first deliverables?", opts:["Three days","One week","Three weeks","Three months"], a:2}
+      ]
+    },
+    {
+      id:"news1", title:"A short business update", level:"B1+",
+      text:[
+        "Nordic Tools, a mid-sized manufacturer, reported strong results this quarter. Revenue rose by 9%, driven mainly by higher demand in overseas markets.",
+        "However, the company warned that rising material costs are putting pressure on its profit margins. To respond, management plans to streamline production and outsource part of its logistics.",
+        "\"We are confident about the outcome,\" the CEO said, \"but the next few months will be a real test.\""
+      ],
+      gloss:[
+        ["manufacturer","fabricant"],["revenue","chiffre d'affaires"],["overseas","à l'étranger"],
+        ["profit margins","marges bénéficiaires"],["streamline","rationaliser"],["outsource","externaliser"],["outcome","résultat"]
+      ],
+      questions:[
+        {q:"What mainly drove the revenue growth?", opts:["Lower prices","Demand in overseas markets","A new CEO","Reduced staff"], a:1},
+        {q:"What is putting pressure on profit margins?", opts:["Rising material costs","Fewer customers","New taxes","Bad weather"], a:0},
+        {q:"How does the CEO feel about the future?", opts:["Very pessimistic","Confident but cautious","Uninterested","Angry"], a:1}
+      ]
+    }
+  ];
+
+  /* ---------------- Spaced repetition (SM-2 lite) ---------------- */
+  function cardState(id){
+    return state.cards[id] || {ease:2.3, interval:0, due:todayStr(), reps:0};
+  }
+  function dueCards(){
+    const t = todayStr();
+    return VOCAB.filter(v=>{ const c=cardState(v.id); return c.due <= t; });
+  }
+  function reviewCard(id, quality){ // quality: 0 again,1 hard,2 good,3 easy
+    const c = cardState(id);
+    if(quality===0){ c.interval=0; c.ease=Math.max(1.5,c.ease-0.2); }
+    else{
+      if(c.reps===0) c.interval = quality===3?2:1;
+      else if(c.reps===1) c.interval = quality===3?5:3;
+      else c.interval = Math.round(c.interval * (c.ease + (quality-2)*0.15));
+      if(quality===1) c.interval = Math.max(1, Math.round(c.interval*0.6));
+      c.ease = Math.min(3.2, Math.max(1.5, c.ease + (quality-2)*0.12));
+      c.reps += 1;
+    }
+    if(quality===0) c.reps = Math.max(0,c.reps);
+    const d = new Date(Date.now() + c.interval*864e5);
+    c.due = d.toISOString().slice(0,10);
+    state.cards[id] = c;
+    save();
+  }
+  function learnedCount(){ return Object.values(state.cards).filter(c=>c.reps>=2).length; }
+
+  /* ---------------- Router ---------------- */
+  const views = {
+    home:  document.getElementById("view-home"),
+    vocab: document.getElementById("view-vocab"),
+    grammar:document.getElementById("view-grammar"),
+    reading:document.getElementById("view-reading"),
+    coach: document.getElementById("view-coach")
+  };
+  const renderers = {};
+  let current = "home";
+  function go(name){
+    current = name;
+    for(const k in views){ views[k].classList.toggle("hidden", k!==name); }
+    document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active", b.dataset.go===name));
+    (renderers[name]||(()=>{}))();
+    views[name].classList.remove("fade"); void views[name].offsetWidth; views[name].classList.add("fade");
+    window.scrollTo(0,0);
+  }
+  document.querySelectorAll(".nav button").forEach(b=> b.addEventListener("click", ()=>go(b.dataset.go)));
+
+  /* ---------------- HOME ---------------- */
+  renderers.home = function(){
+    const due = dueCards().length;
+    const goalPct = Math.min(100, Math.round(state.todayXp/state.goal*100));
+    const learned = learnedCount();
+    views.home.innerHTML = `
+      <div class="card" style="background:linear-gradient(135deg,var(--accent),#9775FA);color:#fff">
+        <div class="row spread">
+          <div>
+            <div style="font-size:13px;opacity:.9;font-weight:600">${greeting()}</div>
+            <h2 style="font-size:22px;margin-top:2px">Prêt pour ta session ?</h2>
+          </div>
+          <div class="chip" style="background:rgba(255,255,255,.2);color:#fff">🔥 ${state.streak} j</div>
+        </div>
+        <div style="margin-top:16px">
+          <div class="row spread" style="font-size:13px;font-weight:600;margin-bottom:7px">
+            <span>Objectif du jour</span><span class="tnum">${state.todayXp} / ${state.goal} XP</span>
+          </div>
+          <div class="bar" style="background:rgba(255,255,255,.25)"><i style="width:${goalPct}%;background:#fff"></i></div>
+        </div>
+      </div>
+
+      <div class="grid2" style="margin-top:14px">
+        <div class="card stat">
+          <span class="l">Mots appris</span>
+          <span class="n tnum">${learned}<span style="font-size:15px;color:var(--muted);font-weight:600"> / ${VOCAB.length}</span></span>
+          <span class="sub">${due>0? due+" à réviser aujourd'hui" : "Rien à réviser 🎉"}</span>
+        </div>
+        <div class="card stat">
+          <span class="l">Grammaire</span>
+          <span class="n tnum">${state.grammarBest}<span style="font-size:15px;color:var(--muted);font-weight:600">%</span></span>
+          <span class="sub">meilleur score au quiz</span>
+        </div>
+      </div>
+
+      <div class="section-title">Continuer</div>
+      <div class="tiles">
+        <button class="tile" data-go="vocab">
+          <div class="ti tint-blue">📇</div>
+          <b>Vocabulaire</b><span>${due>0?due+" cartes à réviser":"Apprendre de nouveaux mots"}</span>
+        </button>
+        <button class="tile" data-go="grammar">
+          <div class="ti tint-green">✍️</div>
+          <b>Grammaire</b><span>${GRAMMAR.length} questions B1→B2</span>
+        </button>
+        <button class="tile" data-go="reading">
+          <div class="ti tint-amber">📖</div>
+          <b>Compréhension</b><span>${READINGS.length} textes business + audio</span>
+        </button>
+        <button class="tile" data-go="coach">
+          <div class="ti tint-purple">💬</div>
+          <b>Coach IA</b><span>Conversation & correction · bientôt</span>
+        </button>
+      </div>
+
+      <div class="section-title">Ta semaine</div>
+      <div class="card">${weekStrip()}</div>
+      <p class="muted" style="text-align:center;font-size:12px;margin:18px 4px 4px">
+        Astuce : ajoute cette page à ton écran d'accueil pour l'ouvrir comme une app 📱
+      </p>
+    `;
+    views.home.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>go(b.dataset.go)));
+  };
+  function greeting(){ const h=new Date().getHours(); return h<12?"Bonjour 👋":h<18?"Bon après-midi 👋":"Bonsoir 👋"; }
+  function weekStrip(){
+    const names=["L","M","M","J","V","S","D"];
+    let html='<div class="row" style="justify-content:space-between">';
+    for(let i=6;i>=0;i--){
+      const d=new Date(Date.now()-i*864e5); const ds=d.toISOString().slice(0,10);
+      const on=state.days.includes(ds);
+      let idx=d.getDay(); idx=idx===0?6:idx-1;
+      html+=`<div style="text-align:center;flex:1">
+        <div style="width:32px;height:32px;margin:0 auto;border-radius:10px;display:grid;place-items:center;
+          font-weight:800;font-size:13px;${on?'background:var(--accent);color:#fff':'background:var(--surface-2);color:var(--muted)'}">
+          ${on?'✓':names[idx]}</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:4px">${names[idx]}</div>
+      </div>`;
+    }
+    return html+'</div>';
+  }
+
+  /* ---------------- VOCAB ---------------- */
+  let vq=[], vi=0, vShown=false;
+  renderers.vocab = function(){
+    const due = dueCards();
+    vq = due.length ? due.slice() : VOCAB.slice(); // if nothing due, allow free practice
+    vi=0; vShown=false;
+    if(due.length===0){
+      views.vocab.innerHTML = `
+        <h2 style="margin-bottom:6px">Vocabulaire business</h2>
+        <p class="muted" style="margin-top:0">Tu es à jour dans tes révisions 🎉</p>
+        <div class="card center-msg"><div class="big">✅</div>
+          <b style="color:var(--ink)">Rien à réviser aujourd'hui</b>
+          <p>Reviens demain, ou entraîne-toi librement sur les ${VOCAB.length} mots.</p>
+          <button class="btn" id="freeplay" style="margin-top:8px;width:auto;padding:12px 24px">S'entraîner quand même</button>
+        </div>`;
+      views.vocab.querySelector("#freeplay").addEventListener("click",()=>{ vq=VOCAB.slice(); vi=0; vShown=false; renderCard(); });
+      return;
+    }
+    renderCard();
+  };
+  function renderCard(){
+    if(vi>=vq.length){
+      views.vocab.innerHTML = `
+        <div class="card center-msg fade"><div class="big">🎉</div>
+          <b style="color:var(--ink)">Session terminée !</b>
+          <p>Tu as révisé ${vq.length} carte(s). +${vq.length*2} XP</p>
+          <button class="btn" id="vhome" style="width:auto;padding:12px 24px">Retour à l'accueil</button>
+        </div>`;
+      views.vocab.querySelector("#vhome").addEventListener("click",()=>go("home"));
+      return;
+    }
+    const v = vq[vi];
+    views.vocab.innerHTML = `
+      <div class="prog">${vq.map((_,k)=>`<i class="${k<vi?'on':''}"></i>`).join("")}</div>
+      <div class="row spread" style="margin-bottom:4px">
+        <span class="muted" style="font-size:13px;font-weight:600">Carte ${vi+1} / ${vq.length}</span>
+        <span class="chip acc">Business</span>
+      </div>
+      <div class="fc"><div class="fc-inner" id="fcInner">
+        <button class="speak" id="speakBtn" aria-label="Écouter">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a9 9 0 0 1 0 14"/></svg>
+        </button>
+        <div class="en">${v.en}</div>
+        <div class="ph">${v.ph}</div>
+        <div id="answer" class="hidden">
+          <div class="fr">${v.fr}</div>
+          <div class="ex">"${v.ex}"</div>
+        </div>
+        <div class="reveal-hint" id="hint">Touche la carte pour voir la traduction</div>
+      </div></div>
+      <div id="rateWrap"></div>
+    `;
+    const inner = views.vocab.querySelector("#fcInner");
+    views.vocab.querySelector("#speakBtn").addEventListener("click",(e)=>{ e.stopPropagation(); window.__speak(v.en); });
+    inner.addEventListener("click",()=>{ if(!vShown) revealAnswer(v); });
+    // auto-pronounce on show
+    setTimeout(()=>window.__speak(v.en), 250);
+  }
+  function revealAnswer(v){
+    vShown=true;
+    views.vocab.querySelector("#answer").classList.remove("hidden");
+    views.vocab.querySelector("#hint").classList.add("hidden");
+    views.vocab.querySelector("#rateWrap").innerHTML = `
+      <div class="rate fade">
+        <button class="again" data-q="0">😵<small>Encore</small></button>
+        <button class="hard" data-q="1">😕<small>Difficile</small></button>
+        <button class="good" data-q="2">🙂<small>Correct</small></button>
+        <button class="easy" data-q="3">😎<small>Facile</small></button>
+      </div>`;
+    views.vocab.querySelectorAll(".rate button").forEach(b=>b.addEventListener("click",()=>{
+      reviewCard(v.id, +b.dataset.q); addXp(2); vi++; vShown=false; renderCard();
+    }));
+  }
+
+  /* ---------------- GRAMMAR ---------------- */
+  let gOrder=[], gi=0, gScore=0, gAnswered=false;
+  renderers.grammar = function(){
+    gOrder = GRAMMAR.map((_,i)=>i); gi=0; gScore=0; gAnswered=false;
+    renderQ();
+  };
+  function renderQ(){
+    if(gi>=gOrder.length){
+      const pct = Math.round(gScore/gOrder.length*100);
+      if(pct>state.grammarBest){ state.grammarBest=pct; }
+      state.grammarDone++; addXp(gScore); save();
+      views.grammar.innerHTML = `
+        <div class="card center-msg fade"><div class="big">${pct>=80?"🏆":pct>=50?"👍":"💪"}</div>
+          <b style="color:var(--ink);font-size:20px">${gScore} / ${gOrder.length}</b>
+          <p>Score : <b class="tnum">${pct}%</b>${pct>=state.grammarBest?" · nouveau record !":""}</p>
+          <button class="btn" id="gagain" style="width:auto;padding:12px 24px;margin-bottom:8px">Recommencer</button>
+          <button class="btn sec" id="ghome" style="width:auto;padding:12px 24px">Accueil</button>
+        </div>`;
+      views.grammar.querySelector("#gagain").addEventListener("click",()=>renderers.grammar());
+      views.grammar.querySelector("#ghome").addEventListener("click",()=>go("home"));
+      return;
+    }
+    const item = GRAMMAR[gOrder[gi]];
+    gAnswered=false;
+    views.grammar.innerHTML = `
+      <div class="prog">${gOrder.map((_,k)=>`<i class="${k<gi?'on':''}"></i>`).join("")}</div>
+      <div class="row spread" style="margin-bottom:10px">
+        <span class="muted" style="font-size:13px;font-weight:600">Question ${gi+1} / ${gOrder.length}</span>
+        <span class="chip good">Score ${gScore}</span>
+      </div>
+      <div class="card">
+        <div class="q">${item.q.replace("___",'<span style="color:var(--accent)">_____</span>')}</div>
+        <div id="opts">${item.opts.map((o,k)=>`<button class="opt" data-k="${k}">${o}</button>`).join("")}</div>
+        <div id="exp"></div>
+      </div>`;
+    views.grammar.querySelectorAll(".opt").forEach(b=>b.addEventListener("click",()=>answerQ(item,+b.dataset.k)));
+  };
+  function answerQ(item,k){
+    if(gAnswered) return; gAnswered=true;
+    const opts = views.grammar.querySelectorAll(".opt");
+    opts.forEach((b,idx)=>{
+      b.classList.add("dim");
+      if(idx===item.a) b.classList.add("correct");
+      if(idx===k && k!==item.a) b.classList.add("wrong");
+    });
+    if(k===item.a){ gScore++; addXp(1); }
+    views.grammar.querySelector("#exp").innerHTML =
+      `<div class="explain fade"><b>${k===item.a?"✓ Correct !":"✗ Pas tout à fait."}</b> ${item.e}
+       <button class="btn" id="next" style="margin-top:12px">${gi+1>=gOrder.length?"Voir le résultat":"Question suivante"}</button></div>`;
+    views.grammar.querySelector("#next").addEventListener("click",()=>{ gi++; renderQ(); });
+  }
+
+  /* ---------------- READING ---------------- */
+  renderers.reading = function(){
+    views.reading.innerHTML = `
+      <h2 style="margin-bottom:4px">Compréhension écrite</h2>
+      <p class="muted" style="margin-top:0">Textes courts orientés business. Écoute l'audio, lis, puis réponds.</p>
+      <div id="rlist"></div>`;
+    const list = views.reading.querySelector("#rlist");
+    READINGS.forEach(r=>{
+      const done = state.readDone.includes(r.id);
+      const el = document.createElement("button");
+      el.className="tile"; el.style.width="100%"; el.style.flexDirection="row"; el.style.alignItems="center";
+      el.style.minHeight="auto"; el.style.marginBottom="12px"; el.style.gap="14px";
+      el.innerHTML = `<div class="ti tint-amber">📖</div>
+        <div style="flex:1"><b>${r.title}</b><br><span>${r.level} · ${r.questions.length} questions</span></div>
+        ${done?'<span class="chip good">✓ Fait</span>':'<span class="chip acc">Lire</span>'}`;
+      el.addEventListener("click",()=>openReading(r));
+      list.appendChild(el);
+    });
+  };
+  function openReading(r){
+    const paras = r.text.map(p=>`<p>${p.replace(/\n/g,"<br>")}</p>`).join("");
+    const gloss = r.gloss.map(g=>`<div class="gword"><b>${g[0]}</b><span>${g[1]}</span></div>`).join("");
+    views.reading.innerHTML = `
+      <button class="link" id="back" style="background:none;padding:0;margin-bottom:12px">← Retour aux textes</button>
+      <div class="row spread" style="margin-bottom:8px">
+        <h2 style="font-size:20px">${r.title}</h2>
+        <button class="icon-btn" id="listen" title="Écouter le texte">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a9 9 0 0 1 0 14"/></svg>
+        </button>
+      </div>
+      <div class="card"><div class="read-body">${paras}</div>
+        <div class="gloss"><h4>Vocabulaire clé</h4>${gloss}</div></div>
+      <div class="section-title">Questions</div>
+      <div id="rquiz"></div>`;
+    views.reading.querySelector("#back").addEventListener("click",()=>renderers.reading());
+    views.reading.querySelector("#listen").addEventListener("click",()=>window.__speak(r.text.join(". ")));
+    const quiz = views.reading.querySelector("#rquiz");
+    let answered=0, correct=0;
+    r.questions.forEach((qq,qidx)=>{
+      const c=document.createElement("div"); c.className="card"; c.style.marginBottom="12px";
+      c.innerHTML = `<div class="q" style="font-size:16px">${qidx+1}. ${qq.q}</div>
+        <div>${qq.opts.map((o,k)=>`<button class="opt" data-k="${k}">${o}</button>`).join("")}</div>`;
+      c.querySelectorAll(".opt").forEach(b=>b.addEventListener("click",()=>{
+        if(c.dataset.done) return; c.dataset.done="1"; answered++;
+        c.querySelectorAll(".opt").forEach((x,idx)=>{ x.classList.add("dim");
+          if(idx===qq.a)x.classList.add("correct");
+          if(idx===+b.dataset.k&&+b.dataset.k!==qq.a)x.classList.add("wrong"); });
+        if(+b.dataset.k===qq.a){ correct++; addXp(2); }
+        if(answered===r.questions.length){
+          if(!state.readDone.includes(r.id)) state.readDone.push(r.id); save();
+          const banner=document.createElement("div"); banner.className="explain fade";
+          banner.style.textAlign="center";
+          banner.innerHTML=`<b>Terminé !</b> ${correct} / ${r.questions.length} bonnes réponses.`;
+          quiz.appendChild(banner);
+        }
+      }));
+      quiz.appendChild(c);
+    });
+  }
+
+  /* ---------------- COACH (phase 2 placeholder) ---------------- */
+  renderers.coach = function(){
+    views.coach.innerHTML = `
+      <h2 style="margin-bottom:4px">Coach IA</h2>
+      <p class="muted" style="margin-top:0">Conversation libre & correction de tes phrases en anglais.</p>
+      <div class="card">
+        <div class="ti tint-purple" style="width:52px;height:52px;font-size:24px">💬</div>
+        <h3 style="margin:14px 0 6px">Bientôt disponible</h3>
+        <p class="muted" style="margin:0 0 14px;font-size:14px">
+          Le coach a besoin d'une IA en ligne, ce qui demande une petite configuration (une clé API gratuite type Google Gemini) et une version hébergée de l'app.
+          On l'activera ensemble en phase 2.
+        </p>
+        <div class="explain">
+          <b>En attendant</b>, pour t'entraîner à l'oral : ouvre une carte de vocabulaire ou un texte de lecture et appuie sur le bouton 🔊 pour écouter la prononciation, puis répète à voix haute.
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="font-size:16px;margin-bottom:10px">Ce que fera le coach</h3>
+        <div class="gword"><b>Conversation</b><span>Discuter sur un sujet business</span></div>
+        <div class="gword"><b>Correction</b><span>Corriger tes phrases + explications</span></div>
+        <div class="gword"><b>Reformulation</b><span>Version plus naturelle / pro</span></div>
+        <div class="gword"><b>Rôle-play</b><span>Simuler un entretien, une réunion</span></div>
+      </div>`;
+  };
+
+  /* ---------------- boot ---------------- */
+  go("home");
+})();
+</script>
