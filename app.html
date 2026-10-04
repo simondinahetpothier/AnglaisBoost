@@ -1,574 +1,494 @@
 <style>
   :root{
-    --bg:#F5F7FA; --surface:#FFFFFF; --surface-2:#EEF1F6;
-    --ink:#131C2B; --muted:#5C6675; --hair:#E1E6EE;
+    --bg:#F4F6FA; --surface:#FFFFFF; --surface-2:#EDF0F6;
+    --ink:#121A28; --muted:#5B6678; --hair:#E2E7F0;
     --accent:#3A5BDB; --accent-soft:#E4E9FF;
     --good:#0CA678; --good-soft:#D9F4EC;
     --warn:#E8590C; --streak:#F08C00; --streak-soft:#FFF0D6;
     --bad:#E03131; --bad-soft:#FCE4E4;
-    --purple:#7048E8; --purple-soft:#EDE7FF;
-    --shadow:0 1px 2px rgba(19,28,43,.06),0 8px 24px rgba(19,28,43,.07);
-    --r:18px; --r-sm:12px;
-    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --shadow:0 1px 2px rgba(18,26,40,.06),0 8px 24px rgba(18,26,40,.07);
+    --r:18px; --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   }
-  @media (prefers-color-scheme:dark){
-    :root:not([data-theme="light"]){
-      --bg:#0D1420; --surface:#151F2E; --surface-2:#1D2A3C;
-      --ink:#E7ECF3; --muted:#93A0B4; --hair:#26344A;
-      --accent:#748FFC; --accent-soft:#22315A;
-      --good:#38D9A9; --good-soft:#123A31;
-      --warn:#FF922B; --streak:#FFB454; --streak-soft:#3A2A10;
-      --bad:#FF6B6B; --bad-soft:#3A1A1A;
-      --purple:#B197FC; --purple-soft:#2A2350;
-      --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.4);
-    }
-  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --bg:#0D1420; --surface:#151F2E; --surface-2:#1D2A3C; --ink:#E7ECF3; --muted:#93A0B4; --hair:#26344A;
+    --accent:#748FFC; --accent-soft:#22315A; --good:#38D9A9; --good-soft:#123A31;
+    --warn:#FF922B; --streak:#FFB454; --streak-soft:#3A2A10; --bad:#FF6B6B; --bad-soft:#3A1A1A;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.4);
+  }}
   :root[data-theme="dark"]{
-    --bg:#0D1420; --surface:#151F2E; --surface-2:#1D2A3C;
-    --ink:#E7ECF3; --muted:#93A0B4; --hair:#26344A;
-    --accent:#748FFC; --accent-soft:#22315A;
-    --good:#38D9A9; --good-soft:#123A31;
-    --warn:#FF922B; --streak:#FFB454; --streak-soft:#3A2A10;
-    --bad:#FF6B6B; --bad-soft:#3A1A1A;
-    --purple:#B197FC; --purple-soft:#2A2350;
+    --bg:#0D1420; --surface:#151F2E; --surface-2:#1D2A3C; --ink:#E7ECF3; --muted:#93A0B4; --hair:#26344A;
+    --accent:#748FFC; --accent-soft:#22315A; --good:#38D9A9; --good-soft:#123A31;
+    --warn:#FF922B; --streak:#FFB454; --streak-soft:#3A2A10; --bad:#FF6B6B; --bad-soft:#3A1A1A;
     --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.4);
   }
-
   *{box-sizing:border-box}
   html,body{margin:0}
-  body{
-    background:var(--bg); color:var(--ink); font-family:var(--sans);
-    -webkit-font-smoothing:antialiased; line-height:1.5;
-    padding-bottom:calc(76px + env(safe-area-inset-bottom));
-  }
-  .wrap{max-width:620px; margin:0 auto; padding:18px 16px 8px;}
-  h1,h2,h3{margin:0; text-wrap:balance; line-height:1.2}
-  button{font-family:inherit; cursor:pointer; border:none; background:none; color:inherit}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.5;padding-bottom:calc(20px + env(safe-area-inset-bottom))}
+  .wrap{max-width:620px;margin:0 auto;padding:16px 16px 8px}
+  h1,h2,h3{margin:0;text-wrap:balance;line-height:1.2}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
   textarea{font-family:inherit}
-  .muted{color:var(--muted)}
-  .tnum{font-variant-numeric:tabular-nums}
-  .hidden{display:none!important}
+  .muted{color:var(--muted)} .tnum{font-variant-numeric:tabular-nums} .hidden{display:none!important}
 
-  .top{display:flex; align-items:center; justify-content:space-between; margin-bottom:18px}
-  .brand{display:flex; align-items:center; gap:10px}
-  .logo{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,var(--accent),var(--purple));
-    display:grid;place-items:center;color:#fff;font-weight:800;font-size:17px;box-shadow:var(--shadow)}
-  .brand b{font-size:16px;letter-spacing:-.2px}
+  .top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:18px;min-height:40px}
+  .brand{display:flex;align-items:center;gap:10px;min-width:0}
+  .logo{width:36px;height:36px;min-width:36px;border-radius:11px;background:linear-gradient(135deg,var(--accent),#9775FA);display:grid;place-items:center;color:#fff;font-weight:800;font-size:16px;box-shadow:var(--shadow)}
+  .brand b{font-size:16px;letter-spacing:-.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .brand small{display:block;color:var(--muted);font-size:11px;font-weight:500}
-  .icon-btn{width:38px;height:38px;border-radius:11px;background:var(--surface);display:grid;place-items:center;
-    box-shadow:var(--shadow);color:var(--muted)}
+  .icon-btn{width:38px;height:38px;min-width:38px;border-radius:11px;background:var(--surface);display:grid;place-items:center;box-shadow:var(--shadow);color:var(--muted)}
+  .back{display:flex;align-items:center;gap:9px;min-width:0}
+  .back b{font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
-  .card{background:var(--surface);border-radius:var(--r);box-shadow:var(--shadow);padding:20px}
-  .card + .card{margin-top:14px}
+  .card{background:var(--surface);border-radius:var(--r);box-shadow:var(--shadow);padding:18px}
+  .card+.card{margin-top:14px}
+  .row{display:flex;align-items:center;gap:12px} .spread{justify-content:space-between}
+  .section-title{font-size:12px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;margin:22px 4px 10px}
 
   .chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;padding:5px 11px;border-radius:999px}
-  .chip.streak{background:var(--streak-soft);color:var(--streak)}
-  .chip.acc{background:var(--accent-soft);color:var(--accent)}
-  .chip.good{background:var(--good-soft);color:var(--good)}
+  .chip.streak{background:var(--streak-soft);color:var(--streak)} .chip.acc{background:var(--accent-soft);color:var(--accent)} .chip.good{background:var(--good-soft);color:var(--good)}
 
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700;font-size:16px;
-    padding:15px 18px;border-radius:14px;background:var(--accent);color:#fff;width:100%;box-shadow:var(--shadow)}
-  .btn:active{transform:scale(.98)}
-  .btn.sec{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
-  .btn.ghost{background:var(--surface-2);color:var(--ink);box-shadow:none}
-  .btn:disabled{opacity:.5}
-  .btn.sm{font-size:14px;padding:11px 14px;width:auto}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700;font-size:16px;padding:15px 18px;border-radius:14px;background:var(--accent);color:#fff;width:100%;box-shadow:var(--shadow)}
+  .btn:active{transform:scale(.98)} .btn.sec{background:var(--surface);color:var(--ink)} .btn.ghost{background:var(--surface-2);color:var(--ink);box-shadow:none}
+  .btn:disabled{opacity:.5} .btn.sm{font-size:14px;padding:11px 14px;width:auto}
 
-  .section-title{font-size:12px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;margin:22px 4px 10px}
-  .row{display:flex;align-items:center;gap:12px}
-  .spread{justify-content:space-between}
+  /* subject grid */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .subj{border-radius:var(--r);box-shadow:var(--shadow);padding:16px;text-align:left;display:flex;flex-direction:column;gap:8px;min-height:108px;position:relative;transition:transform .12s ease;color:#fff;overflow:hidden}
+  .subj:active{transform:scale(.97)}
+  .subj .em{font-size:26px}
+  .subj b{font-size:16px;line-height:1.1}
+  .subj span{font-size:11.5px;opacity:.92;font-weight:600}
+  .subj .badge{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.26);color:#fff;font-size:11px;font-weight:800;padding:3px 8px;border-radius:999px}
 
-  .speak-btn{width:42px;height:42px;min-width:42px;border-radius:12px;background:var(--surface-2);display:grid;place-items:center;color:var(--accent)}
-  .speak-btn.lg{width:52px;height:52px;min-width:52px}
+  .hero{border-radius:var(--r);box-shadow:var(--shadow);padding:18px;color:#fff;background:linear-gradient(135deg,var(--accent),#9775FA)}
 
-  /* topic pill row */
-  .topics{display:flex;flex-direction:column;gap:10px;margin-top:4px}
-  .topic{display:flex;align-items:center;gap:13px;background:var(--surface);border-radius:14px;padding:13px 15px;box-shadow:var(--shadow)}
-  .topic .em{width:42px;height:42px;min-width:42px;border-radius:12px;display:grid;place-items:center;font-size:21px;background:var(--surface-2)}
-  .topic b{font-size:14.5px;display:block}
-  .topic span{font-size:12.5px;color:var(--muted)}
-
-  /* mission flow */
-  .prog{display:flex;gap:4px;align-items:center;margin-bottom:16px}
-  .prog i{height:5px;flex:1;border-radius:999px;background:var(--surface-2)}
-  .prog i.on{background:var(--accent)}
-  .step-kicker{font-size:12px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--accent);margin-bottom:8px;display:flex;align-items:center;gap:8px}
-  .headline{font-size:23px;font-weight:800;letter-spacing:-.4px;margin:2px 0 10px}
-  .blurb{font-size:16px;line-height:1.6;color:var(--ink)}
-  .area-tag{font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;padding:4px 9px;border-radius:999px;background:var(--surface-2);color:var(--muted)}
-
+  /* mission / lesson flow */
+  .prog{display:flex;gap:4px;margin-bottom:16px}
+  .prog i{height:5px;flex:1;border-radius:999px;background:var(--surface-2)} .prog i.on{background:var(--accent)}
+  .kicker{font-size:12px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+  .headline{font-size:22px;font-weight:800;letter-spacing:-.3px;margin:2px 0 10px}
+  .blurb{font-size:16px;line-height:1.6}
+  .tag{font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;padding:4px 9px;border-radius:999px;background:var(--surface-2);color:var(--muted)}
   .prompt-q{font-size:18px;font-weight:700;line-height:1.4;margin:6px 0 14px}
-  textarea.answer{width:100%;min-height:96px;border:1.5px solid var(--hair);background:var(--surface-2);color:var(--ink);
-    border-radius:13px;padding:13px 14px;font-size:15px;line-height:1.5;resize:vertical;outline:none}
+  textarea.answer{width:100%;min-height:92px;border:1.5px solid var(--hair);background:var(--surface-2);color:var(--ink);border-radius:13px;padding:13px 14px;font-size:15px;line-height:1.5;resize:vertical;outline:none}
   textarea.answer:focus{border-color:var(--accent)}
-  .model{background:var(--good-soft);border-radius:13px;padding:14px 15px;margin-top:12px;font-size:15.5px;line-height:1.55;position:relative}
+  .model{background:var(--good-soft);border-radius:13px;padding:14px 15px;margin-top:12px;font-size:15.5px;line-height:1.55}
   .model .lab{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--good);margin-bottom:5px}
-  .model .row{align-items:flex-start}
-
   .rate{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:14px}
-  .rate button{padding:13px 4px;border-radius:13px;font-weight:700;font-size:13px;background:var(--surface);box-shadow:var(--shadow);
-    display:flex;flex-direction:column;gap:3px;align-items:center}
+  .rate button{padding:13px 4px;border-radius:13px;font-weight:700;font-size:13px;background:var(--surface);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:3px;align-items:center}
   .rate button .e{font-size:20px}
 
-  .phrase{display:flex;align-items:center;gap:11px;padding:12px 0;border-bottom:1px solid var(--hair)}
-  .phrase:last-child{border:none}
-  .phrase .txt{flex:1}
-  .phrase .en{font-weight:700;font-size:15.5px}
-  .phrase .fr{font-size:13px;color:var(--muted)}
+  .speak-btn{width:42px;height:42px;min-width:42px;border-radius:12px;background:var(--surface-2);display:grid;place-items:center;color:var(--accent)}
+
+  .phrase{display:flex;align-items:center;gap:11px;padding:12px 0;border-bottom:1px solid var(--hair)} .phrase:last-child{border:none}
+  .phrase .txt{flex:1} .phrase .en{font-weight:700;font-size:15.5px} .phrase .fr{font-size:13px;color:var(--muted)}
   .keep{width:40px;height:40px;min-width:40px;border-radius:11px;background:var(--surface-2);display:grid;place-items:center;color:var(--muted);font-size:18px;font-weight:800}
   .keep.on{background:var(--good-soft);color:var(--good)}
 
-  .fixq{margin-bottom:6px}
-  .opt{display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:14px 15px;border-radius:13px;background:var(--surface);
-    box-shadow:var(--shadow);font-size:15px;font-weight:600;margin-bottom:9px;border:2px solid transparent;transition:.15s}
-  .opt:active{transform:scale(.99)}
-  .opt.correct{border-color:var(--good);background:var(--good-soft);color:var(--good)}
-  .opt.wrong{border-color:var(--bad);background:var(--bad-soft);color:var(--bad)}
-  .opt.dim{opacity:.5}
-  .why{background:var(--accent-soft);border-radius:12px;padding:12px 14px;font-size:14px;line-height:1.5;margin:2px 0 4px}
-  .why b{color:var(--accent)}
+  .opt{display:block;width:100%;text-align:left;padding:14px 15px;border-radius:13px;background:var(--surface);box-shadow:var(--shadow);font-size:15px;font-weight:600;margin-bottom:9px;border:2px solid transparent;transition:.15s}
+  .opt:active{transform:scale(.99)} .opt.correct{border-color:var(--good);background:var(--good-soft);color:var(--good)}
+  .opt.wrong{border-color:var(--bad);background:var(--bad-soft);color:var(--bad)} .opt.dim{opacity:.5}
+  .why{background:var(--accent-soft);border-radius:12px;padding:12px 14px;font-size:14px;line-height:1.5;margin:2px 0 4px} .why b{color:var(--accent)}
 
-  .say-item{display:flex;align-items:center;gap:12px;background:var(--surface-2);border-radius:14px;padding:14px 15px;margin-bottom:10px}
-  .say-item .t{flex:1;font-size:16px;font-weight:700}
-  .say-item .done-tag{color:var(--good);font-weight:800;font-size:20px}
-
-  .center{text-align:center}
-  .big-emoji{font-size:52px;margin-bottom:6px}
+  .fiche{font-size:15.5px;line-height:1.65} .fiche p{margin:0 0 12px}
+  .list-item{display:flex;align-items:center;gap:12px;background:var(--surface);border-radius:14px;padding:14px 15px;box-shadow:var(--shadow);margin-bottom:10px;text-align:left;width:100%}
+  .list-item .ic{width:40px;height:40px;min-width:40px;border-radius:11px;display:grid;place-items:center;font-size:19px;background:var(--surface-2)}
+  .list-item b{font-size:15px;display:block} .list-item span{font-size:12.5px;color:var(--muted)}
 
   .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   .stat{background:var(--surface);border-radius:16px;box-shadow:var(--shadow);padding:16px;display:flex;flex-direction:column;gap:3px}
-  .stat .n{font-size:30px;font-weight:800;letter-spacing:-1px;line-height:1}
-  .stat .l{font-size:12px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.4px}
+  .stat .n{font-size:30px;font-weight:800;letter-spacing:-1px;line-height:1} .stat .l{font-size:12px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.4px}
 
-  .nav{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--surface);border-top:1px solid var(--hair);
-    display:flex;justify-content:space-around;padding:9px 6px calc(9px + env(safe-area-inset-bottom));box-shadow:0 -4px 20px rgba(0,0,0,.06)}
-  .nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--muted);font-size:11px;font-weight:700;padding:4px 2px;border-radius:12px}
-  .nav button.active{color:var(--accent)}
-  .nav svg{width:24px;height:24px}
-
-  .fade{animation:fade .3s ease}
-  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .center{text-align:center} .big-emoji{font-size:52px;margin-bottom:6px}
+  .fade{animation:fade .3s ease} @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  .empty{text-align:center;padding:30px 18px;color:var(--muted)}
 </style>
 
 <div class="wrap">
-  <div class="top">
-    <div class="brand">
-      <div class="logo">EB</div>
-      <div><b>English Boost</b><small id="tagline">Ta mission d'anglais du jour</small></div>
-    </div>
-    <button class="icon-btn" id="themeBtn" aria-label="Thème clair/sombre" title="Thème">
-      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v1M12 20v1M4.2 4.2l.7.7M19.1 19.1l.7.7M3 12h1M20 12h1M4.2 19.8l.7-.7M19.1 4.9l.7-.7"/><circle cx="12" cy="12" r="4"/></svg>
-    </button>
-  </div>
-
-  <section id="view-home"></section>
-  <section id="view-mission" class="hidden"></section>
-  <section id="view-review" class="hidden"></section>
-  <section id="view-progress" class="hidden"></section>
+  <div class="top" id="topbar"></div>
+  <section id="app"></section>
 </div>
-
-<nav class="nav">
-  <button data-go="home" class="active">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4.5 12.5a1 1 0 0 0 .8 1.6H11l-1 7.9 8.5-10.9a1 1 0 0 0-.8-1.6H12z"/></svg>
-    Mission</button>
-  <button data-go="review">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v14l-4-3H5a2 2 0 0 1-2-2z"/><path d="M8 8h6M8 11h4"/></svg>
-    Réviser</button>
-  <button data-go="progress">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
-    Progrès</button>
-</nav>
 
 <script>
 (function(){
   "use strict";
 
-  /* ===== Seed content (rafraîchi chaque jour par la routine cloud) ===== */
+  /* ============ SUBJECTS ============ */
+  const SUBJECTS = [
+    {key:"anglais",    name:"Anglais",       emoji:"🇬🇧", c1:"#3A5BDB", c2:"#7048E8", special:true},
+    {key:"maths",      name:"Maths",         emoji:"📐", c1:"#1C7ED6", c2:"#3BC9DB"},
+    {key:"ses",        name:"SES",           emoji:"📈", c1:"#0CA678", c2:"#66D9A0"},
+    {key:"es",         name:"Ens. scientifique", emoji:"🔬", c1:"#7048E8", c2:"#B197FC"},
+    {key:"histoire",   name:"Histoire-Géo",  emoji:"🏛️", c1:"#E8590C", c2:"#FFA94D"},
+    {key:"philo",      name:"Philo",         emoji:"🧠", c1:"#495057", c2:"#868E96"},
+    {key:"espagnol",   name:"Espagnol",      emoji:"🇪🇸", c1:"#E03131", c2:"#FF8787"},
+    {key:"viedeclasse",name:"Vie de classe", emoji:"🗓️", c1:"#1098AD", c2:"#3BC9DB"}
+  ];
+  const subjById = k => SUBJECTS.find(s=>s.key===k);
+
+  /* ============ ENGLISH MISSION (rafraîchi chaque jour par la routine cloud) ============ */
   const MISSION = {
     date:"2026-09-08",
     items:[
-      {
-        area:"Business", emoji:"💼",
+      { area:"Business", emoji:"💼",
         headline:"US economy adds 162,000 jobs in August",
         blurb:"American companies created 162,000 new jobs last month, more than experts expected. The unemployment rate stayed low at 4.1%, and the stock market went up.",
         react:"Is this good or bad news for the economy? Say what you think in 1-2 sentences.",
         model:"I think it's good news. When companies hire more people, families have money to spend, and that usually helps the whole economy grow.",
         phrases:[["to hire","embaucher"],["above expectations","au-dessus des attentes"],["the job market","le marché du travail"],["to spend money","dépenser de l'argent"]],
         say:["The economy added more jobs than expected.","Unemployment stayed low."],
-        fix:{wrong:"The unemployment is very low.", right:"Unemployment is very low.", why:"« unemployment » est un nom général indénombrable : pas de « the » devant."}
-      },
-      {
-        area:"Création de contenu", emoji:"🎬",
+        fix:{wrong:"The unemployment is very low.", right:"Unemployment is very low.", why:"« unemployment » est un nom général indénombrable : pas de « the » devant."} },
+      { area:"Création de contenu", emoji:"🎬",
         headline:"YouTube plans stricter rules to earn money",
         blurb:"YouTube will make it harder to earn money from ads in early 2027. Because of this, many creators are building other income: memberships, merch, and brand deals.",
         react:"If you were a creator, how would you make money besides ads? Answer in 1-2 sentences.",
         model:"If I were a creator, I would sell my own products and offer a paid membership, so I wouldn't depend only on ads.",
         phrases:[["a creator","un créateur de contenu"],["income","revenu"],["a brand deal","un partenariat de marque"],["to depend on","dépendre de"]],
         say:["Creators want more ways to earn money.","Ads are not the only income."],
-        fix:{wrong:"I depend of my sponsors.", right:"I depend on my sponsors.", why:"En anglais on dit « depend ON », jamais « depend of »."}
-      },
-      {
-        area:"Gaming", emoji:"🎮",
+        fix:{wrong:"I depend of my sponsors.", right:"I depend on my sponsors.", why:"En anglais on dit « depend ON », jamais « depend of »."} },
+      { area:"Gaming", emoji:"🎮",
         headline:"Marvel's Wolverine launches on PS5",
         blurb:"The new game Marvel's Wolverine, made by Insomniac Games, comes out on PlayStation 5 on September 15. Fans have waited years for this action game.",
         react:"Are you excited about this game? Why or why not? Answer in 1-2 sentences.",
         model:"Honestly, I'm quite excited. I loved Insomniac's Spider-Man games, so I can't wait to see what they do with Wolverine.",
         phrases:[["to come out","sortir (un jeu, un film)"],["to look forward to","avoir hâte de"],["a sequel","une suite"],["to be worth it","valoir le coup"]],
         say:["The game comes out on September the 15th.","I can't wait to play it."],
-        fix:{wrong:"I'm agree with you.", right:"I agree with you.", why:"« agree » est un verbe : on dit « I agree », jamais « I am agree »."}
-      }
+        fix:{wrong:"I'm agree with you.", right:"I agree with you.", why:"« agree » est un verbe : on dit « I agree », jamais « I am agree »."} }
     ]
   };
 
-  /* ===== Persistence ===== */
-  const KEY="englishboost.v2";
+  /* ============ COURSES (remplis à partir de tes photos de cours) ============
+     Chaque chapitre : {id, title, date, summary:[paragraphes], flashcards:[[recto,verso]], quiz:[{q,opts,a,why}]}
+     (summary / flashcards / quiz sont tous optionnels) */
+  const COURSES = {
+    maths:[], ses:[], es:[], histoire:[], philo:[], espagnol:[], viedeclasse:[]
+  };
+
+  /* ============ STATE ============ */
+  const KEY="studyboost.v1";
   const todayStr=()=>new Date().toISOString().slice(0,10);
-  function load(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return{}}}
+  function load(){try{return JSON.parse(localStorage.getItem(KEY))||null}catch(e){return null}}
   function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}}
-  const defaults={streak:0,lastActive:null,days:[],missions:0,xp:0,
-    lastMissionDate:null, saved:[], sched:{}, theme:null};
-  let state=Object.assign({},defaults,load());
+  const defaults={streak:0,lastActive:null,days:[],xp:0,missions:0,lessonsDone:[],lastMissionDate:null,saved:[],sched:{},theme:null};
+  let state=load();
+  if(!state){ // migration depuis l'ancienne app English Boost
+    let old=null; try{old=JSON.parse(localStorage.getItem("englishboost.v2"))}catch(e){}
+    state=Object.assign({},defaults,old||{});
+  } else state=Object.assign({},defaults,state);
 
-  function markActiveToday(){
-    const t=todayStr();
-    if(!state.days.includes(t)) state.days.push(t);
-    if(state.lastActive===t) return;
-    const yest=new Date(Date.now()-864e5).toISOString().slice(0,10);
-    state.streak=(state.lastActive===yest)?state.streak+1:1;
-    state.lastActive=t; save();
-  }
+  function markActiveToday(){const t=todayStr();if(!state.days.includes(t))state.days.push(t);if(state.lastActive===t)return;
+    const y=new Date(Date.now()-864e5).toISOString().slice(0,10);state.streak=(state.lastActive===y)?state.streak+1:1;state.lastActive=t;save();}
+  function addXp(n){state.xp+=n;save();}
 
-  /* ===== Theme ===== */
+  /* ============ THEME ============ */
   const root=document.documentElement;
-  function applyTheme(){ if(state.theme) root.setAttribute("data-theme",state.theme); else root.removeAttribute("data-theme"); }
+  function applyTheme(){if(state.theme)root.setAttribute("data-theme",state.theme);else root.removeAttribute("data-theme");}
   applyTheme();
-  document.getElementById("themeBtn").addEventListener("click",()=>{
-    const dark=state.theme?state.theme==="dark":matchMedia("(prefers-color-scheme:dark)").matches;
-    state.theme=dark?"light":"dark"; save(); applyTheme();
-  });
 
-  /* ===== Speech (TTS, gratuit) ===== */
-  function speak(t){
-    if(!("speechSynthesis" in window))return;
-    speechSynthesis.cancel();
-    const u=new SpeechSynthesisUtterance(t); u.lang="en-GB"; u.rate=.94;
-    const vs=speechSynthesis.getVoices();
-    const v=vs.find(v=>/en-GB/i.test(v.lang))||vs.find(v=>/en/i.test(v.lang));
-    if(v)u.voice=v; speechSynthesis.speak(u);
-  }
-  if("speechSynthesis" in window) speechSynthesis.onvoiceschanged=()=>{};
-  const spkSvg='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a9 9 0 0 1 0 14"/></svg>';
+  /* ============ TTS ============ */
+  function speak(t){if(!("speechSynthesis"in window))return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="en-GB";u.rate=.94;
+    const vs=speechSynthesis.getVoices();const v=vs.find(v=>/en-GB/i.test(v.lang))||vs.find(v=>/en/i.test(v.lang));if(v)u.voice=v;speechSynthesis.speak(u);}
+  if("speechSynthesis"in window)speechSynthesis.onvoiceschanged=()=>{};
+  const spk='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a9 9 0 0 1 0 14"/></svg>';
+  function esc(s){return(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
 
-  /* ===== Review deck helpers ===== */
-  function isSaved(en){ return state.saved.some(p=>p.en===en); }
-  function toggleSave(p){
-    if(isSaved(p.en)){ state.saved=state.saved.filter(x=>x.en!==p.en); delete state.sched[p.en]; }
-    else{ state.saved.push({en:p.en,fr:p.fr}); state.sched[p.en]={due:todayStr(),interval:0,ease:2.3,reps:0}; }
-    save();
-  }
-  function dueSaved(){ const t=todayStr(); return state.saved.filter(p=>{const s=state.sched[p.en];return !s||s.due<=t;}); }
-  function reviewPhrase(en,q){ // q:0 again,1 good,2 easy
-    const s=state.sched[en]||{interval:0,ease:2.3,reps:0};
-    if(q===0){s.interval=0;s.ease=Math.max(1.6,s.ease-.2);}
-    else{ s.interval=s.reps===0?(q===2?3:1):Math.round(s.interval*(s.ease+(q-1)*.2))||1; s.ease=Math.min(3,s.ease+(q-1)*.1); s.reps++; }
-    s.due=new Date(Date.now()+Math.max(0,s.interval)*864e5).toISOString().slice(0,10);
-    state.sched[en]=s; save();
-  }
+  /* ============ Spaced repetition (générique, par id de carte) ============ */
+  function cardDue(id){const s=state.sched[id];return !s||s.due<=todayStr();}
+  function schedule(id,q){const s=state.sched[id]||{interval:0,ease:2.3,reps:0};
+    if(q===0){s.interval=0;s.ease=Math.max(1.6,s.ease-.2);}else{s.interval=s.reps===0?(q===2?3:1):Math.round(s.interval*(s.ease+(q-1)*.2))||1;s.ease=Math.min(3,s.ease+(q-1)*.1);s.reps++;}
+    s.due=new Date(Date.now()+Math.max(0,s.interval)*864e5).toISOString().slice(0,10);state.sched[id]=s;save();}
 
-  /* ===== Router ===== */
-  const views={home:v("home"),mission:v("mission"),review:v("review"),progress:v("progress")};
-  function v(n){return document.getElementById("view-"+n);}
-  const R={};
-  function go(n){
-    for(const k in views) views[k].classList.toggle("hidden",k!==n);
-    document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.go===n));
-    (R[n]||(()=>{}))();
-    views[n].classList.remove("fade"); void views[n].offsetWidth; views[n].classList.add("fade");
+  // English saved phrases
+  function isSaved(en){return state.saved.some(p=>p.en===en);}
+  function toggleSave(p){if(isSaved(p.en)){state.saved=state.saved.filter(x=>x.en!==p.en);delete state.sched["en::"+p.en];}
+    else{state.saved.push({en:p.en,fr:p.fr});state.sched["en::"+p.en]={due:todayStr(),interval:0,ease:2.3,reps:0};}save();}
+
+  // subject flashcards (toutes les flashcards des chapitres d'une matière)
+  function subjectCards(key){const out=[];(COURSES[key]||[]).forEach(ch=>(ch.flashcards||[]).forEach(f=>out.push({id:key+"::"+f[0],front:f[0],back:f[1]})));return out;}
+  function subjectQuiz(key){const out=[];(COURSES[key]||[]).forEach(ch=>(ch.quiz||[]).forEach(q=>out.push(q)));return out;}
+
+  /* ============ ROUTER ============ */
+  const appEl=document.getElementById("app");
+  const topEl=document.getElementById("topbar");
+  let cur={name:"home"};
+  function show(s){cur=s;render();}
+  function render(){
+    renderTop();
+    appEl.classList.remove("fade");void appEl.offsetWidth;appEl.classList.add("fade");
+    const r=screens[cur.name]; if(r)r(cur);
     scrollTo(0,0);
   }
-  document.querySelectorAll(".nav button").forEach(b=>b.addEventListener("click",()=>go(b.dataset.go)));
-
-  /* ===== HOME ===== */
-  R.home=function(){
-    const doneToday=state.lastMissionDate===todayStr();
-    const due=dueSaved().length;
-    const dateTxt=fmtDate(MISSION.date);
-    views.home.innerHTML=`
-      <div class="card" style="background:linear-gradient(135deg,var(--accent),var(--purple));color:#fff">
-        <div class="row spread">
-          <div style="font-size:13px;opacity:.92;font-weight:600">${greeting()}</div>
-          <div class="chip" style="background:rgba(255,255,255,.22);color:#fff">🔥 ${state.streak} j</div>
-        </div>
-        <h2 style="font-size:24px;margin:8px 0 4px">${doneToday?"Mission accomplie ✅":"Ta mission du jour"}</h2>
-        <div style="font-size:13px;opacity:.9">${dateTxt} · 3 sujets · ~5 min</div>
-      </div>
-
-      <div class="section-title">Au programme aujourd'hui</div>
-      <div class="topics">
-        ${MISSION.items.map(it=>`
-          <div class="topic">
-            <div class="em">${it.emoji}</div>
-            <div style="flex:1"><b>${esc(it.headline)}</b><span>${it.area}</span></div>
-          </div>`).join("")}
-      </div>
-
-      <div style="margin-top:18px">
-        <button class="btn" id="startBtn">${doneToday?"↻ Refaire la mission":"▶ Commencer la mission"}</button>
-      </div>
-      ${due>0?`<button class="btn ghost" id="revBtn" style="margin-top:10px">📇 Réviser ${due} expression(s)</button>`:""}
-
-      <p class="muted center" style="font-size:12px;margin:20px 4px 4px">Astuce : lis les phrases <b>à voix haute</b> — c'est là que l'oral progresse 🗣️</p>
-    `;
-    views.home.querySelector("#startBtn").addEventListener("click",startMission);
-    const rb=views.home.querySelector("#revBtn"); if(rb) rb.addEventListener("click",()=>go("review"));
-  };
-  function greeting(){const h=new Date().getHours();return h<12?"Bonjour 👋":h<18?"Bon aprem 👋":"Bonsoir 👋";}
-  function fmtDate(d){try{return new Date(d+"T12:00").toLocaleDateString("fr-FR",{weekday:"long",day:"numeric",month:"long"});}catch(e){return d;}}
-  function esc(s){return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
-
-  /* ===== MISSION FLOW ===== */
-  let steps=[], mi=0;
-  function startMission(){
-    steps=[];
-    MISSION.items.forEach((it,i)=>{ steps.push({t:"actu",i}); steps.push({t:"react",i}); steps.push({t:"phrases",i}); });
-    steps.push({t:"fix"}); steps.push({t:"speak"}); steps.push({t:"done"});
-    mi=0; go("mission"); renderStep();
+  function renderTop(){
+    const themeBtn='<button class="icon-btn" id="themeBtn" aria-label="Thème"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v1M12 20v1M4.2 4.2l.7.7M19.1 19.1l.7.7M3 12h1M20 12h1M4.2 19.8l.7-.7M19.1 4.9l.7-.7"/><circle cx="12" cy="12" r="4"/></svg></button>';
+    if(cur.name==="home"){
+      topEl.innerHTML=`<div class="brand"><div class="logo">SB</div><div><b>Study Boost</b><small>Révise toutes tes matières</small></div></div>${themeBtn}`;
+    } else {
+      const title=cur.topTitle||"";
+      topEl.innerHTML=`<div class="back"><button class="icon-btn" id="backBtn" aria-label="Retour"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button><b>${esc(title)}</b></div>${themeBtn}`;
+      topEl.querySelector("#backBtn").addEventListener("click",()=> (cur.back?cur.back():show({name:"home"})));
+    }
+    topEl.querySelector("#themeBtn").addEventListener("click",()=>{
+      const dark=state.theme?state.theme==="dark":matchMedia("(prefers-color-scheme:dark)").matches;
+      state.theme=dark?"light":"dark";save();applyTheme();
+    });
   }
-  function progBar(){ const tot=steps.length-1; return `<div class="prog">${steps.slice(0,tot).map((_,k)=>`<i class="${k<mi?'on':''}"></i>`).join("")}</div>`; }
-  function next(){ mi++; renderStep(); }
 
-  function renderStep(){
-    const s=steps[mi]; const el=views.mission;
-    if(s.t==="actu"){
-      const it=MISSION.items[s.i];
-      el.innerHTML=`${progBar()}
-        <span class="area-tag">${it.emoji} ${it.area}</span>
-        <div class="card" style="margin-top:12px">
-          <div class="step-kicker">📰 L'actu</div>
-          <div class="headline">${esc(it.headline)}</div>
-          <div class="row" style="align-items:flex-start">
-            <div class="blurb" style="flex:1">${esc(it.blurb)}</div>
-          </div>
-          <button class="btn sec sm" id="listen" style="margin-top:14px">${spkSvg} Écouter</button>
-        </div>
-        <button class="btn" id="nx" style="margin-top:16px">Continuer</button>`;
-      el.querySelector("#listen").addEventListener("click",()=>speak(it.headline+". "+it.blurb));
-      el.querySelector("#nx").addEventListener("click",next);
-      setTimeout(()=>speak(it.headline),300);
-    }
-    else if(s.t==="react"){
-      const it=MISSION.items[s.i];
-      el.innerHTML=`${progBar()}
-        <span class="area-tag">${it.emoji} ${it.area}</span>
-        <div class="card" style="margin-top:12px">
-          <div class="step-kicker">🗣️ À toi de jouer</div>
-          <div class="prompt-q">${esc(it.react)}</div>
-          <textarea class="answer" id="ans" placeholder="Écris ta réponse en anglais… (ou dis-la à voix haute)"></textarea>
-          <button class="btn" id="reveal" style="margin-top:12px">Voir une réponse modèle</button>
-          <div id="after" class="hidden">
-            <div class="model">
-              <div class="lab">Une façon naturelle de le dire</div>
-              <div class="row">
-                <div style="flex:1;font-weight:600" id="mtxt">${esc(it.model)}</div>
-                <button class="speak-btn" id="mspk" aria-label="Écouter">${spkSvg}</button>
-              </div>
-            </div>
-            <p class="muted" style="font-size:13px;margin:14px 4px 6px">Compare avec ta réponse. C'était comment ?</p>
-            <div class="rate">
-              <button data-q="0"><span class="e">😅</span>Dur</button>
-              <button data-q="1"><span class="e">👍</span>Ça va</button>
-              <button data-q="2"><span class="e">😎</span>Facile</button>
-            </div>
-          </div>
-        </div>`;
-      el.querySelector("#reveal").addEventListener("click",function(){
-        this.classList.add("hidden");
-        el.querySelector("#after").classList.remove("hidden");
-        el.querySelector("#after").classList.add("fade");
-        speak(it.model);
-      });
-      el.querySelector("#mspk").addEventListener("click",()=>speak(it.model));
-      el.querySelectorAll(".rate button").forEach(b=>b.addEventListener("click",()=>{ addXp(4); next(); }));
-    }
-    else if(s.t==="phrases"){
-      const it=MISSION.items[s.i];
-      el.innerHTML=`${progBar()}
-        <span class="area-tag">${it.emoji} ${it.area}</span>
-        <div class="card" style="margin-top:12px">
-          <div class="step-kicker">💎 Vole ces mots</div>
-          <p class="muted" style="font-size:13.5px;margin:0 0 8px">Touche ＋ pour garder une expression et la réviser plus tard.</p>
-          <div id="plist">
-            ${it.phrases.map((p,k)=>`
-              <div class="phrase">
-                <button class="speak-btn" data-say="${k}" aria-label="Écouter">${spkSvg}</button>
-                <div class="txt"><div class="en">${esc(p[0])}</div><div class="fr">${esc(p[1])}</div></div>
-                <button class="keep ${isSaved(p[0])?'on':''}" data-keep="${k}">${isSaved(p[0])?'✓':'＋'}</button>
-              </div>`).join("")}
-          </div>
-        </div>
-        <button class="btn" id="nx" style="margin-top:16px">Continuer</button>`;
-      el.querySelectorAll("[data-say]").forEach(b=>b.addEventListener("click",()=>speak(it.phrases[+b.dataset.say][0])));
-      el.querySelectorAll("[data-keep]").forEach(b=>b.addEventListener("click",()=>{
-        const p={en:it.phrases[+b.dataset.keep][0],fr:it.phrases[+b.dataset.keep][1]};
-        toggleSave(p); b.classList.toggle("on",isSaved(p.en)); b.textContent=isSaved(p.en)?'✓':'＋';
-      }));
-      el.querySelector("#nx").addEventListener("click",next);
-    }
-    else if(s.t==="fix"){
-      const fixes=MISSION.items.map(it=>it.fix);
-      el.innerHTML=`${progBar()}
-        <div class="card">
-          <div class="step-kicker">🔧 Le petit fix</div>
-          <p class="muted" style="font-size:13.5px;margin:0 0 14px">Quelle version est correcte ?</p>
-          <div id="fixes"></div>
-        </div>
-        <button class="btn hidden" id="nx" style="margin-top:16px">Continuer</button>`;
-      const box=el.querySelector("#fixes"); let solved=0;
-      fixes.forEach((fx,idx)=>{
-        const correctRight=Math.random()<.5;
-        const a=correctRight?fx.right:fx.wrong, b=correctRight?fx.wrong:fx.right;
-        const w=document.createElement("div"); w.className="fixq"; w.style.marginBottom="18px";
-        w.innerHTML=`
-          <button class="opt" data-correct="${correctRight?1:0}">${esc(a)}</button>
-          <button class="opt" data-correct="${correctRight?0:1}">${esc(b)}</button>
-          <div class="why hidden"><b>✓ ${esc(fx.right)}</b><br>${esc(fx.why)}</div>`;
-        const opts=w.querySelectorAll(".opt"), why=w.querySelector(".why");
-        opts.forEach(o=>o.addEventListener("click",()=>{
-          if(w.dataset.done)return; w.dataset.done="1";
-          opts.forEach(x=>{x.classList.add("dim"); if(x.dataset.correct==="1")x.classList.add("correct");});
-          if(o.dataset.correct==="1"){addXp(2);} else {o.classList.remove("dim");o.classList.add("wrong");}
-          why.classList.remove("hidden"); why.classList.add("fade");
-          solved++; if(solved===fixes.length){ const n=el.querySelector("#nx"); n.classList.remove("hidden"); }
-        }));
-        box.appendChild(w);
-      });
-      el.querySelector("#nx").addEventListener("click",next);
-    }
-    else if(s.t==="speak"){
-      const says=[]; MISSION.items.forEach(it=>it.say.forEach(x=>says.push(x)));
-      el.innerHTML=`${progBar()}
-        <div class="card">
-          <div class="step-kicker">🎙️ Dis-le à voix haute</div>
-          <p class="muted" style="font-size:13.5px;margin:0 0 14px">Écoute, puis répète à voix haute. Coche quand c'est fait.</p>
-          <div id="says">
-            ${says.map((t,k)=>`
-              <div class="say-item" data-k="${k}">
-                <button class="speak-btn" data-say="${k}" aria-label="Écouter">${spkSvg}</button>
-                <div class="t">${esc(t)}</div>
-                <button class="btn ghost sm" data-ok="${k}">Fait ✓</button>
-              </div>`).join("")}
-          </div>
-        </div>
-        <button class="btn" id="nx" style="margin-top:16px">Terminer la mission</button>`;
-      el.querySelectorAll("[data-say]").forEach(b=>b.addEventListener("click",()=>speak(says[+b.dataset.say])));
-      el.querySelectorAll("[data-ok]").forEach(b=>b.addEventListener("click",()=>{
-        const it=el.querySelector('.say-item[data-k="'+b.dataset.ok+'"]');
-        it.querySelector(".t").insertAdjacentHTML("afterend",'<span class="done-tag">✓</span>');
-        b.remove();
-      }));
-      setTimeout(()=>speak(says[0]),300);
-      el.querySelector("#nx").addEventListener("click",next);
-    }
-    else if(s.t==="done"){
-      const first=state.lastMissionDate!==todayStr();
-      if(first){ state.missions++; state.lastMissionDate=todayStr(); addXp(10); markActiveToday(); }
-      const kept=state.saved.length;
-      el.innerHTML=`
-        <div class="card center fade">
-          <div class="big-emoji">🎉</div>
-          <h2 style="font-size:22px">Mission accomplie !</h2>
-          <p class="muted" style="margin:6px 0 2px">Série : <b style="color:var(--streak)">🔥 ${state.streak} jour(s)</b></p>
-          <p class="muted" style="margin:0 0 16px">${kept} expression(s) gardée(s) à réviser</p>
-          <button class="btn" id="rev">📇 Réviser mes expressions</button>
-          <button class="btn sec" id="home" style="margin-top:10px">Retour à l'accueil</button>
-        </div>`;
-      el.querySelector("#rev").addEventListener("click",()=>go("review"));
-      el.querySelector("#home").addEventListener("click",()=>go("home"));
-    }
-  }
-  function addXp(n){ state.xp+=n; save(); }
+  const screens={};
 
-  /* ===== REVIEW ===== */
-  let rq=[], ri=0, rShown=false;
-  R.review=function(){
-    rq=dueSaved(); ri=0; rShown=false;
-    if(state.saved.length===0){
-      views.review.innerHTML=`<div class="card center"><div class="big-emoji">📇</div>
-        <h2 style="font-size:19px">Aucune expression gardée</h2>
-        <p class="muted">Pendant la mission, touche ＋ sur les expressions que tu veux retenir. Elles apparaîtront ici pour la révision.</p>
-        <button class="btn" id="gomission" style="margin-top:8px">Aller à la mission</button></div>`;
-      views.review.querySelector("#gomission").addEventListener("click",()=>go("home")); return;
-    }
-    if(rq.length===0){
-      views.review.innerHTML=`<div class="card center"><div class="big-emoji">✅</div>
-        <h2 style="font-size:19px">Tout est révisé !</h2>
-        <p class="muted">Tu es à jour sur tes ${state.saved.length} expression(s). Reviens plus tard.</p>
-        <button class="btn sec" id="all" style="margin-top:8px">Revoir quand même</button></div>`;
-      views.review.querySelector("#all").addEventListener("click",()=>{rq=state.saved.slice();ri=0;rShown=false;renderRev();}); return;
-    }
-    renderRev();
+  /* ============ HOME : choix de la matière ============ */
+  screens.home=function(){
+    const g=new Date().getHours();const hi=g<12?"Bonjour 👋":g<18?"Bon aprem 👋":"Bonsoir 👋";
+    const tiles=SUBJECTS.map(s=>{
+      let status;
+      if(s.special){status="Mission du jour";}
+      else{const n=(COURSES[s.key]||[]).length;const due=subjectCards(s.key).filter(c=>cardDue(c.id)).length;
+        status=n===0?"À remplir":(due>0?due+" à réviser":n+" chapitre"+(n>1?"s":""));}
+      const n=s.special?0:(COURSES[s.key]||[]).length;
+      const badge=(!s.special&&n>0)?`<span class="badge">${n}</span>`:"";
+      return `<button class="subj" data-k="${s.key}" style="background:linear-gradient(135deg,${s.c1},${s.c2})">
+        ${badge}<div class="em">${s.emoji}</div><b>${esc(s.name)}</b><span>${status}</span></button>`;
+    }).join("");
+    appEl.innerHTML=`
+      <div class="hero">
+        <div class="row spread"><div style="font-size:13px;opacity:.92;font-weight:600">${hi}</div>
+          <div class="chip" style="background:rgba(255,255,255,.22);color:#fff">🔥 ${state.streak} j</div></div>
+        <h2 style="font-size:23px;margin:8px 0 2px">Quelle matière aujourd'hui ?</h2>
+        <div style="font-size:13px;opacity:.9">Choisis une matière pour réviser.</div>
+      </div>
+      <div class="section-title">Mes matières</div>
+      <div class="grid">${tiles}</div>
+      <p class="muted center" style="font-size:12px;margin:18px 4px 4px">Envoie-moi des photos de tes cours dans le chat → je crée résumés, quiz et flashcards dans la bonne matière 📸</p>`;
+    appEl.querySelectorAll(".subj").forEach(b=>b.addEventListener("click",()=>{
+      const s=subjById(b.dataset.k);
+      if(s.special)show({name:"anglais",topTitle:"Anglais",back:()=>show({name:"home"})});
+      else show({name:"subject",key:s.key,topTitle:s.name,back:()=>show({name:"home"})});
+    }));
   };
-  function renderRev(){
-    if(ri>=rq.length){
-      views.review.innerHTML=`<div class="card center fade"><div class="big-emoji">🎉</div>
-        <h2 style="font-size:19px">Révision terminée</h2>
-        <p class="muted">${rq.length} expression(s) revue(s). +${rq.length} XP</p>
-        <button class="btn" id="home" style="margin-top:8px">Accueil</button></div>`;
-      views.review.querySelector("#home").addEventListener("click",()=>go("home")); return;
-    }
-    const p=rq[ri];
-    views.review.innerHTML=`
-      <div class="prog">${rq.map((_,k)=>`<i class="${k<ri?'on':''}"></i>`).join("")}</div>
-      <div class="muted" style="font-size:13px;font-weight:600;margin-bottom:8px">Carte ${ri+1} / ${rq.length}</div>
-      <div class="card center" style="min-height:180px;display:flex;flex-direction:column;justify-content:center">
-        <div class="muted" style="font-size:12px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Traduis en anglais</div>
-        <div style="font-size:22px;font-weight:800">${esc(p.fr)}</div>
-        <div id="ans" class="hidden" style="margin-top:14px">
-          <div class="row" style="justify-content:center"><div style="font-size:22px;font-weight:800;color:var(--good)">${esc(p.en)}</div>
-          <button class="speak-btn" id="spk">${spkSvg}</button></div>
+
+  /* ============ SUBJECT (non-anglais) ============ */
+  screens.subject=function(c){
+    const s=subjById(c.key);const chapters=COURSES[c.key]||[];
+    const due=subjectCards(c.key).filter(x=>cardDue(x.id)).length;
+    const totalCards=subjectCards(c.key).length;const totalQuiz=subjectQuiz(c.key).length;
+    if(chapters.length===0){
+      appEl.innerHTML=`
+        <div class="hero" style="background:linear-gradient(135deg,${s.c1},${s.c2})">
+          <div class="em" style="font-size:30px">${s.emoji}</div>
+          <h2 style="font-size:22px;margin:6px 0 2px">${esc(s.name)}</h2>
+          <div style="font-size:13px;opacity:.92">Aucun cours pour l'instant</div>
         </div>
+        <div class="card empty"><div class="big-emoji">📸</div>
+          <b style="color:var(--ink);font-size:17px">Remplis cette matière</b>
+          <p>Envoie-moi des photos de ton cours de <b>${esc(s.name)}</b> dans le chat. Je te créerai ici des <b>fiches de révision</b>, des <b>quiz</b> et des <b>flashcards</b> automatiquement.</p>
+        </div>`;
+      return;
+    }
+    const prog=[];
+    if(due>0)prog.push(`${due} flashcard${due>1?"s":""} à réviser`);
+    prog.push(`${chapters.length} chapitre${chapters.length>1?"s":""}`);
+    appEl.innerHTML=`
+      <div class="hero" style="background:linear-gradient(135deg,${s.c1},${s.c2})">
+        <div class="row spread"><div class="em" style="font-size:26px">${s.emoji}</div></div>
+        <h2 style="font-size:22px;margin:6px 0 2px">${esc(s.name)}</h2>
+        <div style="font-size:13px;opacity:.92">${prog.join(" · ")}</div>
+      </div>
+      ${totalCards>0?`<button class="btn" id="rev" style="margin-top:14px">📇 Réviser les flashcards${due>0?" ("+due+")":""}</button>`:""}
+      ${totalQuiz>0?`<button class="btn ghost" id="quizAll" style="margin-top:10px">❓ Quiz de toute la matière</button>`:""}
+      <div class="section-title">Chapitres</div>
+      <div id="chaps"></div>`;
+    const box=appEl.querySelector("#chaps");
+    chapters.forEach(ch=>{
+      const done=state.lessonsDone.includes(ch.id);
+      const bits=[];if(ch.summary&&ch.summary.length)bits.push("fiche");if(ch.flashcards&&ch.flashcards.length)bits.push(ch.flashcards.length+" cartes");if(ch.quiz&&ch.quiz.length)bits.push(ch.quiz.length+" quiz");
+      const el=document.createElement("button");el.className="list-item";
+      el.innerHTML=`<div class="ic">${done?"✅":"📘"}</div><div style="flex:1"><b>${esc(ch.title)}</b><span>${bits.join(" · ")}</span></div><div class="muted">›</div>`;
+      el.addEventListener("click",()=>show({name:"chapter",key:c.key,id:ch.id,topTitle:s.name,back:()=>show({name:"subject",key:c.key,topTitle:s.name,back:()=>show({name:"home"})})}));
+      box.appendChild(el);
+    });
+    const rv=appEl.querySelector("#rev");if(rv)rv.addEventListener("click",()=>{
+      let cards=subjectCards(c.key).filter(x=>cardDue(x.id));if(cards.length===0)cards=subjectCards(c.key);
+      startReview(cards,s.name,()=>show(c));
+    });
+    const qa=appEl.querySelector("#quizAll");if(qa)qa.addEventListener("click",()=>startQuiz(subjectQuiz(c.key),s.name,()=>show(c)));
+  };
+
+  /* ============ CHAPTER ============ */
+  screens.chapter=function(c){
+    const s=subjById(c.key);const ch=(COURSES[c.key]||[]).find(x=>x.id===c.id);if(!ch){show({name:"subject",key:c.key,topTitle:s.name,back:()=>show({name:"home"})});return;}
+    const fiche=(ch.summary||[]).map(p=>`<p>${esc(p)}</p>`).join("");
+    appEl.innerHTML=`
+      <h2 style="font-size:21px;margin-bottom:4px">${esc(ch.title)}</h2>
+      <p class="muted" style="margin:0 0 6px;font-size:13px">${ch.date?esc(ch.date):""}</p>
+      ${fiche?`<div class="card"><div class="kicker">📝 Fiche de révision</div><div class="fiche">${fiche}</div></div>`:""}
+      <div style="margin-top:14px">
+        ${ch.flashcards&&ch.flashcards.length?`<button class="btn" id="fc">📇 Flashcards (${ch.flashcards.length})</button>`:""}
+        ${ch.quiz&&ch.quiz.length?`<button class="btn ghost" id="qz" style="margin-top:10px">❓ Quiz (${ch.quiz.length})</button>`:""}
+      </div>`;
+    const back=()=>show(c);
+    const fc=appEl.querySelector("#fc");if(fc)fc.addEventListener("click",()=>{
+      const cards=(ch.flashcards||[]).map(f=>({id:c.key+"::"+f[0],front:f[0],back:f[1]}));startReview(cards,ch.title,back);
+    });
+    const qz=appEl.querySelector("#qz");if(qz)qz.addEventListener("click",()=>startQuiz(ch.quiz||[],ch.title,back,ch.id));
+  };
+
+  /* ============ GENERIC QUIZ ============ */
+  let Q={};
+  function startQuiz(items,title,back,lessonId){
+    if(!items||!items.length){return;}
+    Q={items:items.slice(),i:0,score:0,title,back,lessonId,answered:false};
+    show({name:"quiz",topTitle:title,back});
+  }
+  screens.quiz=function(){
+    if(Q.i>=Q.items.length){
+      const pct=Math.round(Q.score/Q.items.length*100);
+      if(Q.lessonId&&!state.lessonsDone.includes(Q.lessonId)){state.lessonsDone.push(Q.lessonId);}
+      addXp(Q.score);markActiveToday();
+      appEl.innerHTML=`<div class="card center fade"><div class="big-emoji">${pct>=80?"🏆":pct>=50?"👍":"💪"}</div>
+        <b style="font-size:20px">${Q.score} / ${Q.items.length}</b><p class="muted">Score : ${pct}%</p>
+        <button class="btn" id="again" style="margin-top:8px">Recommencer</button>
+        <button class="btn sec" id="done" style="margin-top:10px">Terminer</button></div>`;
+      appEl.querySelector("#again").addEventListener("click",()=>{Q.i=0;Q.score=0;Q.answered=false;render();});
+      appEl.querySelector("#done").addEventListener("click",()=>Q.back());
+      return;
+    }
+    const it=Q.items[Q.i];Q.answered=false;
+    appEl.innerHTML=`<div class="prog">${Q.items.map((_,k)=>`<i class="${k<Q.i?'on':''}"></i>`).join("")}</div>
+      <div class="row spread" style="margin-bottom:10px"><span class="muted" style="font-size:13px;font-weight:600">Question ${Q.i+1} / ${Q.items.length}</span><span class="chip good">Score ${Q.score}</span></div>
+      <div class="card"><div class="prompt-q">${esc(it.q)}</div><div id="opts">${it.opts.map((o,k)=>`<button class="opt" data-k="${k}">${esc(o)}</button>`).join("")}</div><div id="exp"></div></div>`;
+    appEl.querySelectorAll(".opt").forEach(b=>b.addEventListener("click",()=>{
+      if(Q.answered)return;Q.answered=true;const k=+b.dataset.k;
+      appEl.querySelectorAll(".opt").forEach((x,idx)=>{x.classList.add("dim");if(idx===it.a)x.classList.add("correct");if(idx===k&&k!==it.a)x.classList.add("wrong");});
+      if(k===it.a)Q.score++;
+      appEl.querySelector("#exp").innerHTML=`<div class="why fade"><b>${k===it.a?"✓ Correct !":"✗ Pas tout à fait."}</b>${it.why?" "+esc(it.why):""}<button class="btn" id="nx" style="margin-top:12px">${Q.i+1>=Q.items.length?"Voir le résultat":"Suivant"}</button></div>`;
+      appEl.querySelector("#nx").addEventListener("click",()=>{Q.i++;render();});
+    }));
+  };
+
+  /* ============ GENERIC REVIEW (flashcards) ============ */
+  let RV={};
+  function startReview(cards,title,back){
+    if(!cards||!cards.length)return;
+    RV={cards:cards.slice(),i:0,title,back,shown:false};
+    show({name:"review",topTitle:title,back});
+  }
+  screens.review=function(){
+    if(RV.i>=RV.cards.length){
+      addXp(RV.cards.length);markActiveToday();
+      appEl.innerHTML=`<div class="card center fade"><div class="big-emoji">🎉</div><b style="font-size:19px">Révision terminée</b>
+        <p class="muted">${RV.cards.length} carte(s) revue(s).</p><button class="btn" id="d" style="margin-top:8px">Terminer</button></div>`;
+      appEl.querySelector("#d").addEventListener("click",()=>RV.back());return;
+    }
+    const c=RV.cards[RV.i];RV.shown=false;
+    appEl.innerHTML=`<div class="prog">${RV.cards.map((_,k)=>`<i class="${k<RV.i?'on':''}"></i>`).join("")}</div>
+      <div class="muted" style="font-size:13px;font-weight:600;margin-bottom:8px">Carte ${RV.i+1} / ${RV.cards.length}</div>
+      <div class="card center" style="min-height:170px;display:flex;flex-direction:column;justify-content:center">
+        <div style="font-size:21px;font-weight:800">${esc(c.front)}</div>
+        <div id="ans" class="hidden" style="margin-top:14px"><div class="row" style="justify-content:center;gap:10px">
+          <div style="font-size:20px;font-weight:800;color:var(--good)">${esc(c.back)}</div>
+          <button class="speak-btn" id="spk">${spk}</button></div></div>
         <button class="btn sec" id="show" style="margin-top:16px;width:auto;align-self:center;padding:11px 22px">Révéler</button>
       </div>
       <div id="rate" class="hidden"><div class="rate" style="margin-top:14px">
-        <button data-q="0"><span class="e">😵</span>À revoir</button>
-        <button data-q="1"><span class="e">🙂</span>Bien</button>
-        <button data-q="2"><span class="e">😎</span>Facile</button>
-      </div></div>`;
-    views.review.querySelector("#show").addEventListener("click",function(){
-      this.classList.add("hidden");
-      views.review.querySelector("#ans").classList.remove("hidden");
-      views.review.querySelector("#rate").classList.remove("hidden");
-      speak(p.en);
-    });
-    views.review.querySelector("#spk").addEventListener("click",()=>speak(p.en));
-    views.review.querySelectorAll(".rate button").forEach(b=>b.addEventListener("click",()=>{ reviewPhrase(p.en,+b.dataset.q); addXp(1); ri++; renderRev(); }));
-  }
-
-  /* ===== PROGRESS ===== */
-  R.progress=function(){
-    views.progress.innerHTML=`
-      <h2 style="font-size:20px;margin-bottom:14px">Tes progrès</h2>
-      <div class="stat-grid">
-        <div class="stat"><span class="l">🔥 Série</span><span class="n tnum">${state.streak}</span><span class="muted" style="font-size:12px">jours d'affilée</span></div>
-        <div class="stat"><span class="l">✅ Missions</span><span class="n tnum">${state.missions}</span><span class="muted" style="font-size:12px">au total</span></div>
-        <div class="stat"><span class="l">💎 Expressions</span><span class="n tnum">${state.saved.length}</span><span class="muted" style="font-size:12px">gardées</span></div>
-        <div class="stat"><span class="l">⭐ XP</span><span class="n tnum">${state.xp}</span><span class="muted" style="font-size:12px">points</span></div>
-      </div>
-      <div class="section-title">Ta semaine</div>
-      <div class="card">${weekStrip()}</div>
-      <p class="muted center" style="font-size:12px;margin:18px 4px 4px">L'actu se met à jour toute seule chaque matin 🌅</p>`;
+        <button data-q="0"><span class="e">😵</span>À revoir</button><button data-q="1"><span class="e">🙂</span>Bien</button><button data-q="2"><span class="e">😎</span>Facile</button></div></div>`;
+    appEl.querySelector("#show").addEventListener("click",function(){this.classList.add("hidden");appEl.querySelector("#ans").classList.remove("hidden");appEl.querySelector("#rate").classList.remove("hidden");speak(c.back);});
+    appEl.querySelector("#spk").addEventListener("click",()=>speak(c.back));
+    appEl.querySelectorAll(".rate button").forEach(b=>b.addEventListener("click",()=>{schedule(c.id,+b.dataset.q);RV.i++;render();}));
   };
-  function weekStrip(){
-    const names=["L","M","M","J","V","S","D"]; let h='<div class="row" style="justify-content:space-between">';
-    for(let i=6;i>=0;i--){
-      const d=new Date(Date.now()-i*864e5), ds=d.toISOString().slice(0,10), on=state.days.includes(ds);
-      let idx=d.getDay(); idx=idx===0?6:idx-1;
-      h+=`<div style="text-align:center;flex:1"><div style="width:34px;height:34px;margin:0 auto;border-radius:11px;display:grid;place-items:center;font-weight:800;font-size:13px;${on?'background:var(--accent);color:#fff':'background:var(--surface-2);color:var(--muted)'}">${on?'✓':names[idx]}</div><div style="font-size:10px;color:var(--muted);margin-top:4px">${names[idx]}</div></div>`;
-    }
-    return h+'</div>';
-  }
 
-  go("home");
+  /* ============ ANGLAIS (hub) ============ */
+  screens.anglais=function(c){
+    const done=state.lastMissionDate===todayStr();
+    const due=state.saved.filter(p=>cardDue("en::"+p.en)).length;
+    appEl.innerHTML=`
+      <div class="hero">
+        <div class="row spread"><div style="font-size:13px;opacity:.92;font-weight:600">${done?"Mission du jour faite ✅":"Ta mission du jour"}</div>
+          <div class="chip" style="background:rgba(255,255,255,.22);color:#fff">🔥 ${state.streak} j</div></div>
+        <h2 style="font-size:22px;margin:8px 0 2px">Anglais</h2>
+        <div style="font-size:13px;opacity:.9">${fmtDate(MISSION.date)} · business, création, gaming</div>
+      </div>
+      <button class="btn" id="start" style="margin-top:14px">${done?"↻ Refaire la mission":"▶ Mission du jour"}</button>
+      ${state.saved.length?`<button class="btn ghost" id="rev" style="margin-top:10px">📇 Réviser mes expressions${due>0?" ("+due+")":""}</button>`:""}
+      <div class="section-title">Au programme</div>
+      <div id="topics"></div>`;
+    const t=appEl.querySelector("#topics");
+    MISSION.items.forEach(it=>{const el=document.createElement("div");el.className="list-item";el.style.cursor="default";
+      el.innerHTML=`<div class="ic">${it.emoji}</div><div style="flex:1"><b>${esc(it.headline)}</b><span>${esc(it.area)}</span></div>`;t.appendChild(el);});
+    appEl.querySelector("#start").addEventListener("click",()=>startMission(c));
+    const rv=appEl.querySelector("#rev");if(rv)rv.addEventListener("click",()=>{
+      let cards=state.saved.filter(p=>cardDue("en::"+p.en));if(!cards.length)cards=state.saved;
+      startReview(cards.map(p=>({id:"en::"+p.en,front:p.fr,back:p.en})),"Anglais",()=>show(c));
+    });
+  };
+  function fmtDate(d){try{return new Date(d+"T12:00").toLocaleDateString("fr-FR",{weekday:"long",day:"numeric",month:"long"});}catch(e){return d;}}
+
+  /* ---- English mission flow ---- */
+  let M={};
+  function startMission(hub){
+    const steps=[];MISSION.items.forEach((it,i)=>{steps.push({t:"actu",i});steps.push({t:"react",i});steps.push({t:"phrases",i});});
+    steps.push({t:"fix"});steps.push({t:"speak"});steps.push({t:"done"});
+    M={steps,mi:0,hub};show({name:"mission",topTitle:"Mission du jour",back:()=>show(hub)});
+  }
+  function mbar(){const tot=M.steps.length-1;return `<div class="prog">${M.steps.slice(0,tot).map((_,k)=>`<i class="${k<M.mi?'on':''}"></i>`).join("")}</div>`;}
+  function mnext(){M.mi++;render();}
+  screens.mission=function(){
+    const s=M.steps[M.mi];
+    if(s.t==="actu"){const it=MISSION.items[s.i];
+      appEl.innerHTML=`${mbar()}<span class="tag">${it.emoji} ${esc(it.area)}</span>
+        <div class="card" style="margin-top:12px"><div class="kicker">📰 L'actu</div><div class="headline">${esc(it.headline)}</div>
+          <div class="blurb">${esc(it.blurb)}</div><button class="btn sec sm" id="l" style="margin-top:14px">${spk} Écouter</button></div>
+        <button class="btn" id="nx" style="margin-top:16px">Continuer</button>`;
+      appEl.querySelector("#l").addEventListener("click",()=>speak(it.headline+". "+it.blurb));
+      appEl.querySelector("#nx").addEventListener("click",mnext);setTimeout(()=>speak(it.headline),300);
+    } else if(s.t==="react"){const it=MISSION.items[s.i];
+      appEl.innerHTML=`${mbar()}<span class="tag">${it.emoji} ${esc(it.area)}</span>
+        <div class="card" style="margin-top:12px"><div class="kicker">🗣️ À toi de jouer</div><div class="prompt-q">${esc(it.react)}</div>
+          <textarea class="answer" placeholder="Écris ta réponse en anglais… (ou dis-la à voix haute)"></textarea>
+          <button class="btn" id="rev" style="margin-top:12px">Voir une réponse modèle</button>
+          <div id="after" class="hidden"><div class="model"><div class="lab">Une façon naturelle de le dire</div>
+            <div class="row"><div style="flex:1;font-weight:600">${esc(it.model)}</div><button class="speak-btn" id="ms">${spk}</button></div></div>
+            <p class="muted" style="font-size:13px;margin:14px 4px 6px">Compare avec ta réponse. C'était comment ?</p>
+            <div class="rate"><button data-q="0"><span class="e">😅</span>Dur</button><button data-q="1"><span class="e">👍</span>Ça va</button><button data-q="2"><span class="e">😎</span>Facile</button></div></div></div>`;
+      appEl.querySelector("#rev").addEventListener("click",function(){this.classList.add("hidden");appEl.querySelector("#after").classList.remove("hidden");speak(it.model);});
+      appEl.querySelector("#ms").addEventListener("click",()=>speak(it.model));
+      appEl.querySelectorAll(".rate button").forEach(b=>b.addEventListener("click",()=>{addXp(4);mnext();}));
+    } else if(s.t==="phrases"){const it=MISSION.items[s.i];
+      appEl.innerHTML=`${mbar()}<span class="tag">${it.emoji} ${esc(it.area)}</span>
+        <div class="card" style="margin-top:12px"><div class="kicker">💎 Vole ces mots</div>
+          <p class="muted" style="font-size:13.5px;margin:0 0 8px">Touche ＋ pour garder une expression et la réviser plus tard.</p>
+          <div>${it.phrases.map((p,k)=>`<div class="phrase"><button class="speak-btn" data-say="${k}">${spk}</button><div class="txt"><div class="en">${esc(p[0])}</div><div class="fr">${esc(p[1])}</div></div><button class="keep ${isSaved(p[0])?'on':''}" data-keep="${k}">${isSaved(p[0])?'✓':'＋'}</button></div>`).join("")}</div></div>
+        <button class="btn" id="nx" style="margin-top:16px">Continuer</button>`;
+      appEl.querySelectorAll("[data-say]").forEach(b=>b.addEventListener("click",()=>speak(it.phrases[+b.dataset.say][0])));
+      appEl.querySelectorAll("[data-keep]").forEach(b=>b.addEventListener("click",()=>{const p={en:it.phrases[+b.dataset.keep][0],fr:it.phrases[+b.dataset.keep][1]};toggleSave(p);b.classList.toggle("on",isSaved(p.en));b.textContent=isSaved(p.en)?'✓':'＋';}));
+      appEl.querySelector("#nx").addEventListener("click",mnext);
+    } else if(s.t==="fix"){const fixes=MISSION.items.map(it=>it.fix);
+      appEl.innerHTML=`${mbar()}<div class="card"><div class="kicker">🔧 Le petit fix</div><p class="muted" style="font-size:13.5px;margin:0 0 14px">Quelle version est correcte ?</p><div id="fx"></div></div><button class="btn hidden" id="nx" style="margin-top:16px">Continuer</button>`;
+      const box=appEl.querySelector("#fx");let solved=0;
+      fixes.forEach(fx=>{const cr=Math.random()<.5,a=cr?fx.right:fx.wrong,b=cr?fx.wrong:fx.right;
+        const w=document.createElement("div");w.style.marginBottom="18px";
+        w.innerHTML=`<button class="opt" data-c="${cr?1:0}">${esc(a)}</button><button class="opt" data-c="${cr?0:1}">${esc(b)}</button><div class="why hidden"><b>✓ ${esc(fx.right)}</b><br>${esc(fx.why)}</div>`;
+        const opts=w.querySelectorAll(".opt"),why=w.querySelector(".why");
+        opts.forEach(o=>o.addEventListener("click",()=>{if(w.dataset.d)return;w.dataset.d="1";opts.forEach(x=>{x.classList.add("dim");if(x.dataset.c==="1")x.classList.add("correct");});if(o.dataset.c!=="1"){o.classList.remove("dim");o.classList.add("wrong");}else addXp(2);why.classList.remove("hidden");solved++;if(solved===fixes.length)appEl.querySelector("#nx").classList.remove("hidden");}));
+        box.appendChild(w);});
+      appEl.querySelector("#nx").addEventListener("click",mnext);
+    } else if(s.t==="speak"){const says=[];MISSION.items.forEach(it=>it.say.forEach(x=>says.push(x)));
+      appEl.innerHTML=`${mbar()}<div class="card"><div class="kicker">🎙️ Dis-le à voix haute</div><p class="muted" style="font-size:13.5px;margin:0 0 14px">Écoute, puis répète à voix haute. Coche quand c'est fait.</p>
+        <div>${says.map((t,k)=>`<div class="phrase"><button class="speak-btn" data-say="${k}">${spk}</button><div class="txt"><div class="en">${esc(t)}</div></div><button class="keep" data-ok="${k}">＋</button></div>`).join("")}</div></div>
+        <button class="btn" id="nx" style="margin-top:16px">Terminer la mission</button>`;
+      appEl.querySelectorAll("[data-say]").forEach(b=>b.addEventListener("click",()=>speak(says[+b.dataset.say])));
+      appEl.querySelectorAll("[data-ok]").forEach(b=>b.addEventListener("click",()=>{b.classList.add("on");b.textContent="✓";}));
+      setTimeout(()=>speak(says[0]),300);appEl.querySelector("#nx").addEventListener("click",mnext);
+    } else if(s.t==="done"){
+      if(state.lastMissionDate!==todayStr()){state.missions++;state.lastMissionDate=todayStr();addXp(10);markActiveToday();}
+      appEl.innerHTML=`<div class="card center fade"><div class="big-emoji">🎉</div><h2 style="font-size:22px">Mission accomplie !</h2>
+        <p class="muted" style="margin:6px 0 2px">Série : <b style="color:var(--streak)">🔥 ${state.streak} jour(s)</b></p>
+        <p class="muted" style="margin:0 0 16px">${state.saved.length} expression(s) gardée(s)</p>
+        <button class="btn" id="h">Retour à l'anglais</button></div>`;
+      appEl.querySelector("#h").addEventListener("click",()=>show(M.hub));
+    }
+  };
+
+  /* ============ BOOT ============ */
+  show({name:"home"});
 })();
 </script>
