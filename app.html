@@ -162,7 +162,41 @@
      Chaque chapitre : {id, title, date, summary:[paragraphes], flashcards:[[recto,verso]], quiz:[{q,opts,a,why}]}
      (summary / flashcards / quiz sont tous optionnels) */
   const COURSES = {
-    maths:[], ses:[], es:[], histoire:[], philo:[], espagnol:[], viedeclasse:[]
+    maths:[], ses:[], es:[], histoire:[], espagnol:[], viedeclasse:[],
+    philo:[
+      {
+        id:"philo-bonheur-desirs",
+        title:"Le bonheur : faut-il satisfaire ses désirs ?",
+        date:"Oct. 2026 · notion Bonheur",
+        summary:[
+          "Problème : « Faut-il satisfaire ses désirs pour être heureux ? » Repères : fin / principe. Le désir est un manque qui pousse à agir. Toute la question : combler ce manque mène-t-il au bonheur, ou est-ce une course sans fin ?",
+          "➊ OUI, satisfaire ses désirs rend heureux. CALLICLÈS (Platon, Gorgias) : le bonheur, c'est laisser ses désirs grandir au maximum et avoir le courage de les assouvir ; l'homme heureux est « déréglé » et libre. ÉPICURE (Lettre à Ménécée) : oui, mais de façon RAISONNÉE — trier les désirs naturels et nécessaires (vrais besoins) et écarter les désirs vains, pour atteindre l'ataraxie (absence de trouble).",
+          "➋ NON, tout satisfaire ne rend pas heureux. SOCRATE / PLATON (Gorgias) réfute Calliclès : l'âme déréglée est un tonneau percé (supplice des Danaïdes), impossible à remplir ; le bonheur, c'est la tempérance et la tranquillité. SCHOPENHAUER : tout désir naît d'un manque, donc d'une souffrance ; une fois satisfait il renaît aussitôt → on oscille entre souffrance et ennui (Ixion, Tantale, Danaïdes).",
+          "➌ DÉPASSEMENT. ROUSSEAU (Julie ou La Nouvelle Héloïse) : ce qui rend heureux, ce n'est pas la possession mais le DÉSIR lui-même, porté par l'imagination et l'espérance — « Malheur à qui n'a plus rien à désirer ». TCHOUANG-TSEU (Joie Suprême) : la vraie joie est dans le NON-AGIR (wu wei), la paix de l'âme qui ne court plus après ses désirs.",
+          "Plan de dissertation possible : I. Oui, satisfaire ses désirs (raisonnablement) rend heureux — Calliclès, Épicure. II. Non, la course aux désirs est une souffrance sans fin — Socrate, Schopenhauer. III. Le bonheur est peut-être dans le désir lui-même (Rousseau), ou dans le renoncement au désir (Tchouang-Tseu)."
+        ],
+        flashcards:[
+          ["Calliclès (Gorgias) : sa thèse ?","Le bonheur = laisser ses désirs grandir au maximum et oser les assouvir ; être « déréglé » et libre (démesure, hédonisme)."],
+          ["Socrate / Platon (Gorgias) : sa réponse à Calliclès ?","L'âme déréglée est un tonneau percé (Danaïdes) : impossible à combler. Le bonheur = tempérance et tranquillité de l'âme."],
+          ["Épicure (Lettre à Ménécée) : sa thèse ?","Satisfaire ses désirs, mais en les triant : combler les naturels et nécessaires, écarter les vains. But = l'ataraxie."],
+          ["Épicure : les 3 types de désirs ?","1) naturels et nécessaires (faim, soif) ; 2) naturels mais non nécessaires ; 3) vains / sans fondement (richesse, gloire)."],
+          ["Schopenhauer : sa thèse sur le désir ?","Tout désir vient d'un manque = souffrance ; une fois satisfait il renaît → oscillation entre souffrance et ennui (pessimisme)."],
+          ["Rousseau (La Nouvelle Héloïse) : sa thèse ?","Le bonheur est dans le DÉSIR lui-même (imagination, espérance), pas dans la possession. « Malheur à qui n'a plus rien à désirer »."],
+          ["Tchouang-Tseu (Joie Suprême) : sa thèse ?","La vraie joie est dans le NON-AGIR (wu wei) : la paix de l'âme et du corps, sans courir après les désirs."],
+          ["L'ataraxie, c'est quoi ?","L'absence de trouble, la tranquillité de l'âme (idéal d'Épicure)."],
+          ["Que symbolise le tonneau percé / les Danaïdes ?","Le désir sans mesure : une soif qu'on ne peut jamais étancher, qu'on cherche à combler en vain."]
+        ],
+        quiz:[
+          {q:"Pour Calliclès (Gorgias), l'homme heureux est celui qui…",opts:["maîtrise et limite ses désirs","laisse ses désirs grandir et ose les assouvir","n'a aucun désir","agit le moins possible"],a:1,why:"Calliclès défend la démesure : laisser croître ses désirs et avoir le courage de les satisfaire."},
+          {q:"Comment Socrate réfute-t-il Calliclès ?",opts:["L'âme déréglée est un tonneau percé qu'on ne remplit jamais","Les désirs n'existent pas","Le plaisir est toujours un bien","Il faut tout désirer"],a:0,why:"Image du tonneau percé (Danaïdes) : l'âme intempérante ne peut jamais être comblée."},
+          {q:"Pour Épicure, quels désirs faut-il satisfaire en priorité ?",opts:["Tous les désirs","Les désirs naturels et nécessaires","Les désirs de gloire et de richesse","Aucun désir"],a:1,why:"Épicure trie les désirs : on comble les naturels et nécessaires, on écarte les vains."},
+          {q:"Quel philosophe soutient que tout désir est d'abord un manque, donc une souffrance ?",opts:["Épicure","Rousseau","Schopenhauer","Calliclès"],a:2,why:"Schopenhauer : le désir (la volonté) naît d'un manque, d'où l'oscillation souffrance / ennui."},
+          {q:"Pour Rousseau, le bonheur se trouve surtout…",opts:["dans la possession de l'objet désiré","dans le désir lui-même et l'imagination","dans l'absence totale de désir","dans la richesse"],a:1,why:"« Malheur à qui n'a plus rien à désirer » : c'est le désir, nourri par l'imagination, qui fait le bonheur."},
+          {q:"Que prône Tchouang-Tseu pour atteindre la vraie joie ?",opts:["Le non-agir (wu wei)","La satisfaction de tous les désirs","La richesse","La gloire"],a:0,why:"Pour Tchouang-Tseu, la joie suprême réside dans le non-agir et la paix de l'âme."},
+          {q:"Qu'est-ce que l'ataraxie ?",opts:["Le plaisir intense","L'absence de trouble, la tranquillité de l'âme","L'accumulation de richesses","Le désir sans limite"],a:1,why:"Ataraxie = tranquillité, absence de trouble : l'objectif d'Épicure."}
+        ]
+      }
+    ]
   };
 
   /* ============ STATE ============ */
