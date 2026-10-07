@@ -162,7 +162,75 @@
      Chaque chapitre : {id, title, date, summary:[paragraphes], flashcards:[[recto,verso]], quiz:[{q,opts,a,why}]}
      (summary / flashcards / quiz sont tous optionnels) */
   const COURSES = {
-    maths:[], ses:[], es:[], histoire:[], espagnol:[], viedeclasse:[],
+    maths:[], ses:[], es:[], espagnol:[], viedeclasse:[],
+    anglais:[
+      {
+        id:"anglais-co-methodo",
+        title:"Compréhension orale : méthodologie",
+        date:"Méthode · examen",
+        summary:[
+          "I. PRÉPARATION. À partir du TITRE : j'anticipe le sujet et je note une liste de mots-clés auxquels je m'attends. Je prépare mon brouillon en 3 COLONNES (une par écoute).",
+          "II. L'ÉCOUTE + PRISE DE NOTES (3 écoutes). 1re écoute : je repère les éléments reconnaissables (chiffres, dates, noms propres…) puis je retravaille mes notes. 2e écoute : je complète avec les infos importantes — les 6 questions WHEN / WHERE / WHO / WHAT / WHY / HOW. 3e écoute : je complète les DÉTAILS en anticipant déjà mon compte rendu.",
+          "III. LE COMPTE RENDU (en français). J'intègre TOUT ce que j'ai noté, je STRUCTURE mon compte rendu (idées principales puis secondaires), je vais dans le DÉTAIL, et je vérifie que je RESPECTE LA CONSIGNE."
+        ],
+        flashcards:[
+          ["Les 3 grandes étapes d'une compréhension orale ?","1) Préparation (titre + brouillon 3 colonnes) ; 2) Écoute & prise de notes (3 écoutes) ; 3) Compte rendu en français."],
+          ["À quoi sert le titre avant l'écoute ?","À anticiper : deviner le sujet et noter une liste de mots-clés attendus."],
+          ["Les 6 questions à repérer pendant l'écoute ?","When, Where, Who, What, Why, How (quand, où, qui, quoi, pourquoi, comment)."],
+          ["Que repère-t-on à la 1re écoute ?","Les éléments facilement reconnaissables : chiffres, dates, noms propres."],
+          ["Que vise la 3e écoute ?","Compléter les DÉTAILS, en anticipant déjà la rédaction du compte rendu."],
+          ["Le compte rendu : les 4 réflexes ?","Tout intégrer, structurer, aller dans le détail, et respecter la consigne."]
+        ],
+        quiz:[
+          {q:"Avant d'écouter, à partir du titre, il faut…",opts:["ne rien faire","anticiper et lister des mots-clés attendus","traduire le titre en 5 langues","écrire le compte rendu"],a:1,why:"Le titre sert à anticiper le sujet et préparer une liste de mots-clés."},
+          {q:"Que résume « When, Where, Who, What, Why, How » ?",opts:["les temps verbaux","les infos importantes à repérer à l'écoute","les parties du compte rendu","les types de documents"],a:1,why:"Ce sont les informations essentielles à repérer pendant l'écoute."},
+          {q:"Combien d'écoutes, et en combien de colonnes le brouillon ?",opts:["2 écoutes, 2 colonnes","3 écoutes, 3 colonnes","1 écoute, 1 colonne","4 écoutes, 4 colonnes"],a:1,why:"3 écoutes, et un brouillon en 3 colonnes (une par écoute)."},
+          {q:"Le compte rendu final se rédige…",opts:["en anglais","en français","sous forme de liste de mots","oralement"],a:1,why:"Le compte rendu de compréhension orale se rédige en français."}
+        ]
+      }
+    ],
+    histoire:[
+      {
+        id:"geo-mers-oceans-mondialisation",
+        title:"Mers et océans au cœur de la mondialisation",
+        date:"Géographie · Thème 1",
+        summary:[
+          "Problématique : pourquoi les mers et océans sont-ils des ressources et des supports majeurs de la mondialisation ? Notions — Mondialisation : mise en relation des parties du monde par l'intensification des flux (diffusion du capitalisme, intégration inégale des territoires). Flux : personnes, biens, informations ou capitaux qui circulent. Maritimisation : accroissement des échanges internationaux par voie maritime, accéléré depuis les années 1970.",
+          "I. UN SUPPORT DES FLUX. Le transport maritime assure 80 à 90% des marchandises (x4 en 50 ans) : liberté de circulation, peu d'obstacles, façades portuaires. Révolution du porte-conteneur (1er en 1956) et de la conteneurisation (1 porte-conteneur ≈ 20 000 camions). Choke points stratégiques : Suez, Panama, Ormuz (40% du pétrole mondial), Malacca. Littoralisation ⇒ façades maritimes et hubs (Asie de l'Est, Europe du Nord). Câbles sous-marins : 1,3 million de km, 99% des données intercontinentales (1er câble 1858 ; Marea 2018 ; GAFAM = 40% des commandes).",
+          "II. UN NOUVEL «ELDORADO» (ressources). Halieutiques : pêche (Chine 1er pays, 15,2 Mt en 2017 ; Indonésie 2e), pêche illicite INN (Golfe de Guinée), aquaculture. Énergétiques et minières : 30% des hydrocarbures sont offshore (Golfe de Guinée/Mexique, mer de Chine, Arctique), énergies marines renouvelables (éolien : Danemark + Royaume-Uni = 95% en Europe), minerais (nodules polymétalliques, cobalt). Touristiques : balnéaire, croisière (conflits d'usage), bassin caraïbe, Méditerranée.",
+          "III. DES FLUX QUI RÉVÈLENT LES INÉGALITÉS. Flux concentrés entre 3 pôles (Europe, Amérique du Nord, Asie orientale = 75% des échanges) : Northern Range (Le Havre → Hambourg) ; la façade asiatique est la 1re mondiale. Acteurs : États + FTN (armateurs Maersk, MSC, CMA CGM ; Japon/Chine/Corée du Sud = 90% des constructions ; COSCO au Pirée en 2016). Pavillons de complaisance (Panama, Libéria). Recomposition : «nouvelles routes de la soie» (Xi Jinping, 2013), canal de Panama élargi (2007), routes arctiques.",
+          "IV. L'APPROPRIATION. Droit de la mer = Convention de Montego Bay (ONU, 1982). Eaux territoriales : 12 (à 24) milles marins ⇒ pleine souveraineté. ZEE : jusqu'à 200 milles ⇒ souveraineté économique mais liberté de circulation maintenue. Haute mer : libre, fonds réglementés au niveau international. Plus grandes ZEE : 1) États-Unis (12,2 M km², non signataires) ; 2) France (10,1 M km², grâce à ses territoires ultramarins). Marine US = 11 porte-avions ; la Chine monte en puissance.",
+          "V & VI. ENJEUX & PROTECTION. Liberté de circulation menacée : tensions circulation/ressources, piraterie, 168 pays signataires (pas les É.-U.). Menaces : 40% des océans surexploités, marées noires, 5 «continents» de plastique (gyres : courants circulaires dus au vent et à la force de Coriolis). Protection : aires marines protégées (objectif 30% en 2030, mal parti). Changement climatique = hausse du niveau marin menaçant les villes littorales, et réchauffement = plus de cyclones. Paradoxe développement économique / protection."
+        ],
+        flashcards:[
+          ["Mondialisation ?","Mise en relation des parties du monde par l'intensification des flux ; diffuse le capitalisme et intègre les territoires de façon inégale."],
+          ["Maritimisation ?","Accroissement des échanges internationaux par voie maritime, accéléré depuis les années 1970."],
+          ["Part du transport maritime dans les marchandises ?","80 à 90% des marchandises mondiales (x4 en 50 ans)."],
+          ["1er porte-conteneur et son équivalence ?","1956 ; un porte-conteneur ≈ 20 000 camions (≈ 400 trains)."],
+          ["Les grands choke points ?","Suez, Panama, Ormuz (40% du pétrole mondial) et Malacca."],
+          ["Câbles sous-marins : chiffres clés ?","1,3 million de km ; 99% des données entre continents ; 1er câble en 1858 ; Marea en 2018."],
+          ["1er pays de pêche maritime ?","La Chine (15,2 millions de tonnes en 2017) ; l'Indonésie 2e."],
+          ["Part des hydrocarbures offshore ?","Environ 30% des hydrocarbures sont extraits en mer (offshore)."],
+          ["Les 3 grands armateurs mondiaux ?","Maersk, MSC et CMA CGM."],
+          ["«Nouvelles routes de la soie» : qui et quand ?","Xi Jinping, en 2013 (ex : port de Gwadar au Pakistan, Djibouti)."],
+          ["Convention qui régit le droit de la mer ?","La Convention de Montego Bay (ONU, 1982)."],
+          ["Largeur des eaux territoriales et de la ZEE ?","Eaux territoriales : 12 (à 24) milles marins ; ZEE : jusqu'à 200 milles marins."],
+          ["Les 2 plus grandes ZEE du monde ?","1) États-Unis (12,2 M km², non signataires) ; 2) France (10,1 M km², grâce aux territoires ultramarins)."],
+          ["Qu'est-ce qu'un gyre ?","Un vaste système circulaire de courants de surface (vent + force de Coriolis) ; il concentre les «continents» de plastique."],
+          ["Objectif d'aires marines protégées pour 2030 ?","30% des mers protégées (objectif « mal parti » : ~10% en 2020)."]
+        ],
+        quiz:[
+          {q:"La maritimisation désigne…",opts:["la hausse des échanges par voie maritime depuis 1970","la pollution des océans","la fonte des glaces","la construction de ports"],a:0,why:"Maritimisation = accroissement des échanges internationaux par voie maritime, accéléré depuis les années 1970."},
+          {q:"Quel détroit concentre environ 40% du trafic mondial de pétrole ?",opts:["Malacca","Suez","Ormuz","Panama"],a:2,why:"Le détroit d'Ormuz : ~40% du pétrole mondial y transite."},
+          {q:"Quelle convention fixe le droit de la mer ?",opts:["La Convention de Montego Bay (1982)","Le Protocole de Kyoto","Les Accords de Paris","La Convention de Genève"],a:0,why:"Convention des Nations Unies de Montego Bay (Jamaïque), 1982."},
+          {q:"Jusqu'où s'étend une Zone Économique Exclusive (ZEE) ?",opts:["12 milles marins","24 milles marins","200 milles marins","1000 milles marins"],a:2,why:"La ZEE va jusqu'à 200 milles marins : souveraineté économique, mais liberté de circulation maintenue."},
+          {q:"Quel pays possède la plus grande ZEE du monde ?",opts:["La France","La Chine","Les États-Unis","Le Japon"],a:2,why:"1) États-Unis (12,2 M km²), 2) France (10,1 M km² grâce aux territoires ultramarins)."},
+          {q:"Qui a lancé les «nouvelles routes de la soie» en 2013 ?",opts:["Barack Obama","Xi Jinping","Vladimir Poutine","Shinzo Abe"],a:1,why:"Xi Jinping, 2013 : la Chine investit dans des ports étrangers (Gwadar, Djibouti…)."},
+          {q:"Quels sont les 3 grands armateurs mondiaux ?",opts:["Maersk, MSC, CMA CGM","COSCO, GAFAM, NSA","Suez, Panama, Ormuz","Total, Shell, BP"],a:0,why:"Maersk, MSC et CMA CGM dominent le transport de conteneurs."},
+          {q:"Un «gyre» océanique, c'est…",opts:["un type de poisson","un courant circulaire qui concentre les déchets plastiques","un port en eau profonde","un câble sous-marin"],a:1,why:"Un gyre est un grand système circulaire de courants (vent + force de Coriolis) qui regroupe les « continents » de plastique."}
+        ]
+      }
+    ],
     philo:[
       {
         id:"philo-bonheur-desirs",
@@ -444,10 +512,24 @@
       <button class="btn" id="start" style="margin-top:14px">${done?"↻ Refaire la mission":"▶ Mission du jour"}</button>
       ${state.saved.length?`<button class="btn ghost" id="rev" style="margin-top:10px">📇 Réviser mes expressions${due>0?" ("+due+")":""}</button>`:""}
       <div class="section-title">Au programme</div>
-      <div id="topics"></div>`;
+      <div id="topics"></div>
+      <div id="angCoursWrap"></div>`;
     const t=appEl.querySelector("#topics");
     MISSION.items.forEach(it=>{const el=document.createElement("div");el.className="list-item";el.style.cursor="default";
       el.innerHTML=`<div class="ic">${it.emoji}</div><div style="flex:1"><b>${esc(it.headline)}</b><span>${esc(it.area)}</span></div>`;t.appendChild(el);});
+    const angCh=COURSES.anglais||[];
+    if(angCh.length){
+      const w=appEl.querySelector("#angCoursWrap");
+      w.innerHTML=`<div class="section-title">Cours & méthodes</div><div id="angList"></div>`;
+      const al=w.querySelector("#angList");
+      angCh.forEach(ch=>{
+        const bits=[];if(ch.summary&&ch.summary.length)bits.push("fiche");if(ch.flashcards&&ch.flashcards.length)bits.push(ch.flashcards.length+" cartes");if(ch.quiz&&ch.quiz.length)bits.push(ch.quiz.length+" quiz");
+        const el=document.createElement("button");el.className="list-item";
+        el.innerHTML=`<div class="ic">${state.lessonsDone.includes(ch.id)?"✅":"📘"}</div><div style="flex:1"><b>${esc(ch.title)}</b><span>${bits.join(" · ")}</span></div><div class="muted">›</div>`;
+        el.addEventListener("click",()=>show({name:"chapter",key:"anglais",id:ch.id,topTitle:"Anglais",back:()=>show(c)}));
+        al.appendChild(el);
+      });
+    }
     appEl.querySelector("#start").addEventListener("click",()=>startMission(c));
     const rv=appEl.querySelector("#rev");if(rv)rv.addEventListener("click",()=>{
       let cards=state.saved.filter(p=>cardDue("en::"+p.en));if(!cards.length)cards=state.saved;
