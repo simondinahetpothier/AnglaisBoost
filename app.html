@@ -129,32 +129,32 @@
 
   /* ============ ENGLISH MISSION (rafraîchi chaque jour par la routine cloud) ============ */
   const MISSION = {
-    date:"2026-10-07",
+    date:"2026-11-05",
     items:[
       { area:"Business", emoji:"💼",
-        headline:"Schneider Electric agrees to buy software firm PTC for $22 billion",
-        blurb:"The French energy giant Schneider Electric is acquiring the American software company PTC in an all-cash deal worth about $22 billion. It is the biggest acquisition in Schneider's history and will combine PTC's industrial design software with Schneider's energy and automation products.",
-        react:"Why do you think a big company sometimes prefers buying another company instead of building a new product itself? Answer in 1-2 sentences.",
-        model:"I think it's often faster to buy a company that already has the technology, even if it costs more money than building it from scratch.",
-        phrases:[["to acquire a company","racheter une entreprise"],["a deal worth $X","un accord d'une valeur de X$"],["an all-cash deal","un accord payé entièrement en cash"],["to combine (two things)","combiner (deux choses)"]],
-        say:["Schneider Electric is buying PTC.","It's their biggest deal ever."],
-        fix:{wrong:"Schneider Electric buy PTC for 22 billion dollars.", right:"Schneider Electric is buying PTC for 22 billion dollars.", why:"Pour une actualité en train de se dérouler, on utilise le présent continu (« is buying »), pas le présent simple qui sert pour les habitudes ou les vérités générales."} },
+        headline:"Vistra buys Cogentrix power plants for $4 billion",
+        blurb:"US energy company Vistra is buying ten gas power plants from Cogentrix for about four billion dollars. Regulators have now cleared the deal, so it should close very soon. The deal shows how much extra electricity is needed to power new AI data centers.",
+        react:"Why do you think companies are investing so much money in power plants right now? Answer in 1-2 sentences.",
+        model:"I think it's because AI data centers use a huge amount of electricity, so energy companies want to secure more power as fast as possible.",
+        phrases:[["to close a deal","conclure un accord"],["a power plant","une centrale électrique"],["to drive demand","stimuler la demande"],["regulatory approval","l'autorisation des autorités"]],
+        say:["The deal is worth four billion dollars.","Demand for electricity keeps rising."],
+        fix:{wrong:"I assisted to the meeting about the deal.", right:"I attended the meeting about the deal.", why:"En anglais, « to assist » veut dire « aider », pas « participer ». Pour « assister à » une réunion, on dit « to attend », pas « to assist to »."} },
       { area:"Création de contenu", emoji:"🎬",
-        headline:"YouTube will boost original Shorts, not re-uploads",
-        blurb:"YouTube announced that its recommendation system will now favor original Shorts and reduce the reach of channels that mainly repost other creators' clips. Just adding a voice-over or small edits is not enough to count as original content.",
-        react:"Do you think most short videos you watch online feel original, or more like copies of something else? Answer in 1-2 sentences.",
-        model:"Honestly, I think a lot of Shorts feel very similar, so I like that YouTube wants to reward creators who bring something new.",
-        phrases:[["to favor (something)","favoriser (quelque chose)"],["to repost / to re-upload","republier un contenu déjà existant"],["the reach (of a video)","la portée (d'une vidéo)"],["to add value","apporter de la valeur"]],
-        say:["YouTube wants more original content.","Re-uploads will get less reach."],
-        fix:{wrong:"I'm interested about original content.", right:"I'm interested in original content.", why:"En anglais on dit « interested in », pas « interested about » : erreur fréquente car en français on dit « intéressé par »."} },
+        headline:"Instagram offers YouTubers up to $500,000",
+        blurb:"Instagram is reportedly paying some YouTube creators up to five hundred thousand dollars to post long videos on its new Features format. Creators don't have to leave YouTube; they just post the same video on both apps the same day. Unlike YouTube, Instagram does not share ad revenue with creators yet.",
+        react:"Would you make a long video for Instagram if they paid you well, even without ad revenue? Answer in 1-2 sentences.",
+        model:"I probably would, because the money is good and I could still keep posting on YouTube at the same time.",
+        phrases:[["a long-form video","une vidéo longue"],["ad revenue","les revenus publicitaires"],["a six-figure deal","un contrat à six chiffres"],["to go viral","devenir viral"]],
+        say:["Instagram wants to compete with YouTube.","Some creators got six-figure offers."],
+        fix:{wrong:"I want to do a video about this news.", right:"I want to make a video about this news.", why:"En français, « faire une vidéo » se traduit par « make a video », pas « do a video » : « do » s'utilise pour des activités générales, « make » pour créer quelque chose de concret."} },
       { area:"Gaming", emoji:"🎮",
-        headline:"Gears of War: E-Day launches on Xbox and PC",
-        blurb:"The newest Gears of War game came out this week. It is a prequel set on Emergence Day, the day the monstrous Locust Horde first attacked humanity, and it follows a young Marcus Fenix and Dominic Santiago.",
-        react:"Do you prefer playing a prequel that shows the past, or a sequel that moves the story forward? Answer in 1-2 sentences.",
-        model:"I usually prefer sequels because I want to know what happens next, but a good prequel can be really exciting too if the story is strong.",
-        phrases:[["a prequel","un préquel"],["to take place","se dérouler (pour une histoire)"],["a monstrous creature","une créature monstrueuse"],["to attack humanity","attaquer l'humanité"]],
-        say:["Gears of War: E-Day just came out.","It's a prequel to the first game."],
-        fix:{wrong:"It's the prequel of the first game.", right:"It's the prequel to the first game.", why:"En anglais on dit « a prequel to », pas « a prequel of », contrairement au français « une préquelle de »."} }
+        headline:"Zelda: Ocarina of Time remake launches on Switch 2",
+        blurb:"Nintendo's remake of The Legend of Zelda: Ocarina of Time came out today, exclusively on Switch 2. It celebrates the series' fortieth anniversary with better graphics and a smoother 60 fps. Early hands-on previews already call it one of the best ways to play this classic game.",
+        react:"Do you prefer playing remakes of old classics or brand new games? Answer in 1-2 sentences.",
+        model:"Honestly, I love remakes because they let me enjoy old stories with modern graphics, but I also want Nintendo to keep making new games too.",
+        phrases:[["a remake","un remake"],["to run smoothly","fonctionner sans accroc"],["a classic game","un jeu culte"],["a hands-on preview","une avant-première jouable"]],
+        say:["The game runs at sixty frames per second.","This remake celebrates forty years of Zelda."],
+        fix:{wrong:"I play to Zelda every weekend.", right:"I play Zelda every weekend.", why:"En français on dit « jouer À un jeu », mais en anglais « play » s'utilise sans préposition devant le nom du jeu."} }
     ]
   };
 
@@ -162,7 +162,119 @@
      Chaque chapitre : {id, title, date, summary:[paragraphes], flashcards:[[recto,verso]], quiz:[{q,opts,a,why}]}
      (summary / flashcards / quiz sont tous optionnels) */
   const COURSES = {
-    maths:[], ses:[], es:[], espagnol:[], viedeclasse:[],
+    maths:[], es:[], espagnol:[], viedeclasse:[],
+    ses:[
+      {
+        id:"ses-croissance-sources-defis",
+        title:"La croissance : sources et défis",
+        date:"Éco · Chapitre 1",
+        summary:[
+          "La croissance économique = augmentation SOUTENUE et DURABLE de la production de richesses. Indicateur : le PIB (Produit Intérieur Brut) = somme des VALEURS AJOUTÉES créées dans un pays sur 1 an. VA = Chiffre d'affaires (CA) − Consommations intermédiaires (CI). PIB = PIB marchand + PIB non marchand (services publics évalués à leur coût).",
+          "PIB nominal vs réel : la croissance NOMINALE inclut la hausse des prix ; pour la croissance RÉELLE on RETIRE l'inflation. Ex : PIB nominal +3%, inflation 2,5% → croissance réelle = 0,5%. Pour comparer les pays, on utilise le PIB en PPA (parité de pouvoir d'achat), qui neutralise les différences de prix.",
+          "Limites du PIB : il ignore l'économie souterraine (travail au noir, trafics) et le travail domestique bénévole, et il compte positivement des activités néfastes (externalités négatives : pollution, déforestation). Le bien-être n'est donc pas bien mesuré par le seul PIB.",
+          "I. LES SOURCES. Croissance EXTENSIVE = augmenter la QUANTITÉ de facteurs de production (plus de travail L + plus de capital K). Croissance INTENSIVE = améliorer l'EFFICACITÉ des facteurs → hausse de la Productivité Globale des Facteurs (PGF) : produire plus avec la même quantité de facteurs. La PGF reflète surtout le progrès technique.",
+          "II. LE PROGRÈS TECHNIQUE (moteur). PT = ensemble des innovations permettant de produire plus avec la même quantité de travail et de capital. Innovations de PRODUIT, de PROCÉDÉ, d'ORGANISATION. Débat : PT EXOGÈNE (Solow, 1956 : résidu inexpliqué, « tombe du ciel ») vs PT ENDOGÈNE (il dépend des choix économiques — R&D, éducation, infrastructures — donc il s'auto-entretient).",
+          "SCHUMPETER : l'innovation vient de l'ENTREPRENEUR (preneur de risques). Les innovations majeures arrivent par GRAPPES et provoquent la DESTRUCTION CRÉATRICE (le nouveau détruit l'ancien) → cycles : expansion, ralentissement, dépression, reprise. Le PT crée aussi des INÉGALITÉS : il favorise le capital et les travailleurs qualifiés, au détriment des emplois peu qualifiés.",
+          "III. LA SOUTENABILITÉ. La croissance est difficilement soutenable : externalités négatives (pollution, déforestation, réchauffement — Rapport Meadows, 1972). Soutenabilité FAIBLE : le capital technologique peut remplacer le capital naturel (l'innovation repoussera les limites). Soutenabilité FORTE : le capital naturel est irremplaçable → il faut limiter la production et protéger les biens communs (principe de précaution)."
+        ],
+        flashcards:[
+          ["Croissance économique ?","Augmentation soutenue et durable de la production de richesses, mesurée par la hausse du PIB."],
+          ["PIB : définition ?","Produit Intérieur Brut = somme des valeurs ajoutées (VA) créées dans un pays sur un an."],
+          ["Comment calcule-t-on la Valeur Ajoutée ?","VA = Chiffre d'affaires (CA) − Consommations intermédiaires (CI)."],
+          ["PIB nominal vs PIB réel ?","Nominal = aux prix courants (inclut l'inflation). Réel = corrigé de l'inflation. Croissance réelle = croissance nominale − inflation."],
+          ["À quoi sert le PIB en PPA ?","La parité de pouvoir d'achat neutralise les différences de prix entre pays → permet de comparer les niveaux de vie."],
+          ["3 limites du PIB ?","Il ignore l'économie souterraine et le travail domestique, et compte positivement des activités nuisibles (externalités négatives)."],
+          ["Croissance extensive vs intensive ?","Extensive = plus de QUANTITÉ de facteurs (L, K). Intensive = plus d'EFFICACITÉ des facteurs (hausse de la PGF, progrès technique)."],
+          ["Que mesure la PGF ?","La Productivité Globale des Facteurs : produire plus avec la même quantité de facteurs → reflète le progrès technique."],
+          ["Progrès technique ?","Ensemble des innovations permettant de produire plus avec la même quantité de travail et de capital."],
+          ["Les 3 types d'innovation ?","Innovation de produit, de procédé, et d'organisation (du travail)."],
+          ["PT exogène vs endogène ?","Exogène (Solow, 1956) : résidu inexpliqué, extérieur. Endogène : dépend des choix économiques (R&D, éducation) → s'auto-entretient."],
+          ["Schumpeter : la destruction créatrice ?","Les innovations majeures (par grappes) détruisent les anciennes activités tout en créant les nouvelles ; l'entrepreneur en est le moteur."],
+          ["Les 4 phases du cycle économique ?","Expansion → ralentissement → dépression → reprise."],
+          ["Soutenabilité faible vs forte ?","Faible : le capital technique peut remplacer le capital naturel (l'innovation sauve). Forte : le capital naturel est irremplaçable → il faut limiter la croissance."],
+          ["Rapport Meadows (1972) ?","Rapport alertant sur les limites écologiques de la croissance (« Halte à la croissance ? »)."]
+        ],
+        quiz:[
+          {q:"Le PIB se calcule comme…",opts:["la somme des chiffres d'affaires","la somme des valeurs ajoutées créées sur un an","le total des salaires","le nombre d'habitants"],a:1,why:"PIB = somme des VA ; et VA = CA − consommations intermédiaires."},
+          {q:"La Valeur Ajoutée est égale à…",opts:["CA + CI","CA − CI","CA × CI","CI − CA"],a:1,why:"VA = Chiffre d'affaires − Consommations intermédiaires."},
+          {q:"PIB nominal +3%, inflation 2,5% : la croissance réelle est de…",opts:["5,5%","3%","0,5%","2,5%"],a:2,why:"Croissance réelle = nominale − inflation = 3 − 2,5 = 0,5%."},
+          {q:"La croissance intensive repose sur…",opts:["plus de travailleurs","plus de machines","l'amélioration de l'efficacité des facteurs (PGF)","l'immigration"],a:2,why:"Intensive = gains de productivité (PGF) ; extensive = plus de facteurs."},
+          {q:"Pour Schumpeter, le moteur de l'innovation est…",opts:["l'État","l'entrepreneur, preneur de risques","le hasard","les consommateurs"],a:1,why:"L'entrepreneur « aventurier » prend des risques pour innover → destruction créatrice."},
+          {q:"Un progrès technique « endogène »…",opts:["tombe du ciel, inexpliqué","dépend des choix économiques (R&D, éducation)","n'existe pas","vient uniquement de l'étranger"],a:1,why:"Endogène = il dépend des investissements et décisions des agents, donc s'auto-entretient."},
+          {q:"La soutenabilité FORTE considère que…",opts:["l'innovation remplacera la nature","le capital naturel est irremplaçable","la croissance n'a pas de limite","le PIB doit toujours monter"],a:1,why:"Soutenabilité forte : le capital naturel ne peut être remplacé → il faut le préserver."}
+        ]
+      },
+      {
+        id:"ses-defaillances-marche",
+        title:"Les défaillances du marché",
+        date:"Éco · Chapitre 1 (suite)",
+        summary:[
+          "Une DÉFAILLANCE du marché = une situation où le marché n'atteint pas un équilibre satisfaisant (mauvaise coordination, pas de solution efficace). Quatre grands cas : externalités, biens collectifs, biens communs, asymétries d'information. L'intervention des pouvoirs publics devient alors nécessaire.",
+          "1. LES EXTERNALITÉS. Effet (positif ou négatif) de l'action d'un agent sur d'autres, SANS compensation financière. Externalité NÉGATIVE = coût externe (ex : pollution) : l'agent n'est pas sanctionné → surproduction. Externalité POSITIVE = bénéfice non récompensé (ex : une innovation profite aux concurrents) → sous-production (théorie du passager clandestin : chacun attend que l'autre agisse).",
+          "Intervention publique (externalités) : TAXER les externalités négatives (ex : taxe carbone), SUBVENTIONNER ou rendre obligatoire les positives (ex : vaccination), réglementer, protéger via droits de propriété / brevets. Objectif = INTERNALISER l'externalité (lui donner un prix pour qu'elle entre dans le calcul économique).",
+          "2. LES BIENS COLLECTIFS (ou publics) = NON-RIVALITÉ (plusieurs peuvent consommer en même temps) + NON-EXCLUSION (on ne peut empêcher personne d'en profiter). Ex : l'air, l'éclairage public, la défense. Marché défaillant (passager clandestin : personne ne veut payer) → financés par l'impôt.",
+          "3. LES BIENS COMMUNS = NON-EXCLUSION mais RIVALITÉ (ex : la pêche, l'eau). Risque de SUREXPLOITATION (« tragédie des communs ») : libres d'accès, ils sont surconsommés jusqu'à disparition. Solutions : réglementation (quotas de pêche, traités) ou privatisation. Typologie : non-rival + non-exclu = bien collectif ; rival + non-exclu = bien commun ; non-rival + exclu = bien de club ; rival + exclu = bien privé.",
+          "4. LES ASYMÉTRIES D'INFORMATION = un agent en sait plus que l'autre sur le produit. Deux cas : l'ALÉA MORAL (un agent change de comportement car il est couvert — ex : assuré qui prend plus de risques) et la SÉLECTION ADVERSE / anti-sélection (doute sur la qualité → les bons produits fuient, « les mauvais chassent les bons », ex : voitures d'occasion). Solutions : labels, diplômes, contrôles, garanties, franchises."
+        ],
+        flashcards:[
+          ["Une défaillance du marché ?","Une situation où le marché n'atteint pas un équilibre satisfaisant (mauvaise coordination, pas de solution efficace)."],
+          ["Les 4 grandes défaillances du marché ?","Les externalités, les biens collectifs, les biens communs, et les asymétries d'information."],
+          ["Une externalité ?","Effet de l'action d'un agent sur d'autres, sans compensation financière (négative = coût subi, positive = bénéfice non payé)."],
+          ["Externalité négative : effet sur le marché ?","Pas de sanction pour l'agent → surproduction (ex : pollution). On corrige en la taxant (internalisation)."],
+          ["Externalité positive + passager clandestin ?","Bénéfice non récompensé (ex : innovation) → sous-production, car chacun attend que l'autre agisse (free rider)."],
+          ["« Internaliser » une externalité ?","Lui donner un prix (taxe ou subvention) pour qu'elle entre dans le calcul économique des agents."],
+          ["Bien collectif : 2 caractéristiques ?","Non-rivalité (plusieurs le consomment à la fois) + non-exclusion (on ne peut empêcher personne). Ex : l'air, la défense."],
+          ["Bien commun ?","Non-exclusion MAIS rivalité (ex : la pêche, l'eau) → risque de surexploitation (tragédie des communs)."],
+          ["Les 4 types de biens (rivalité × exclusion) ?","Collectif (non-rival, non-exclu), commun (rival, non-exclu), de club (non-rival, exclu), privé (rival, exclu)."],
+          ["Asymétrie d'information ?","Un des deux agents de l'échange en sait plus que l'autre sur le produit ou sur lui-même."],
+          ["Aléa moral vs sélection adverse ?","Aléa moral = comportement qui change une fois couvert (assuré imprudent). Sélection adverse = doute sur la qualité → « les mauvais chassent les bons » (voiture d'occasion)."],
+          ["Comment corriger les asymétries d'information ?","Labels, diplômes, contrôles obligatoires, garanties, franchises, délai de rétractation."]
+        ],
+        quiz:[
+          {q:"Une externalité négative provoque…",opts:["une sous-production","une surproduction","un équilibre parfait","une baisse des prix"],a:1,why:"L'agent n'est pas sanctionné pour le coût qu'il impose → il produit trop (ex : pollution)."},
+          {q:"Pour corriger une externalité négative, l'État peut…",opts:["la subventionner","la taxer","l'ignorer","l'encourager"],a:1,why:"On la taxe pour l'internaliser ; on subventionne au contraire les externalités positives."},
+          {q:"Un bien collectif se définit par…",opts:["rivalité + exclusion","non-rivalité + non-exclusion","rivalité + non-exclusion","non-rivalité + exclusion"],a:1,why:"Non-rivalité ET non-exclusion (ex : l'air, la défense) → le marché est défaillant."},
+          {q:"La pêche est un exemple de…",opts:["bien privé","bien de club","bien commun","bien collectif"],a:2,why:"Non-exclusion mais rivalité → bien commun, menacé de surexploitation."},
+          {q:"« Les mauvais produits chassent les bons » décrit…",opts:["l'aléa moral","la sélection adverse","une externalité positive","un bien de club"],a:1,why:"Sélection adverse : le doute sur la qualité fait fuir les bons vendeurs (ex : voitures d'occasion)."},
+          {q:"Un assuré qui prend plus de risques parce qu'il est couvert, c'est…",opts:["la sélection adverse","l'aléa moral","une externalité positive","un bien commun"],a:1,why:"Aléa moral : le comportement change une fois le risque couvert."}
+        ]
+      },
+      {
+        id:"ses-structure-sociale-classes",
+        title:"La structure sociale et les classes",
+        date:"Socio · Chapitre 2",
+        summary:[
+          "La structure de la société française = l'ensemble des GROUPES SOCIAUX qui la composent (ouvriers, employés, cadres, agriculteurs…). Le critère principal de classement est la PROFESSION (avec le diplôme / niveau d'études). Outil de mesure : les PCS (Professions et Catégories Socioprofessionnelles), la grille de l'INSEE qui classe la population.",
+          "I. UN ESPACE SOCIAL HIÉRARCHISÉ. La profession détermine la position sociale : accès aux ressources (revenus, patrimoine, réseau), conditions de travail et prestige social. D'autres facteurs structurent les positions : le genre (femmes plus souvent en emplois précaires, moins payées, plus de tâches domestiques), l'âge (jeunes et +55 ans plus exposés au chômage), la position dans le cycle de vie, et les discriminations (lieu de résidence, nom, couleur de peau, religion…).",
+          "II. LES ÉVOLUTIONS DE LA STRUCTURE SOCIOPROFESSIONNELLE (France). La population active est de plus en plus : SALARIÉE et TERTIARISÉE (≈83% de salariés, essor des services), QUALIFIÉE (besoin de diplômes, formation tout au long de la vie), et FÉMINISÉE (les femmes ≈48,5% de l'emploi en 2020). Mais des inégalités demeurent : à diplôme égal, écarts hommes/femmes et stéréotypes persistants.",
+          "III. LES ANALYSES DE LA STRATIFICATION — deux auteurs clés. MARX (1818-1883) : les classes se définissent par la place dans le MODE DE PRODUCTION. Deux classes antagonistes : la BOURGEOISIE (propriétaire du capital) et le PROLÉTARIAT (qui ne possède que sa force de travail). La prise de conscience fait passer d'une « classe EN SOI » (objective, divisée) à une « classe POUR SOI » (consciente d'elle-même) → conscience de classe → LUTTE DES CLASSES.",
+          "WEBER (1864-1920) nuance Marx : la stratification a TROIS dimensions indépendantes — ÉCONOMIQUE (richesse), SOCIALE (prestige, statut) et POLITIQUE (pouvoir). Pour Weber, une classe n'implique pas forcément un sentiment commun ni une lutte : c'est un agrégat d'individus partageant une même situation (mêmes chances d'accès aux ressources).",
+          "IV. PEUT-ON ENCORE PARLER DE CLASSES ? Thèse du DÉCLIN : jusqu'aux années 1980, baisse des inégalités, essor de la classe moyenne, « MOYENNISATION » de la société (Mendras) ; déclin de la conscience de classe et INDIVIDUALISATION (les inégalités sont vues comme la responsabilité de l'individu, pas de la société). Thèse du MAINTIEN : depuis les années 1980-90 les inégalités repartent, la classe moyenne s'appauvrit, et les plus aisés gardent une forte conscience de classe (défense de leurs privilèges). La notion reste pertinente mais plus complexe (multitude de groupes)."
+        ],
+        flashcards:[
+          ["Quel est le critère principal de classement social en France ?","La PROFESSION (avec le diplôme / niveau d'études) ; mesurée par les PCS."],
+          ["Les PCS, c'est quoi ?","Professions et Catégories Socioprofessionnelles : la grille de l'INSEE qui classe la population selon la profession."],
+          ["Quels facteurs (hors profession) structurent les positions sociales ?","Le genre, l'âge, la position dans le cycle de vie, et les discriminations (origine, lieu, nom, couleur de peau, religion…)."],
+          ["Les 3 grandes évolutions de la population active française ?","De plus en plus salariée et tertiarisée, qualifiée, et féminisée (femmes ≈48,5% de l'emploi en 2020)."],
+          ["Marx : comment définit-il les classes ?","Par la place dans le mode de production : la bourgeoisie (propriétaire du capital) contre le prolétariat (force de travail)."],
+          ["Classe « en soi » vs classe « pour soi » (Marx) ?","En soi = classe objective mais divisée. Pour soi = classe consciente d'elle-même → conscience de classe et lutte des classes."],
+          ["Weber : les 3 dimensions de la stratification ?","Économique (richesse), sociale (prestige/statut), politique (pouvoir) — indépendantes les unes des autres."],
+          ["En quoi Weber nuance-t-il Marx ?","Pour Weber, une classe n'implique pas forcément un sentiment commun ni une lutte ; c'est un agrégat d'individus en situation semblable."],
+          ["La « moyennisation » de la société ?","Thèse (Mendras) : réduction des écarts et essor d'une vaste classe moyenne, surtout jusqu'aux années 1980."],
+          ["L'individualisation et son effet ?","Depuis ~1970, on explique les inégalités par la responsabilité de l'individu (échec personnel) → affaiblissement de la conscience de classe."],
+          ["Un argument du MAINTIEN des classes aujourd'hui ?","Les inégalités repartent depuis 1980-90, la classe moyenne s'appauvrit, et les plus aisés gardent une forte conscience de classe."]
+        ],
+        quiz:[
+          {q:"Le critère principal de classement social en France est…",opts:["l'âge","la profession","le lieu de naissance","la taille"],a:1,why:"La profession (via les PCS) est le critère central ; le diplôme compte aussi."},
+          {q:"Les PCS sont…",opts:["un impôt","la grille de classement des professions (INSEE)","un syndicat","un diplôme"],a:1,why:"Professions et Catégories Socioprofessionnelles : la nomenclature de l'INSEE."},
+          {q:"Pour Marx, les deux classes antagonistes sont…",opts:["riches et pauvres","la bourgeoisie et le prolétariat","cadres et employés","jeunes et vieux"],a:1,why:"Définies par le mode de production : bourgeoisie (capital) vs prolétariat (force de travail)."},
+          {q:"Une « classe pour soi » (Marx), c'est…",opts:["une classe sans histoire","une classe consciente d'elle-même et qui lutte","les plus riches","une classe imaginaire"],a:1,why:"La prise de conscience transforme la classe « en soi » (objective) en classe « pour soi »."},
+          {q:"Pour Weber, la stratification a…",opts:["une seule dimension (économique)","deux dimensions","trois dimensions (économique, sociale, politique)","aucune dimension"],a:2,why:"Weber distingue l'économique (richesse), le social (prestige) et le politique (pouvoir)."},
+          {q:"La « moyennisation » désigne…",opts:["la hausse des inégalités","l'essor d'une vaste classe moyenne et la réduction des écarts","la disparition de la classe moyenne","la fin du salariat"],a:1,why:"Un rapprochement des modes de vie et une grande classe moyenne (surtout jusqu'aux années 1980)."},
+          {q:"L'individualisation fait voir les inégalités comme…",opts:["la faute de la société","la responsabilité de l'individu","naturelles et justes","inexistantes"],a:1,why:"On attribue l'échec à l'individu plutôt qu'aux structures → déclin de la conscience de classe."}
+        ]
+      }
+    ],
     anglais:[
       {
         id:"anglais-co-methodo",
