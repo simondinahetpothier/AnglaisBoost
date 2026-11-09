@@ -129,32 +129,32 @@
 
   /* ============ ENGLISH MISSION (rafraîchi chaque jour par la routine cloud) ============ */
   const MISSION = {
-    date:"2026-11-05",
+    date:"2026-11-09",
     items:[
       { area:"Business", emoji:"💼",
-        headline:"Vistra buys Cogentrix power plants for $4 billion",
-        blurb:"US energy company Vistra is buying ten gas power plants from Cogentrix for about four billion dollars. Regulators have now cleared the deal, so it should close very soon. The deal shows how much extra electricity is needed to power new AI data centers.",
-        react:"Why do you think companies are investing so much money in power plants right now? Answer in 1-2 sentences.",
-        model:"I think it's because AI data centers use a huge amount of electricity, so energy companies want to secure more power as fast as possible.",
-        phrases:[["to close a deal","conclure un accord"],["a power plant","une centrale électrique"],["to drive demand","stimuler la demande"],["regulatory approval","l'autorisation des autorités"]],
-        say:["The deal is worth four billion dollars.","Demand for electricity keeps rising."],
-        fix:{wrong:"I assisted to the meeting about the deal.", right:"I attended the meeting about the deal.", why:"En anglais, « to assist » veut dire « aider », pas « participer ». Pour « assister à » une réunion, on dit « to attend », pas « to assist to »."} },
+        headline:"Marvell agrees to buy Lumentum for $115 billion",
+        blurb:"Chipmaker Marvell is buying Lumentum in an all-stock deal worth about one hundred fifteen billion dollars. Lumentum makes lasers and optical parts that connect AI chips together very fast. The deal is one of the biggest tech acquisitions of the year, but it still needs approval from regulators and shareholders.",
+        react:"Why do you think a chipmaker wants to buy an optics company? Answer in 1-2 sentences.",
+        model:"I think it's because AI data centers need extremely fast connections between chips, and Lumentum's optical technology can help with that.",
+        phrases:[["an all-stock deal","un accord payé en actions"],["to close a deal","finaliser un accord"],["regulatory approval","l'autorisation des autorités"],["a chipmaker","un fabricant de puces"]],
+        say:["This is one of the biggest tech deals of the year.","The deal still needs shareholder approval."],
+        fix:{wrong:"I am agree with this merger.", right:"I agree with this merger.", why:"En français on dit « je suis d'accord », mais en anglais « agree » est un verbe à part entière : on dit « I agree », jamais « I am agree »."} },
       { area:"Création de contenu", emoji:"🎬",
-        headline:"Instagram offers YouTubers up to $500,000",
-        blurb:"Instagram is reportedly paying some YouTube creators up to five hundred thousand dollars to post long videos on its new Features format. Creators don't have to leave YouTube; they just post the same video on both apps the same day. Unlike YouTube, Instagram does not share ad revenue with creators yet.",
-        react:"Would you make a long video for Instagram if they paid you well, even without ad revenue? Answer in 1-2 sentences.",
-        model:"I probably would, because the money is good and I could still keep posting on YouTube at the same time.",
-        phrases:[["a long-form video","une vidéo longue"],["ad revenue","les revenus publicitaires"],["a six-figure deal","un contrat à six chiffres"],["to go viral","devenir viral"]],
-        say:["Instagram wants to compete with YouTube.","Some creators got six-figure offers."],
-        fix:{wrong:"I want to do a video about this news.", right:"I want to make a video about this news.", why:"En français, « faire une vidéo » se traduit par « make a video », pas « do a video » : « do » s'utilise pour des activités générales, « make » pour créer quelque chose de concret."} },
+        headline:"TikTok launches a standalone shopping app in Asia",
+        blurb:"TikTok has quietly launched a new app called TikTok Shop in Singapore, Malaysia, Thailand and the Philippines. Users can buy products through short videos and livestreams without opening the main TikTok app. The company wants to compete with giants like Amazon, Shein and Temu.",
+        react:"Would you buy a product after watching a short video about it? Answer in 1-2 sentences.",
+        model:"Yes, I probably would, especially if the creator seemed honest and the price looked good.",
+        phrases:[["a standalone app","une application indépendante"],["a livestream","une diffusion en direct"],["to compete with","faire concurrence à"],["to roll out (a feature)","déployer (une fonctionnalité)"]],
+        say:["The app is not available in the US yet.","Short videos can sell a lot of products."],
+        fix:{wrong:"I bought it because of a video I have seen on TikTok.", right:"I bought it because of a video I saw on TikTok.", why:"Pour une action terminée à un moment précis du passé (ex : un jour donné), on utilise le prétérit simple (I saw), pas le present perfect (I have seen), qui s'utilise sans moment précis."} },
       { area:"Gaming", emoji:"🎮",
-        headline:"Zelda: Ocarina of Time remake launches on Switch 2",
-        blurb:"Nintendo's remake of The Legend of Zelda: Ocarina of Time came out today, exclusively on Switch 2. It celebrates the series' fortieth anniversary with better graphics and a smoother 60 fps. Early hands-on previews already call it one of the best ways to play this classic game.",
-        react:"Do you prefer playing remakes of old classics or brand new games? Answer in 1-2 sentences.",
-        model:"Honestly, I love remakes because they let me enjoy old stories with modern graphics, but I also want Nintendo to keep making new games too.",
-        phrases:[["a remake","un remake"],["to run smoothly","fonctionner sans accroc"],["a classic game","un jeu culte"],["a hands-on preview","une avant-première jouable"]],
-        say:["The game runs at sixty frames per second.","This remake celebrates forty years of Zelda."],
-        fix:{wrong:"I play to Zelda every weekend.", right:"I play Zelda every weekend.", why:"En français on dit « jouer À un jeu », mais en anglais « play » s'utilise sans préposition devant le nom du jeu."} }
+        headline:"GTA 6 pre-loads start tomorrow, November 10",
+        blurb:"Players on PS5 and Xbox Series X|S can start downloading Grand Theft Auto VI tomorrow, even though the game only unlocks on November 19. The file is huge: up to two hundred twelve gigabytes of free space is needed. Rockstar moved the pre-load date two days earlier than first planned.",
+        react:"Do you usually pre-load big games in advance, or wait until release day? Answer in 1-2 sentences.",
+        model:"I always pre-load big games in advance because my internet connection is slow and I don't want to wait on release day.",
+        phrases:[["to pre-load a game","précharger un jeu"],["free space (on a disk)","espace libre (sur un disque)"],["to unlock (a game)","débloquer (un jeu)"],["a release date","une date de sortie"]],
+        say:["The file needs two hundred twelve gigabytes of free space.","The game unlocks on November nineteenth."],
+        fix:{wrong:"I am waiting the release of GTA 6.", right:"I am waiting for the release of GTA 6.", why:"Le verbe « to wait » se construit toujours avec la préposition « for » devant son complément : « wait for something », jamais « wait something »."} }
     ]
   };
 
@@ -162,7 +162,205 @@
      Chaque chapitre : {id, title, date, summary:[paragraphes], flashcards:[[recto,verso]], quiz:[{q,opts,a,why}]}
      (summary / flashcards / quiz sont tous optionnels) */
   const COURSES = {
-    maths:[], es:[], espagnol:[], viedeclasse:[],
+    es:[], espagnol:[], viedeclasse:[],
+    maths:[
+      {
+        id:"maths-limites-definitions",
+        title:"Limites : définitions & limites usuelles",
+        date:"Spé Maths · Limites 1",
+        summary:[
+          "Il existe 4 familles de limites, selon que x tend vers l'infini ou vers un réel a, et que f(x) tend vers l'infini ou vers un réel l.",
+          "LIMITE INFINIE À L'INFINI : lim(x→+∞) f(x) = +∞ signifie que, quel que soit le niveau M qu'on se fixe, il existe un moment x₀ à partir duquel la courbe reste au-dessus de M. Rigueur : pour tout M réel, il existe x₀ tel que x>x₀ ⟹ f(x)>M.",
+          "LIMITE FINIE À L'INFINI + ASYMPTOTE HORIZONTALE : lim(x→+∞) f(x) = l signifie que f(x) se rapproche autant qu'on veut de l (pour tout ε>0, à partir d'un x₀, f(x) est dans [l−ε ; l+ε]). La courbe admet alors une ASYMPTOTE HORIZONTALE d'équation y = l.",
+          "LIMITE INFINIE EN UN POINT + ASYMPTOTE VERTICALE : lim(x→a) f(x) = +∞ signifie que f(x) devient aussi grand qu'on veut quand x se rapproche de a. La courbe admet une ASYMPTOTE VERTICALE d'équation x = a. On distingue la limite à gauche (x<a) et à droite (x>a).",
+          "LIMITE FINIE EN UN POINT : lim(x→a) f(x) = l. Si les limites à gauche et à droite en a sont ÉGALES, alors f admet une limite en a ; si de plus f est définie en a, cette limite vaut f(a).",
+          "LIMITES DE RÉFÉRENCE (à connaître) : lim(x→+∞) xⁿ = +∞. Quand x→−∞ : xⁿ → +∞ si n est pair, −∞ si n est impair. lim(x→+∞) √x = +∞. lim(x→+∞) eˣ = +∞ et lim(x→−∞) eˣ = 0. lim(x→+∞) 1/x = 0⁺ et lim(x→−∞) 1/x = 0⁻."
+        ],
+        flashcards:[
+          ["Les 4 familles de limites ?","Limite infinie à l'infini, limite finie à l'infini, limite infinie en un point, limite finie en un point."],
+          ["lim(x→+∞) f(x) = l : interprétation graphique ?","La courbe admet une asymptote HORIZONTALE d'équation y = l."],
+          ["lim(x→a) f(x) = ±∞ : interprétation graphique ?","La courbe admet une asymptote VERTICALE d'équation x = a."],
+          ["Définition rigoureuse de lim(x→+∞) f(x) = +∞ ?","Pour tout réel M, il existe x₀ tel que pour x>x₀, on a f(x)>M."],
+          ["lim(x→+∞) xⁿ = ?","+∞ (pour tout entier n ≥ 1)."],
+          ["lim(x→−∞) xⁿ selon n ?","+∞ si n est pair, −∞ si n est impair."],
+          ["lim(x→+∞) eˣ et lim(x→−∞) eˣ ?","+∞ et 0."],
+          ["lim(x→+∞) 1/x et lim(x→−∞) 1/x ?","0⁺ (par valeurs positives) et 0⁻ (par valeurs négatives)."],
+          ["Quand f admet-elle une limite en a ?","Quand les limites à gauche et à droite en a sont égales."],
+          ["lim(x→+∞) √x = ?","+∞."]
+        ],
+        quiz:[
+          {q:"lim(x→+∞) f(x) = 3 : la courbe admet…",opts:["une asymptote verticale x=3","une asymptote horizontale y=3","un maximum en 3","aucune asymptote"],a:1,why:"Limite finie l à l'infini ⟹ asymptote horizontale y = l."},
+          {q:"lim(x→2) f(x) = +∞ : la courbe admet…",opts:["une asymptote horizontale y=2","une asymptote verticale x=2","un minimum","une limite finie"],a:1,why:"Limite infinie en a ⟹ asymptote verticale x = a."},
+          {q:"lim(x→−∞) x³ = ?",opts:["+∞","−∞","0","3"],a:1,why:"xⁿ avec n impair tend vers −∞ quand x→−∞."},
+          {q:"lim(x→−∞) eˣ = ?",opts:["+∞","0","1","−∞"],a:1,why:"L'exponentielle tend vers 0 en −∞."},
+          {q:"lim(x→+∞) 1/x = ?",opts:["+∞","0⁺","1","−∞"],a:1,why:"1/x tend vers 0 par valeurs positives (noté 0⁺)."},
+          {q:"Pour que f ait une limite en a, il faut que…",opts:["f soit croissante","les limites à gauche et à droite soient égales","f(a) existe","f soit paire"],a:1,why:"Limite en a ⟺ limites à gauche et à droite égales."}
+        ]
+      },
+      {
+        id:"maths-limites-calcul",
+        title:"Limites : opérations & calcul",
+        date:"Spé Maths · Limites 2",
+        summary:[
+          "OPÉRATIONS SUR LES LIMITES : on combine les limites comme des nombres, SAUF dans les cas de FORMES INDÉTERMINÉES (F.I.) qui exigent une étude spéciale. Les 4 F.I. : « ∞ − ∞ », « 0 × ∞ », « 0/0 », « ∞/∞ ».",
+          "Détail : pour une SOMME, la seule F.I. est (+∞)+(−∞). Pour un PRODUIT, la seule F.I. est 0 × (±∞). Pour un QUOTIENT, les F.I. sont 0/0 et ∞/∞. Pour 1/f : si f→0⁺ alors 1/f→+∞ ; si f→±∞ alors 1/f→0.",
+          "MÉTHODE 1 — fonctions usuelles : appliquer les théorèmes d'opérations. Ex : lim(x→+∞) 3x²+2x−7 = +∞ (somme de limites tendant vers +∞).",
+          "MÉTHODE 2 — fonction composée : g∘f(x) = g(f(x)) (« g rond f »). On calcule de l'intérieur vers l'extérieur. Ex : lim(x→−∞) √(1−x) : comme 1−x→+∞ et √X→+∞, la limite vaut +∞.",
+          "MÉTHODE 3 — lever une F.I. : pour un POLYNÔME, on factorise par le terme de plus haut degré. Pour une FONCTION RATIONNELLE, on factorise numérateur et dénominateur par leur terme de plus haut degré, puis on simplifie. Règle rapide : à l'infini, un polynôme (ou une fonction rationnelle) a la même limite que son/ses terme(s) de plus haut degré.",
+          "LIMITES AUX POINTS QUI ANNULENT LE DÉNOMINATEUR : si le numérateur ≠ 0, la limite est INFINIE ; on étudie alors le SIGNE du dénominateur (à gauche puis à droite) pour conclure +∞ ou −∞. Ex : lim(x→2, x<2) (2x+5)/(2−x) = 9/0⁺ = +∞."
+        ],
+        flashcards:[
+          ["Les 4 formes indéterminées (F.I.) ?","« ∞ − ∞ », « 0 × ∞ », « 0/0 », « ∞/∞ »."],
+          ["Lever une F.I. pour un polynôme ?","On factorise par le terme de plus haut degré."],
+          ["Lever une F.I. pour une fonction rationnelle ?","On factorise numérateur et dénominateur par leur terme de plus haut degré, puis on simplifie."],
+          ["Limite à l'infini d'un polynôme : règle rapide ?","Elle est égale à la limite de son terme de plus haut degré."],
+          ["Fonction composée g∘f : définition ?","g∘f(x) = g(f(x)) (« g rond f »)."],
+          ["1/f quand f→0⁺ ? quand f→+∞ ?","1/f → +∞ ; et 1/f → 0."],
+          ["Au point qui annule le dénominateur (num ≠ 0) ?","La limite est infinie : on étudie le signe du dénominateur à gauche/à droite pour trancher +∞ ou −∞."],
+          ["La seule F.I. pour une somme ?","(+∞) + (−∞)."],
+          ["La seule F.I. pour un produit ?","0 × (±∞)."]
+        ],
+        quiz:[
+          {q:"Laquelle est une forme indéterminée ?",opts:["(+∞)+(+∞)","0 × (+∞)","2 × (+∞)","(+∞)×(+∞)"],a:1,why:"0 × ∞ est une F.I. ; les autres se concluent directement."},
+          {q:"lim(x→+∞) (3x² + 2x − 7) = ?",opts:["−∞","+∞","0","3"],a:1,why:"Le terme dominant 3x² tend vers +∞."},
+          {q:"Pour lever une F.I. sur un polynôme, on factorise par…",opts:["le terme constant","le terme de plus bas degré","le terme de plus haut degré","x"],a:2,why:"Le terme de plus haut degré impose la limite."},
+          {q:"g∘f(x) est égal à…",opts:["f(g(x))","g(f(x))","f(x)×g(x)","g(x)−f(x)"],a:1,why:"g∘f(x) = g(f(x)), « g rond f »."},
+          {q:"Si f(x)→0⁺, alors 1/f(x) →",opts:["0","+∞","−∞","1"],a:1,why:"L'inverse d'une quantité positive qui tend vers 0 tend vers +∞."},
+          {q:"Au point a qui annule le dénominateur (num ≠ 0) : la limite est… et on étudie…",opts:["finie ; rien","infinie ; le signe du dénominateur","nulle ; le numérateur","1 ; la dérivée"],a:1,why:"Limite infinie : le signe du dénominateur (gauche/droite) donne +∞ ou −∞."}
+        ]
+      },
+      {
+        id:"maths-limites-comparaison",
+        title:"Limites : comparaison & encadrement",
+        date:"Spé Maths · Limites 3",
+        summary:[
+          "THÉORÈME DE COMPARAISON : si f(x) ≤ g(x) pour x assez grand, alors : si lim f = +∞ alors lim g = +∞ ; et si lim g = −∞ alors lim f = −∞. Idée : si la plus petite s'envole vers +∞, la plus grande aussi ; si la plus grande plonge vers −∞, la plus petite aussi.",
+          "THÉORÈME D'ENCADREMENT (« des gendarmes ») : si f(x) ≤ g(x) ≤ h(x) et si lim f = lim h = L (L un réel), alors lim g = L. On encadre la fonction compliquée entre deux fonctions de même limite.",
+          "Ces théorèmes marchent aussi quand x→−∞ ou x→a. On s'en sert surtout quand il y a un cos(x) ou un sin(x) : ils n'ont pas de limite en l'infini mais sont bornés entre −1 et 1, ce qui empêche un calcul direct.",
+          "Exemple (comparaison) : lim(x→+∞) x³ + x·cos(x). Comme −1 ≤ cos(x) ≤ 1, on a x³ − x ≤ x³ + x·cos(x). Or x³ − x → +∞, donc par comparaison la limite est +∞.",
+          "Exemple (gendarmes) : lim(x→+∞) x·cos(x)/(x²+1). On encadre : −x/(x²+1) ≤ x·cos(x)/(x²+1) ≤ x/(x²+1). Les deux bornes tendent vers 0, donc par encadrement la limite est 0."
+        ],
+        flashcards:[
+          ["Théorème de comparaison (cas +∞) ?","Si f(x) ≤ g(x) et lim f = +∞, alors lim g = +∞."],
+          ["Théorème de comparaison (cas −∞) ?","Si f(x) ≤ g(x) et lim g = −∞, alors lim f = −∞."],
+          ["Théorème d'encadrement (« des gendarmes ») ?","Si f ≤ g ≤ h et lim f = lim h = L (réel), alors lim g = L."],
+          ["Quand utilise-t-on ces théorèmes ?","Surtout avec cos(x) ou sin(x), bornés entre −1 et 1, quand le calcul direct donne une F.I."],
+          ["Encadrement de cos(x) et sin(x) ?","−1 ≤ cos(x) ≤ 1 et −1 ≤ sin(x) ≤ 1."],
+          ["Pour les gendarmes, que doit valoir la limite commune de f et h ?","Un nombre réel L (fini) ; alors g tend aussi vers L."]
+        ],
+        quiz:[
+          {q:"Si f(x) ≤ g(x) pour x grand et lim f = +∞, alors…",opts:["lim g = −∞","lim g = +∞","lim g = 0","on ne peut rien dire"],a:1,why:"Comparaison : la plus grande s'envole aussi vers +∞."},
+          {q:"Le théorème des gendarmes conclut lim g = L lorsque…",opts:["f ≤ g et lim f = L","f ≤ g ≤ h et lim f = lim h = L","g ≤ h et lim h = +∞","f = g = h"],a:1,why:"Il faut encadrer g entre f et h de même limite finie L."},
+          {q:"Pourquoi encadrer quand il y a cos(x) ?",opts:["cos est croissant","cos(x) n'a pas de limite mais reste borné entre −1 et 1","cos(x) tend vers +∞","cos(x) = x"],a:1,why:"cos n'a pas de limite en +∞, mais il est borné : on peut encadrer."},
+          {q:"lim(x→+∞) x³ + x·cos(x) = ?",opts:["0","−∞","+∞","n'existe pas"],a:2,why:"x³ − x ≤ x³ + x·cos(x) et x³ − x → +∞, donc par comparaison +∞."},
+          {q:"lim(x→+∞) x·cos(x)/(x²+1) = ?",opts:["+∞","0","1","−1"],a:1,why:"Encadrée entre −x/(x²+1) et x/(x²+1), qui tendent vers 0."}
+        ]
+      },
+      {
+        id:"maths-exponentielle",
+        title:"La fonction exponentielle",
+        date:"Spé Maths · Exponentielle",
+        summary:[
+          "DÉFINITION : la fonction exponentielle exp est l'unique fonction dérivable telle que exp' = exp et exp(0) = 1 (solution de y' = y avec y(0) = 1). On note exp(x) = eˣ, avec e = exp(1) ≈ 2,718.",
+          "PROPRIÉTÉS (pour tous réels x, y et n entier) : eˣ > 0 (jamais nul) ; e^(x+y) = eˣ·eʸ ; e^(−x) = 1/eˣ ; e^(x−y) = eˣ/eʸ ; (eˣ)ⁿ = e^(nx) ; √(eˣ) = e^(x/2). Et e⁰ = 1.",
+          "VARIATIONS : exp est dérivable et STRICTEMENT CROISSANTE sur ℝ (car (eˣ)' = eˣ > 0). Conséquences : eˣ = eʸ ⟺ x = y ; eˣ > eʸ ⟺ x > y. Pour x<0 : 0<eˣ<1 ; pour x>0 : eˣ>1.",
+          "LIMITES : lim(x→−∞) eˣ = 0 (asymptote horizontale y = 0 en −∞) et lim(x→+∞) eˣ = +∞.",
+          "CROISSANCES COMPARÉES (crucial) : lim(x→+∞) eˣ/xⁿ = +∞ — l'exponentielle l'emporte sur toute puissance de x. Et lim(x→−∞) xⁿ·eˣ = 0. En particulier lim(x→+∞) eˣ/x = +∞ et lim(x→−∞) x·eˣ = 0."
+        ],
+        flashcards:[
+          ["Définition de la fonction exponentielle ?","L'unique fonction dérivable vérifiant exp' = exp et exp(0) = 1 (solution de y'=y, y(0)=1)."],
+          ["e^(x+y) = ?","eˣ × eʸ."],
+          ["e^(−x) = ?","1/eˣ."],
+          ["(eˣ)ⁿ = ?","e^(nx)."],
+          ["Sens de variation de exp ?","Strictement croissante sur ℝ (car sa dérivée eˣ > 0)."],
+          ["eˣ = eʸ ⟺ … / eˣ > eʸ ⟺ …","x = y / x > y."],
+          ["lim(x→−∞) eˣ et lim(x→+∞) eˣ ?","0 et +∞."],
+          ["Croissances comparées : lim(x→+∞) eˣ/xⁿ = ?","+∞ (l'exponentielle l'emporte sur toute puissance)."],
+          ["Croissances comparées : lim(x→−∞) xⁿ·eˣ = ?","0."],
+          ["Signe de eˣ ?","Toujours strictement positif (eˣ > 0 pour tout x)."]
+        ],
+        quiz:[
+          {q:"La fonction exp est la solution de…",opts:["y'' = y","y' = y et y(0)=1","y' = 1","y = x"],a:1,why:"exp' = exp avec exp(0)=1."},
+          {q:"e^(x+y) est égal à…",opts:["eˣ + eʸ","eˣ × eʸ","e^(xy)","eˣ − eʸ"],a:1,why:"Propriété fondamentale : e^(x+y) = eˣ·eʸ."},
+          {q:"La fonction exponentielle est…",opts:["décroissante","strictement croissante sur ℝ","constante","croissante puis décroissante"],a:1,why:"Sa dérivée est eˣ > 0, donc strictement croissante."},
+          {q:"lim(x→+∞) eˣ/x² = ?",opts:["0","1","+∞","−∞"],a:2,why:"Croissances comparées : eˣ l'emporte sur toute puissance de x."},
+          {q:"lim(x→−∞) eˣ = ?",opts:["+∞","0","1","−∞"],a:1,why:"L'exponentielle tend vers 0 en −∞ (asymptote y=0)."},
+          {q:"eˣ > eʸ équivaut à…",opts:["x < y","x > y","x = y","x = −y"],a:1,why:"exp strictement croissante : l'inégalité se conserve (x>y)."}
+        ]
+      },
+      {
+        id:"maths-continuite-tvi",
+        title:"Continuité, TVI & bijection",
+        date:"Spé Maths · Continuité",
+        summary:[
+          "CONTINUITÉ : f est continue en a si lim(x→a) f(x) = f(a). Elle est continue sur I si elle l'est en tout point de I. Géométriquement : on trace la courbe « sans lever le crayon ».",
+          "Propriété : les fonctions POLYNÔMES sont continues sur ℝ ; les fonctions inverse, racine, valeur absolue le sont sur leur ensemble de définition ; sommes, produits, quotients et composées de fonctions continues sont continues. Contre-exemple : la fonction partie entière E(x) n'est PAS continue aux entiers (saut : limites à gauche et à droite différentes).",
+          "DÉRIVABLE ⟹ CONTINUE : si f est dérivable en a, alors f est continue en a. ATTENTION : la réciproque est FAUSSE (ex : la valeur absolue est continue en 0 mais pas dérivable en 0).",
+          "THÉORÈME DES VALEURS INTERMÉDIAIRES (TVI) : si f est continue sur [a;b], alors pour tout réel k compris entre f(a) et f(b), l'équation f(x)=k admet AU MOINS une solution c dans [a;b].",
+          "THÉORÈME DE LA BIJECTION (corollaire du TVI) : si f est continue ET STRICTEMENT MONOTONE sur [a;b], alors pour tout k entre f(a) et f(b), l'équation f(x)=k admet UNE UNIQUE solution dans [a;b]. (Généralisable à un intervalle ouvert ou infini via les limites.)",
+          "ENCADRER / APPROCHER la solution : par BALAYAGE (calculatrice : on règle bornes et pas de plus en plus fins pour repérer le changement de signe) ou par DICHOTOMIE (on coupe l'intervalle en deux : m=(a+b)/2 ; si f(a)·f(m)<0 la racine est dans [a;m], sinon dans [m;b] ; on répète). Ex : pour x³−3x+1=0, on obtient 1,53 < c < 1,54."
+        ],
+        flashcards:[
+          ["f continue en a : définition ?","lim(x→a) f(x) = f(a)."],
+          ["Quelles fonctions sont continues sur ℝ ?","Les fonctions polynômes (et sommes/produits/quotients/composées de fonctions continues sur leur ensemble de définition)."],
+          ["Lien dérivabilité → continuité ?","Si f est dérivable en a, alors f est continue en a. La réciproque est FAUSSE."],
+          ["Contre-exemple « continue mais pas dérivable » ?","La valeur absolue : continue en 0 mais non dérivable en 0."],
+          ["Énoncé du TVI ?","Si f est continue sur [a;b], pour tout k entre f(a) et f(b), l'équation f(x)=k a au moins une solution dans [a;b]."],
+          ["Bijection : hypothèse en plus du TVI ?","f doit être STRICTEMENT MONOTONE (en plus de continue) → la solution devient UNIQUE."],
+          ["La fonction partie entière E(x) est-elle continue ?","Non : discontinue à chaque entier (limites à gauche et à droite différentes)."],
+          ["Principe de la dichotomie ?","m=(a+b)/2 ; si f(a)·f(m)<0 la racine est dans [a;m] (b=m), sinon dans [m;b] (a=m) ; on répète jusqu'à la précision voulue."],
+          ["Deux méthodes pour encadrer la solution de f(x)=0 ?","Le balayage (calculatrice) et la dichotomie."]
+        ],
+        quiz:[
+          {q:"f est continue en a si…",opts:["f(a)=0","lim(x→a) f(x) = f(a)","f est croissante","f(a) existe"],a:1,why:"Définition : la limite en a vaut f(a)."},
+          {q:"« f dérivable en a » implique…",opts:["f continue en a","rien","f(a)=0","f constante"],a:0,why:"Dérivable ⟹ continue (mais la réciproque est fausse)."},
+          {q:"La réciproque « continue ⟹ dérivable » est…",opts:["vraie","fausse (ex : |x| en 0)","toujours vraie","indécidable"],a:1,why:"La valeur absolue est continue en 0 mais pas dérivable."},
+          {q:"Le TVI garantit…",opts:["une unique solution","au moins une solution à f(x)=k","aucune solution","exactement deux solutions"],a:1,why:"TVI : au moins une solution (continuité seule)."},
+          {q:"Pour une UNIQUE solution, f doit en plus être…",opts:["paire","strictement monotone","positive","dérivable deux fois"],a:1,why:"Bijection : continue + strictement monotone ⟹ solution unique."},
+          {q:"Dans la dichotomie, à chaque étape on pose…",opts:["m = a·b","m = (a+b)/2","m = b−a","m = a"],a:1,why:"On prend le milieu m=(a+b)/2 et on garde la moitié qui change de signe."},
+          {q:"La fonction partie entière E(x) est…",opts:["continue sur ℝ","discontinue à chaque entier","dérivable partout","croissante et continue"],a:1,why:"Saut à chaque entier : limites à gauche/droite différentes."}
+        ]
+      },
+      {
+        id:"maths-derivation",
+        title:"Dérivation (rappels & approfondissements)",
+        date:"Spé Maths · Dérivation",
+        summary:[
+          "NOMBRE DÉRIVÉ. Le taux de variation de f entre a et b est (f(b)−f(a))/(b−a) (coefficient directeur de la corde). f est dérivable en a si ce taux, entre a et a+h, tend vers un unique réel quand h→0 ; ce réel est le NOMBRE DÉRIVÉ : f'(a) = lim(h→0) (f(a+h)−f(a))/h.",
+          "TANGENTE. La tangente à Cf en A(a ; f(a)) est la droite passant par A et de coefficient directeur f'(a). Son équation : y = f'(a)(x−a) + f(a).",
+          "DÉRIVÉES USUELLES : (k)' = 0 ; (mx+p)' = m ; (xⁿ)' = n·x^(n−1) ; (1/x)' = −1/x² ; (√x)' = 1/(2√x) ; (sin x)' = cos x ; (cos x)' = −sin x ; (eˣ)' = eˣ.",
+          "OPÉRATIONS : (k·u)' = k·u' ; (u+v)' = u'+v' ; (u·v)' = u'·v + u·v' ; (1/v)' = −v'/v² ; (u/v)' = (u'·v − u·v')/v². Conséquence : les polynômes sont dérivables sur ℝ, les fonctions rationnelles sur leur ensemble de définition.",
+          "COMPOSÉE : v∘u(x) = v(u(x)). Dérivée : (v∘u)'(x) = v'(u(x))·u'(x) (« dérivée de l'extérieur × dérivée de l'intérieur »). Ex : f(x)=sin(3x−8) ⟹ f'(x)=3·cos(3x−8). Formules qui en découlent : (√u)' = u'/(2√u) ; (uⁿ)' = n·u^(n−1)·u' ; (eᵘ)' = u'·eᵘ ; (1/u)' = −u'/u². Monotonie d'une composée v∘u : croissante si u et v ont la même monotonie, décroissante si monotonies contraires.",
+          "VARIATIONS & EXTREMA. Sur un intervalle I : si f'>0 alors f est strictement croissante ; si f'<0 alors f est strictement décroissante ; si f'=0 sur tout I alors f est constante. On étudie donc le SIGNE de f' pour trouver les variations. f admet un extremum local (minimum ou maximum) en x₀ si et seulement si f' s'annule EN CHANGEANT DE SIGNE en x₀."
+        ],
+        flashcards:[
+          ["Nombre dérivé f'(a) : définition (limite) ?","f'(a) = lim(h→0) (f(a+h)−f(a))/h (limite du taux de variation)."],
+          ["Taux de variation de f entre a et b ?","(f(b)−f(a))/(b−a) (coefficient directeur de la corde [AB])."],
+          ["Équation de la tangente à Cf en A(a;f(a)) ?","y = f'(a)(x−a) + f(a)."],
+          ["(xⁿ)' = ?","n·x^(n−1)."],
+          ["(1/x)' = ? et (√x)' = ?","−1/x² et 1/(2√x)."],
+          ["(sin x)' / (cos x)' / (eˣ)' = ?","cos x / −sin x / eˣ."],
+          ["(u·v)' = ?","u'·v + u·v'."],
+          ["(u/v)' = ?","(u'·v − u·v') / v²."],
+          ["(1/v)' = ?","−v'/v²."],
+          ["Dérivée d'une composée (v∘u)' = ?","v'(u(x)) · u'(x) (dérivée de l'extérieur × dérivée de l'intérieur)."],
+          ["(eᵘ)' = ? et (√u)' = ?","u'·eᵘ et u'/(2√u)."],
+          ["Lien signe de f' et variations ?","f'>0 ⟹ strictement croissante ; f'<0 ⟹ strictement décroissante ; f'=0 sur I ⟹ constante."],
+          ["Condition pour un extremum local en x₀ ?","f' s'annule EN CHANGEANT DE SIGNE en x₀."],
+          ["Monotonie de v∘u ?","Croissante si u et v ont la même monotonie ; décroissante si monotonies contraires."]
+        ],
+        quiz:[
+          {q:"Le nombre dérivé f'(a) est la limite de…",opts:["f(a+h)−f(a)","(f(a+h)−f(a))/h quand h→0","f(a)·h","(f(b)−f(a))/(b−a) quand b→+∞"],a:1,why:"f'(a) = lim(h→0) (f(a+h)−f(a))/h."},
+          {q:"L'équation de la tangente en A(a;f(a)) est…",opts:["y = f(a)(x−a)+f'(a)","y = f'(a)(x−a)+f(a)","y = f'(a)·x","y = f(a)·x+f'(a)"],a:1,why:"y = f'(a)(x−a) + f(a)."},
+          {q:"(x⁵)' = ?",opts:["5x⁴","x⁴","5x⁶","x⁵/5"],a:0,why:"(xⁿ)' = n·x^(n−1), donc 5x⁴."},
+          {q:"(u·v)' = ?",opts:["u'·v'","u'·v + u·v'","u'·v − u·v'","u'/v'"],a:1,why:"Dérivée d'un produit : u'v + uv'."},
+          {q:"(u/v)' = ?",opts:["u'/v'","(u'·v − u·v')/v²","(u'·v + u·v')/v²","u'·v − u·v'"],a:1,why:"Dérivée d'un quotient : (u'v − uv')/v²."},
+          {q:"Pour f(x)=sin(3x−8), f'(x) = ?",opts:["cos(3x−8)","3cos(3x−8)","−3cos(3x−8)","3sin(3x−8)"],a:1,why:"Composée : v'(u)·u' = cos(3x−8)×3."},
+          {q:"Si f'(x) > 0 sur I, alors f est…",opts:["décroissante","strictement croissante sur I","constante","nulle"],a:1,why:"Signe de la dérivée : f'>0 ⟹ strictement croissante."},
+          {q:"f a un extremum local en x₀ si f'…",opts:["est positive","s'annule en changeant de signe en x₀","est constante","n'existe pas"],a:1,why:"Extremum local ⟺ f' s'annule en changeant de signe."}
+        ]
+      }
+    ],
     ses:[
       {
         id:"ses-croissance-sources-defis",
@@ -374,6 +572,39 @@
           {q:"Pour Rousseau, le bonheur se trouve surtout…",opts:["dans la possession de l'objet désiré","dans le désir lui-même et l'imagination","dans l'absence totale de désir","dans la richesse"],a:1,why:"« Malheur à qui n'a plus rien à désirer » : c'est le désir, nourri par l'imagination, qui fait le bonheur."},
           {q:"Que prône Tchouang-Tseu pour atteindre la vraie joie ?",opts:["Le non-agir (wu wei)","La satisfaction de tous les désirs","La richesse","La gloire"],a:0,why:"Pour Tchouang-Tseu, la joie suprême réside dans le non-agir et la paix de l'âme."},
           {q:"Qu'est-ce que l'ataraxie ?",opts:["Le plaisir intense","L'absence de trouble, la tranquillité de l'âme","L'accumulation de richesses","Le désir sans limite"],a:1,why:"Ataraxie = tranquillité, absence de trouble : l'objectif d'Épicure."}
+        ]
+      },
+      {
+        id:"philo-responsables-des-autres",
+        title:"Sommes-nous responsables des autres ?",
+        date:"Philo · Chapitre 2 (+ le travail)",
+        summary:[
+          "Problème : « Sommes-nous responsables des autres ? » Notions : Devoir, Bonheur, Travail, Liberté, Justice. Repères : en fait / en droit, en théorie / en pratique, légal / légitime, fin / moyen. Contradiction de départ : NON (chacun est libre et maître de soi) vs OUI (on dépend des autres, et un impératif moral nous pousse à nous entraider). Dépassement : peut-on être responsable d'autrui sans porter atteinte à sa liberté et à son autonomie ?",
+          "INTRO — Ursula K. Le Guin, « Ceux qui partent d'Omelas » : une cité parfaitement heureuse, mais à la seule condition qu'un enfant soit maintenu dans le malheur. Quitteriez-vous Omelas ? Ce dilemme oppose deux morales.",
+          "DEUX MORALES. Morale UTILITARISTE : une action est bonne quand la somme des intérêts (le bonheur du plus grand nombre) l'emporte sur la somme des désagréments (ici le bonheur de milliers contre le malheur d'un seul → le fameux 1/100000). Morale HUMANISTE : on refuse un bonheur qui repose sur le malheur d'autrui ; la dignité de la personne ne se calcule pas.",
+          "I. NON — je ne suis d'abord responsable que de MOI. a) JE TRAVAILLE À MON PROPRE BONHEUR. Épicure (Lettre à Ménécée) : il faut « s'exercer » à la philosophie pour garantir la santé de l'âme ; le bonheur dépend de moi — je modifie mes désirs pour me contenter de ce qui est bon (m'effacer, ne pas céder à un désir).",
+          "b) TRAVAILLER ME RÉALISE DANS LE MONDE. CRAWFORD (Éloge du carburateur) : le travail bien fait procure une fierté, une « preuve de compétence » → une révélation, une auto-affirmation. HEGEL (Esthétique) : par le travail, l'homme transforme le monde extérieur, y imprime le « sceau de son intériorité » et s'y reconnaît (ex : l'enfant qui jette des pierres et admire les ronds dans l'eau) → le travail est extériorisation et réalisation de soi. MARX & ENGELS (Critique du programme de Gotha) : dans une société supérieure, le travail ne sera plus un simple « moyen de vivre » mais le « premier besoin vital » → une FIN. « De chacun selon ses capacités, à chacun selon ses besoins ». (Rappel repère : une fin est recherchée pour elle-même ; un moyen est fait en vue d'autre chose.)",
+          "c) RESPONSABILITÉ INDIVIDUELLE DEVANT LA LOI. Code pénal, article 121-1 : « Nul n'est responsable pénalement que de son propre fait. » Juridiquement, on ne répond que de ses propres actes, pas de ceux d'autrui. Ouverture : mais la responsabilité MORALE, elle, peut dépasser la seule responsabilité légale."
+        ],
+        flashcards:[
+          ["« Ceux qui partent d'Omelas » (Le Guin) : le dilemme ?","Une cité heureuse au prix du malheur d'un enfant → accepter ce bonheur (rester) ou le refuser (partir) ?"],
+          ["Morale utilitariste ?","Une action est bonne si la somme des intérêts (bonheur du plus grand nombre) l'emporte sur la somme des désagréments."],
+          ["Morale humaniste ?","On refuse un bonheur qui repose sur le malheur d'autrui ; la dignité de la personne ne se calcule pas."],
+          ["Repère fin / moyen ?","Une FIN est recherchée pour elle-même ; un MOYEN est fait en vue d'autre chose."],
+          ["Crawford (Éloge du carburateur) : sa thèse sur le travail ?","Le travail bien fait procure fierté et preuve de compétence → une révélation, une auto-affirmation de soi."],
+          ["Hegel (Esthétique) : travail et réalisation de soi ?","Par le travail, l'homme transforme le monde, y met le « sceau de son intériorité » et s'y reconnaît (ex : l'enfant et les ronds dans l'eau)."],
+          ["Marx & Engels : le travail comme fin ?","Dans une société supérieure, le travail ne sera plus un moyen de vivre mais le « premier besoin vital » → une fin. « De chacun selon ses capacités, à chacun selon ses besoins »."],
+          ["Épicure : le bonheur dépend-il de nous ?","Oui : il faut s'exercer à la philosophie pour la santé de l'âme, et modifier ses désirs pour se contenter de ce qui est bon."],
+          ["Code pénal, article 121-1 ?","« Nul n'est responsable pénalement que de son propre fait » : on ne répond légalement que de ses propres actes."],
+          ["Responsabilité légale vs morale ?","La loi ne punit que mes propres actes ; mais la responsabilité morale peut m'engager vis-à-vis d'autrui."]
+        ],
+        quiz:[
+          {q:"Dans « Omelas », le bonheur de la cité repose sur…",opts:["le travail de tous","le malheur d'un enfant","la richesse","la religion"],a:1,why:"Le Guin : une cité heureuse à la seule condition qu'un enfant soit maintenu dans le malheur."},
+          {q:"La morale utilitariste juge une action bonne si…",opts:["elle respecte la dignité de chacun","la somme des intérêts l'emporte sur celle des désagréments","elle est légale","elle est traditionnelle"],a:1,why:"Utilitarisme : maximiser le bonheur global (coûts / avantages)."},
+          {q:"La morale humaniste…",opts:["accepte le sacrifice d'un seul pour le plus grand nombre","refuse un bonheur fondé sur le malheur d'autrui","ne juge rien","calcule les intérêts"],a:1,why:"Elle place la dignité de la personne au-dessus du calcul."},
+          {q:"Pour Hegel, le travail permet à l'homme de…",opts:["gagner de l'argent uniquement","se réaliser en transformant le monde et en s'y reconnaissant","fuir la nature","obéir à l'État"],a:1,why:"Le travail est extériorisation et réalisation de soi (ex : l'enfant et les ronds dans l'eau)."},
+          {q:"Pour Marx & Engels, dans une société supérieure, le travail devient…",opts:["un simple moyen de vivre","le premier besoin vital (une fin)","inutile","une punition"],a:1,why:"Le travail cesse d'être un moyen pour devenir une fin, un besoin vital."},
+          {q:"L'article 121-1 du Code pénal dit que…",opts:["chacun est responsable de tous","nul n'est responsable pénalement que de son propre fait","la loi n'existe pas","on répond des actes d'autrui"],a:1,why:"Responsabilité pénale individuelle : on ne répond que de ses propres actes."}
         ]
       }
     ]
